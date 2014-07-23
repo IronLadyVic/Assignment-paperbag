@@ -8,7 +8,7 @@ class Form{
 	private $aErrors;
 
 	public function __construct(){
-		$this->sHTML = '<form action="success-created-account.php" method="post" onsubmit="return checkAllFields()">';
+		$this->sHTML = '<form action="success-created-account.php" method="post" onsubmit="return checkAllFields()" id="form" enctype="multipart/form-data">';
 		$this->aData = array();
 		$this->aFiles = array();
 		$this->aErrors = array();
@@ -25,7 +25,8 @@ class Form{
 
 		$this->sHTML .='<label for="'.$sControlName.'">'.$sLabelText.'</label>';
 		$this->sHTML .='<input type="text" name="'.$sControlName.'" placeholder="*" id="'.$sControlName.'" value="'.$sData.'" onblur="checkInput(this.id)">';
-		$this->sHTML .='<span id="usernameMessage">'.$sError.'</span>';
+		$this->sHTML .='<span>'.$sError.'</span>';
+		// $this->sHTML .='<span id="usernameMessage">'.$sError.'</span>';
 
 	}
 
@@ -37,13 +38,14 @@ public function makeUpLoadBox($sLabelText, $sControlName){
 	}
 	$sHTML.='<label for="'.$sControlName.'">'.$sLabelText.'</label>';
 	$sHTML.='<input type="text" name="'.$sControlName.'" placeholder="*" id="'.$sControlName.'" onblur="checkInput(this.id)">';
-		$this->sHTML .='<span id="usernameMessage">'.$sError.'</span>'; //do i take the id out for styling the error message?
+		$this->sHTML .='<span>'.$sError.'</span>'; //do i take the id out for styling the error message?
 }
+
 
 public function makeSubmit($sLabelText, $sControlName){
 	$this->sHTML .='<input id="send" type="'.$sControlName.'" name="'.$sControlName.'" value="'.$sLabelText.'">';
 }
-//do i take the id out - even though this designs the make submit button? all buttons are different.
+
 
 
  public function checkRequired($sControlName){

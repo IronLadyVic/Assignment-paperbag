@@ -254,6 +254,7 @@ form input{
 .create-an-account input{
 	background-color: #B5E1E1;
 	color: #535353;
+
 }
 
 #username{
@@ -261,21 +262,24 @@ form input{
     background-repeat:no-repeat;
    	background-position:left center;  
    	padding-left:70px;
+   	font-size: 10px;
 }
 #pass1{
 	background-image:url('img/password.png');
     background-repeat:no-repeat;
    	background-position:left center;  
    	padding-left:70px;
+   	font-size: 10px;
 }
 #pass2{
 	position: relative;
- 	margin-left: 275px;
+ 	margin-left: 272px;
  	background-image:url('img/confirm-password.png');
     background-repeat:no-repeat;
    	background-position:left center;  
    	padding-left:120px;
-   	width: 141px;
+   	width: 139px;
+   	font-size: 10px;
 }
 
 #firstName{
@@ -283,14 +287,17 @@ form input{
     background-repeat:no-repeat;
    	background-position:left center;  
    	padding-left:80px;
-   	width: 183px;
+	width: 183px;
+	font-size: 10px;
+
 }
 #lastName{
 	background-image:url('img/lastname.png');
     background-repeat:no-repeat;
    	background-position:left center;  
    	padding-left:75px;
-   	width: 183px;
+   	width: 182px;
+   	font-size: 10px;
 }
 #mobile{
 	background-image:url('img/mobile.png');
@@ -298,13 +305,15 @@ form input{
    	background-position:left center;  
    	padding-left:45px;
    	width: 217px;
+   	font-size: 10px;
 }
 #email{
 	background-image:url('img/email.png');
     background-repeat:no-repeat;
    	background-position:left center;  
    	padding-left:45px;
-   	width: 215px;
+   	width: 212px;
+   	font-size: 10px;
 }
 #address{
 	background-image:url('img/address.png');
@@ -312,6 +321,7 @@ form input{
    	background-position:left center;  
    	padding-left:95px;
    	width: 285px;
+   	font-size: 10px;
 }
 #city{
 	background-image:url('img/city.png');
@@ -319,6 +329,7 @@ form input{
    	background-position:left center;  
    	padding-left:35px;
    	width: 105px;
+   	font-size: 10px;
 }
 #postcode{
 	background-image:url('img/postcode.png');
@@ -326,6 +337,7 @@ form input{
    	background-position:left center;  
    	padding-left:60px;
    	width: 185px;
+   	font-size: 10px;
 }
 #required{
 	margin-left: 12px;
@@ -392,8 +404,33 @@ input #username-login{
 	text-indent: 55px;
 	line-height: 200%;
 }
+#form{
+	margin-left: 15px;
+	margin-top: -105px;
+}
 
 /*Form validation styles*/
+
+
+
+span{
+	 position: absolute;
+ 	color: #FF6666;
+    z-index: 400;
+    font-size: 10px;
+    display: inline-block;
+    text-indent: 8px;
+    margin-left: -130px;
+    margin-top: 3px;
+}
+span:after{
+	content: "";
+	position: absolute;
+    top:0;
+    right: 100%;
+    width: 0px;
+    height: 0px;
+}
 
 .form-error:after{    
     content: "";
@@ -946,6 +983,14 @@ p .description-text{
 	margin-left: 20px;
 	line-height: 90%;
 	color: #535353;
+}
+.header-personaldetails{
+	margin-top: 80px;
+	margin-left: 20px;
+	line-height: 90%;
+	color: #535353;
+	position: relative;
+	margin-bottom: 10px;
 }
 #account-button{
 	width: 265px;
@@ -1545,5 +1590,12 @@ div #footer-socialMedia{
 	margin-left: -65px;
 	cursor: pointer;
 
+}
+.copyright {
+	position: absolute;
+	bottom:490px;
+	color: #bbb;
+	left: 20%;
+	font-size: 10px;
 }
 

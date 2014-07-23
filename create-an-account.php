@@ -5,8 +5,10 @@ require_once("includes/collection.php");
 require_once("includes/member.php");
 
 session_start();
-
+$oCollection = new Collection();
 $oForm = new Form();
+
+
 
 if(isset($_POST["submit"])){
 	$oForm->data = $_POST;
@@ -22,10 +24,10 @@ if(isset($_POST["submit"])){
 	$oForm->checkRequired("city");
 	$oForm->checkRequired("postcode");
 
-	$oCheckMember = $oCollection->findCustomerByUsername($_POST['MemberID']);
+	$oCheckMember = $oCollection->findCustomerByUsername($_POST['username']);
 
 	if($oCheckMember != false){
-		$oForm->raiseError('username','Member name already taken');
+		$oForm->raiseError('username','Username name already taken');
 	}
 
 	if($oForm->isValid){
@@ -34,16 +36,17 @@ if(isset($_POST["submit"])){
 		$oMember->username=$_POST['username'];
 		$oMember->password=$_POST['password'];
 		$oMember->firstName=$_POST['firstName'];
-		$oMember->firstName=$_POST['lastName'];
-		$oMember->firstName=$_POST['mobile'];
-		$oMember->firstName=$_POST['email'];
-		$oMember->firstName=$_POST['address'];
-		$oMember->firstName=$_POST['city'];
-		$oMember->firstName=$_POST['postcode'];
+		$oMember->lastName=$_POST['lastName'];
+		$oMember->mobile=$_POST['mobile'];
+		$oMember->email=$_POST['email'];
+		$oMember->address=$_POST['address'];
+		$oMember->city=$_POST['city'];
+		$oMember->postcode=$_POST['postcode'];
+		
 
 		$oMember->save();
 
-		header("location: success-created-account.php");
+		header("location: create-an-account.php");
 		exit();
 
 	}
@@ -60,15 +63,15 @@ $oForm->makeTextInput('','email');
 $oForm->makeTextInput('','address');
 $oForm->makeTextInput('','city');
 $oForm->makeTextInput('','postcode');
-
+$oForm->makeSubmit('create an account','submit');
 
 $oView = new View();
-$oCollection = new Collection();
+
 $aAllProductTypes = $oCollection->getAllProductTypes();
 
 $iTypeID = 1;
-if(isset($_GET["TypeID"])){
-	$iTypeID = $_GET["TypeID"];
+if(isset($_GET["productType"])){
+	$iTypeID = $_GET["productType"];
 }
 // $oType= new ProductType();
 // $oType->load($iTypeID);
@@ -78,47 +81,10 @@ require_once("includes/header.php");
 <!-- left main container -->
 <div id="left-container-account">
 <p class="header">create an account</p>
+<p class="header-personaldetails">personal details</p>
 <?php echo $oForm->html; ?>
-	<!-- <form action="success-created-account.php" method="post" onsubmit="return checkAllFields()">
-		<fieldset>
-			<legend><strong>create an account</strong></legend>
-			<label for="username"></label>
-			<input type="text" name="username" placeholder="*" id="username" onblur="checkInput(this.id)">
-			<span id="usernameMessage"></span>
-			<label for="pass1"></label>
-			<input type="password" name="pass1" placeholder="*" id="pass1" onkeyup="checkPasswordMatch(); return true;">
-			<span id="pass1Message"></span>
-			<label for="pass2"></label>
-			<input type="password" name="pass2" placeholder="*"  id="pass2" onkeyup="checkPasswordMatch(); return false;">
-			<span id="confirmMessage"></span>
-		</fieldset>
-		<fieldset>
-			<legend><strong>personal details</strong></legend>
-			<label for="firstName"></label>
-			<input type="text" name="firstName" placeholder="*" id="firstName" onblur="checkInput(this.id)">
-			<span id="firstNameMessage"></span>
-			<label for="lastName"></label>
-			<input type="text" name="lastName" placeholder="*" id="lastName" onblur="checkInput(this.id)">
-			<span id="lastNameMessage"></span>
-			<label for="mobile"></label>
-			<input type="text" name="mobile" placeholder="*" id="mobile" onblur="checkNumeric(this.id)">
-			<span id="mobileMessage"></span>
-			<label for="email"></label>
-			<input type="text" name="email" placeholder="*" id="email" onblur="checkEmail(this.id)">
-			<span id="emailMessage"></span>
-			<label for="address"></label>
-			<input type="text" name="address" placeholder="*" id="address" onblur="checkInput(this.id)">
-			<span id="addressMessage"></span>
-			<label for="city"></label>
-			<input type="text" name="city" placeholder="*" id="city" onblur="checkInput(this.id)">
-			<span id="cityMessage"></span>
-			<label for="postcode"></label>
-			<input type="text" name="postcode" placeholder="*" id="postcode" onblur="checkNumeric(this.id)">
-			<span id="postcodeMessage"></span>
-			<label for="send" class="create-an-account"></label>
-			<input id="send" type="submit" name="submit" value="submit">
-		</fieldset>	
-	</form> -->
+
+
 <p id="required">* required input - account members NZ address only</p>
 </div>
 <!-- right main container -->

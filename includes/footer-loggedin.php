@@ -30,6 +30,7 @@
 </div>
 
 </div>
+<p class="copyright">Copyright &copy; 2014 paperbag boutique</p>
 <script type="text/javascript" src="assets/javascript.js"></script>	
 </body>
 </html>

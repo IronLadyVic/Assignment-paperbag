@@ -137,36 +137,40 @@ public function __get($var){
 	}
 }
 
+//setter
+	//once the form checks have been done, the POST data is sent here for the setter to assign the values
+	//to the class attributes ready to run the save function after all the attributes have been set
+
 public function __set($var, $value){
 	switch ($var) {
-		case "UserName":
+		case "username":
 		$this->sUserName = $value;
 		break;
-		case "Password":
+		case "password":
 		$this->sPassword = $value;
 		break;
-		case "FirstName":
+		case "firstName":
 		$this->sFirstName = $value;
 		break;
-		case "LastName":
+		case "lastName":
 		$this->sLastName = $value;
 		break;
-		case "Mobile":
+		case "mobile":
 		$this->iMobile = $value;
 		break;
-		case "Email":
+		case "email":
 		$this->sEmail = $value;
 		break;
-		case "StreetAddress":
+		case "address":
 		$this->sStreetAddress = $value;
 		break;
-		case "City":
+		case "city":
 		$this->sCity = $value;
 		break;
-		case "PostCode":
+		case "postcode":
 		$this->iPostCode = $value;
 		break;
-		default: die($var."Member could not be set");
+		default: die($var."details could not be set");
 		
 	}
 }
