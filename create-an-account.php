@@ -1,25 +1,66 @@
 <?php
+require_once("includes/model-form.php");
 require_once("includes/view.php");
 require_once("includes/collection.php");
+require_once("includes/member.php");
 
 session_start();
 
+$oForm = new Form();
 
-// $oForm = new Form();
+if(isset($_POST["submit"])){
+	$oForm->data = $_POST;
+	$oForm->checkRequired("username");
+	$oForm->checkRequired("pass1");
+	$oForm->checkRequired("pass2");
+	$oForm->checkMatching("pass1", "pass2");
+	$oForm->checkRequired("firstName");
+	$oForm->checkRequired("lastName");
+	$oForm->checkRequired("mobile");
+	$oForm->checkRequired("email");
+	$oForm->checkRequired("address");
+	$oForm->checkRequired("city");
+	$oForm->checkRequired("postcode");
 
-// if(isset($_POST["submit"])){
-// 	$oForm->data = $_POST;
+	$oCheckMember = $oCollection->findCustomerByUsername($_POST['MemberID']);
 
-// 	$oForm->checkRequired("FirstName");
-// 	$oForm->checkRequired("LastName");
-// 	$oForm->checkRequired("Mobile");
-// 	$oForm->checkRequired("Email");
-// 	$oForm->checkRequired("StreetAddress");
-// 	$oForm->checkRequired("City");
+	if($oCheckMember != false){
+		$oForm->raiseError('username','Member name already taken');
+	}
 
+	if($oForm->isValid){
+		$oMember = new Member();
 
+		$oMember->username=$_POST['username'];
+		$oMember->password=$_POST['password'];
+		$oMember->firstName=$_POST['firstName'];
+		$oMember->firstName=$_POST['lastName'];
+		$oMember->firstName=$_POST['mobile'];
+		$oMember->firstName=$_POST['email'];
+		$oMember->firstName=$_POST['address'];
+		$oMember->firstName=$_POST['city'];
+		$oMember->firstName=$_POST['postcode'];
 
-// }
+		$oMember->save();
+
+		header("location: success-created-account.php");
+		exit();
+
+	}
+
+}
+
+$oForm->makeTextInput('','username');
+$oForm->makeTextInput('','pass1');
+$oForm->makeTextInput('','pass2');
+$oForm->makeTextInput('','firstName');
+$oForm->makeTextInput('','lastName');
+$oForm->makeTextInput('','mobile');
+$oForm->makeTextInput('','email');
+$oForm->makeTextInput('','address');
+$oForm->makeTextInput('','city');
+$oForm->makeTextInput('','postcode');
+
 
 $oView = new View();
 $oCollection = new Collection();
@@ -36,7 +77,9 @@ require_once("includes/header.php");
 ?>
 <!-- left main container -->
 <div id="left-container-account">
-	<form action="success-created-account.php" method="post" onsubmit="return checkAllFields()">
+<p class="header">create an account</p>
+<?php echo $oForm->html; ?>
+	<!-- <form action="success-created-account.php" method="post" onsubmit="return checkAllFields()">
 		<fieldset>
 			<legend><strong>create an account</strong></legend>
 			<label for="username"></label>
@@ -75,7 +118,7 @@ require_once("includes/header.php");
 			<label for="send" class="create-an-account"></label>
 			<input id="send" type="submit" name="submit" value="submit">
 		</fieldset>	
-	</form>
+	</form> -->
 <p id="required">* required input - account members NZ address only</p>
 </div>
 <!-- right main container -->

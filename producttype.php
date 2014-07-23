@@ -13,8 +13,8 @@ $aAllProductTypes = $oCollection->getAllProductTypes();
 
 
 $iTypeID = 1;
-if(isset($_GET["TypeID"])){
-	$iTypeID = $_GET["TypeID"];
+if(isset($_GET["productType"])){
+	$iTypeID = $_GET["productType"]; //$_GET - the query string here needs to relate to the productType here.
 }
 $oType= new ProductType();
 $oType->load($iTypeID);

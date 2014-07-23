@@ -560,7 +560,7 @@ div .show{
 }
 
 div .shop-image-enlarge{
-	outline: red 1px solid;
+	/*outline: red 1px solid;*/
 	width: 50%;
 	height: 100%;
 	position: absolute;

@@ -2,13 +2,13 @@
 
 class Form{
 
-	$sHTML;
-	$aData;
-	$aFiles;
-	$aErrors;
+	private $sHTML;
+	private $aData;
+	private $aFiles;
+	private $aErrors;
 
 	public function __construct(){
-		$this->sHTML = "";
+		$this->sHTML = '<form action="success-created-account.php" method="post" onsubmit="return checkAllFields()">';
 		$this->aData = array();
 		$this->aFiles = array();
 		$this->aErrors = array();
@@ -23,8 +23,8 @@ class Form{
 			$sData = $this->aErrors[$sControlName];
 		}
 
-		$sHTML.='<label for="'.$sControlName.'">'.$sLabelText.'</label>'
-		'<input type="text" name="'.$sControlName.'" placeholder="*" id="'.$sControlName.'" value="'.$sData.'" onblur="checkInput(this.id)">';
+		$this->sHTML .='<label for="'.$sControlName.'">'.$sLabelText.'</label>';
+		$this->sHTML .='<input type="text" name="'.$sControlName.'" placeholder="*" id="'.$sControlName.'" value="'.$sData.'" onblur="checkInput(this.id)">';
 		$this->sHTML .='<span id="usernameMessage">'.$sError.'</span>';
 
 	}
@@ -35,8 +35,8 @@ public function makeUpLoadBox($sLabelText, $sControlName){
 	if(isset($this->aErrors[$sControlName])){
 		$sError = $this->aErrors[$sControlName];
 	}
-	$sHTML.='<label for="'.$sControlName.'">'.$sLabelText.'</label>'
-		'<input type="text" name="'.$sControlName.'" placeholder="*" id="'.$sControlName.'" onblur="checkInput(this.id)">';
+	$sHTML.='<label for="'.$sControlName.'">'.$sLabelText.'</label>';
+	$sHTML.='<input type="text" name="'.$sControlName.'" placeholder="*" id="'.$sControlName.'" onblur="checkInput(this.id)">';
 		$this->sHTML .='<span id="usernameMessage">'.$sError.'</span>'; //do i take the id out for styling the error message?
 }
 
@@ -71,10 +71,14 @@ public function makeSubmit($sLabelText, $sControlName){
  	}
  }
 
+ public function raiseError($sControlName, $sErrorMessage){
+ 	$this->aErrors[$sControlName] = $sErrorMessage;
+ }
+
  public function __get($var){
  	switch ($var) {
  		case "html":
- 		$this->sHTML .'</form>';
+ 		return $this->sHTML .'</form>';
  		break;
  		case "isValid":
  		if(count($this->aErrors)==0){

@@ -28,6 +28,31 @@ class Collection{
  		return $aTypes;
 
  	}
+
+ 	public function findCustomerByUsername($sUsername){
+
+ 		$aMembers = array();
+
+ 		$oConnection = new Connection();
+
+ 		$sSql = "SELECT MemberID
+				FROM tbmember
+				WHERE UserName = '".$sUsername."'";
+
+		$oResult = $oConnection->query($sSql);
+
+		$aMembers = $oConnection->fetch_array($oResult);
+		$oConnection->close_connection();
+
+		if($aMembers == false){
+			return false;
+		}else{
+			$oMember = new Member();
+			$oMember->load($aMembers['MemberID']);
+			return $oMember;
+		}
+
+ 	}
 }
 //TESTING
 
