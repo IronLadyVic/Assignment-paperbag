@@ -529,7 +529,10 @@ input #username-login{
 	width: 300px;
 	margin-top: 20px;
 }
-
+#item a img{
+	width: 100%;
+	height: 100%;
+}
 
 #viewItem{
 	padding-left: 220px;
@@ -540,7 +543,7 @@ input #username-login{
 #item-enlarge{
 	background-color: #EEEEEE;
 	width: 850px;
-	height: 600px;
+	height: 500px;
 	z-index: 1002;
 	border: 0px;
 	position: absolute;
@@ -556,7 +559,14 @@ div .show{
 
 }
 
+div .shop-image-enlarge{
+	outline: red 1px solid;
+	width: 50%;
+	height: 100%;
+	position: absolute;
+	margin-left: 450px;
 
+}
 div .product-name-enlarge{
 	background-image: url('img/item-name.png');
 	background-repeat: no-repeat;
@@ -565,7 +575,7 @@ div .product-name-enlarge{
 	text-indent:85px;
 	line-height: 230%;
 	position: absolute;
-	margin-left: 80px;
+	margin-left: 50px;
 	margin-top: 65px;
 	z-index: 400px;
 	width: 380px;
@@ -582,7 +592,7 @@ div .producttype-name-enlarge{
 	position: absolute;
 	z-index: 400px;
 	width: 380px;
-	margin-left: 80px;
+	margin-left: 50px;
 	margin-top: 110px;
 }
 div .description-enlarge{	
@@ -596,7 +606,7 @@ div .description-enlarge{
 	position: absolute;
 	z-index: 400px;
 	width: 372px;
-	margin-left: 80px;
+	margin-left: 50px;
 	margin-top: 150px;
 
 }
@@ -611,7 +621,7 @@ div .size-enlarge{
 	position: absolute;
 	z-index: 400px;
 	width: 380px;
-	margin-left: 80px;
+	margin-left: 50px;
 	margin-top: 240px;
 }
 
@@ -626,7 +636,7 @@ div .label-enlarge{
 	position: absolute;
 	z-index: 400px;
 	width: 380px;
-	margin-left: 80px;
+	margin-left: 50px;
 	margin-top: 280px;
 }
 div .price-enlarge{
@@ -641,7 +651,7 @@ div .price-enlarge{
 	position: absolute;
 	z-index: 400px;
 	width: 380px;
-	margin-left: 80px;
+	margin-left: 50px;
 	margin-top:320px;
 
 }
@@ -653,7 +663,7 @@ div .price-enlarge{
 	height: 30px;
 	width: 380px;
 	margin-top:360px;
-	margin-left: 80px;
+	margin-left: 50px;
 	position: absolute;
 
 
@@ -691,16 +701,13 @@ height: 180%;
 
 }
 
-.image{
+/*.image{
 	position: relative;
 	margin-left: -20px;
-
-	margin-bottom: 10px;
-	/*height: 450px;
-	width: 300px;*/
+	background-size: 80%;
 
 }
-
+*/
 
 
 div .product-name{
