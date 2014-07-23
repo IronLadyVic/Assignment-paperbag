@@ -1,0 +1,56 @@
+html, body{
+	padding: 0px;
+	background-color: white;
+	font-size: 12px;
+	font-family: "Helvetica", "Arial", sans-serif;
+	margin: 0px;
+}
+
+/*Remove Elements*/
+#whitestrip1,#whitestrip2, #searchtype, #search{
+display:none;
+}
+#content { 
+	width: 100%; 
+	margin: 0; 
+	float: none; 
+} 
+#body { 
+	background: white; 
+	
+}
+
+/* Show URL */
+a:link, a:visited {
+	background: transparent; 
+	color:#333; 
+	text-decoration:none;
+}
+a:link[href^="http://"]:after, a[href^="http://"]:visited:after {
+	content: " (" attr(href) ") "; 
+	font-size: 11px;
+}
+a[href^="http://"] {
+	color:#000;
+}
+
+/* Make Links stand out */
+a:link { 
+	font-weight: bold; 
+	text-decoration: underline; 
+	color: #06c; 
+} 
+/* Make all paragraph text stand out */
+p { 
+	font-size: 14pt; 
+}
+
+/*Break Page*/
+#comments {
+	page-break-before: always;
+}
+
+/*Footer*/
+#BottomNav1, #BottomNav2 {
+	display: none;
+}
