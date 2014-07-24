@@ -1,5 +1,5 @@
 <?php
-require_once("includes/header-loggedin.php");
+require_once("includes/header.php");
 
 ?>
 <!-- left main container -->

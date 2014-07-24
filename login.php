@@ -6,7 +6,14 @@ require_once("includes/member.php");
 
 
 session_start();
+
 $oCollection = new Collection();
+$oView = new View();
+
+$aAllProductTypes = $oCollection->getAllProductTypes();
+
+
+
 $oForm = new Form();
 
 
@@ -21,27 +28,22 @@ if(isset($_POST["submit"])){
 
 	if($oCheckMember == false){
 		$oForm->raiseError("username","Username is incorrect");
-	}else{
-		if($oCheckMember->password != $_POST["password-login"]){
+	}else if($oCheckMember->password != $_POST["password-login"]){
 			$oForm->raiseError("password-login","password is incorrect");
-		}
-	}
-
-	if($oForm->isValid){
-
-		// $oMember = new Member();
-		// $oMember->username=$_POST['username'];
-		// $oMember->password=$_POST['password-login'];
-		// $oMember->load();
-
+		
+	}else{
 		$_SESSION['MemberID'] = $oCheckMember->MemberID;
-		$_SESSION['firstName'] = $oCheckMember->FirstName;
 
-		header("Location:success-loggedin.php");//if succuss in login, change page to success page.
+		//istantiate a cart object using session.
+
+		header("Location:index-loggedin.php");
 		exit(); 
-		}	
 	}
 }
+}
+
+		
+
 	$oForm->makeTextInput('','username');
 	$oForm->makeTextInput('','password-login');
 	$oForm->makeSubmit('log in','submit');
@@ -57,12 +59,11 @@ $iTypeID = 1;
 		$iTypeID = $_GET["productType"];
 }
 
-
 require_once("includes/header.php");
 
 ?>
 
-	<!-- left main container -->
+<!-- left main container -->
 <div id="left-container-login">
 <p class="header-login">log in</p>
 <?php echo $oForm->html; ?>
@@ -79,7 +80,6 @@ require_once("includes/header.php");
 		</a>
 </div>	
 <!-- right main container -->
-<!-- <div id="right-navigation-shop"> -->
 
 <?php echo View::renderNavigation($aAllProductTypes);
 

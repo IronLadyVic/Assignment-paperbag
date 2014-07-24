@@ -1,5 +1,26 @@
 <?php
-require_once("includes/header-loggedin.php");
+require_once("includes/model-form.php");
+require_once("includes/view.php");
+require_once("includes/collection.php");
+require_once("includes/member.php");
+
+session_start();
+
+
+
+
+
+$oView = new View();
+$oCollection = new Collection();
+$aAllProductTypes = $oCollection->getAllProductTypes();
+
+$iTypeID = 1;
+if(isset($_GET["productType"])){
+	$iTypeID = $_GET["productType"];
+}
+
+
+require_once("includes/header.php");
 
 ?>
 <!-- left main container -->
@@ -33,7 +54,7 @@ to your email on removal of item.</p>
 	<img alt="next" src="assets/img/view-next-item.png" id="next-item-text"></img>
 	<div id="next-item">
 
-		<p><a href="items-im-selling.php">1</a> <!-- //hook up #typeId to each individual page. -->
+		<p><a href="items-im-selling.php">1</a> 
 		</p><p><a href="items-im-selling.php">2</a></p>
 		<p><a href="items-im-selling.php">3</a></p>
 		<p><a href="items-im-selling.php">4</a></p>
@@ -41,21 +62,8 @@ to your email on removal of item.</p>
 	</div>
 </div>
 <!-- right main container -->
-<div id="right-navigation-shop">
-	<nav id="shop-links">
-		<ul>
-			<p><strong>shop</strong></p>
-			<li><a href="#">jackets</a></li>
-			<li><a href="#">tops</a></li>
-			<li><a href="#">tees</a></li>
-			<li><a href="#">pants</a></li>
-			<li><a href="#">shorts</a></li>
-			<li><a href="#">knitwear</a></li>
-			<li><a href="#">dresses</a></li>
-			<li><a href="#">skirts</a></li>
-		</ul>
-</nav>
-</div>
+
+<?php echo View::renderNavigation($aAllProductTypes);?>
 <?php
 
 require_once("includes/footer-loggedin.php");

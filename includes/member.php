@@ -14,7 +14,7 @@ class Member{
 	private $sCity;
 	private $iPostCode;
 	private $bExisting;
-	private $aProducts; //many products to a product type.
+	private $aProducts; //many products to a product type. A member can be a buyer or a seller.
 
 	public function __construct(){
 		$this->iMemberID = 0;
@@ -119,7 +119,7 @@ class Member{
 
 }
 
-public function __get($var){
+public function __get($var){//reading data to inaccessible properties
 	switch ($var) {
 		case "MemberID":return $this->iMemberID;break;
 		case "UserName":return $this->sUserName;break;
@@ -141,7 +141,7 @@ public function __get($var){
 	//once the form checks have been done, the POST data is sent here for the setter to assign the values
 	//to the class attributes ready to run the save function after all the attributes have been set
 
-public function __set($var, $value){
+public function __set($var, $value){ //writing data to inaccessible properties
 	switch ($var) {
 		case "username":
 		$this->sUserName = $value;

@@ -1,5 +1,5 @@
 <?php
-require_once("includes/header-loggedin.php");
+require_once("includes/header.php");
 
 ?>
 <!-- left main container -->
@@ -14,7 +14,8 @@ require_once("includes/header-loggedin.php");
 <!-- right main container -->
 <!-- <div id="right-navigation-shop"> -->
 
-<?php echo View::renderNavigation($aAllProductTypes);
+<?php echo View::renderNavigation($aAllProductTypes);?>
+<?php
 require_once("includes/footer-loggedin.php");
 
 ?>

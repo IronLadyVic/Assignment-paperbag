@@ -8,7 +8,7 @@ class Form{
 	private $aErrors;
 
 	public function __construct(){
-		$this->sHTML = '<form action="success-created-account.php" method="post" onsubmit="return checkAllFields()" id="form" enctype="multipart/form-data">';
+		$this->sHTML = '<form action="" method="post" onsubmit="return checkAllFields()" id="form" enctype="multipart/form-data">';
 		$this->aData = array();
 		$this->aFiles = array();
 		$this->aErrors = array();
@@ -36,9 +36,9 @@ public function makeUpLoadBox($sLabelText, $sControlName){
 	if(isset($this->aErrors[$sControlName])){
 		$sError = $this->aErrors[$sControlName];
 	}
-	$sHTML.='<label for="'.$sControlName.'">'.$sLabelText.'</label>';
-	$sHTML.='<input type="text" name="'.$sControlName.'" placeholder="*" id="'.$sControlName.'" onblur="checkInput(this.id)">';
-		$this->sHTML .='<span>'.$sError.'</span>'; //do i take the id out for styling the error message?
+	$this->sHTML.='<label for="'.$sControlName.'">'.$sLabelText.'</label>';
+	$this->sHTML.='<input type="text" name="'.$sControlName.'" placeholder="*" id="'.$sControlName.'" onblur="checkInput(this.id)">';
+	$this->sHTML .='<span>'.$sError.'</span>'; 
 }
 
 
@@ -91,6 +91,7 @@ public function makeSubmit($sLabelText, $sControlName){
  		break;
  		default:
  		die($var."Does not exsist in form");
+ 		break;	
  	}
  }
 

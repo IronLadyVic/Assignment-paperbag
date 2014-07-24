@@ -5,18 +5,17 @@ require_once("includes/collection.php");
 require_once("includes/member.php");
 
 session_start();
-
-if(isset($_SESSION['MemberID'])){
+//redirect to login page if member has not logged in.
+if(!isset($_SESSION['MemberID'])){
 	header("Location:login.php");
 }
 
 $oMember = new Member();
-
+//load the member that is in session
 $oMember->load($_SESSION['MemberID']));
+
 $aExsistingDetails = array();
-$aExsistingDetails['username'] = $oMember->username;
-$aExsistingDetails['pass1'] = $oMember->password;
-$aExsistingDetails['pass2'] = $oMember->password;
+
 $aExsistingDetails['firstName'] = $oMember->firstName;
 $aExsistingDetails['lastName'] = $oMember->lastName;
 $aExsistingDetails['mobile'] = $oMember->mobile;
@@ -25,17 +24,13 @@ $aExsistingDetails['address'] = $oMember->address;
 $aExsistingDetails['city'] = $oMember->city;
 $aExsistingDetails['postcode'] = $oMember->postcode;
 
-$oCollection = new Collection();
-$oForm = new Form();
+
+$oForm = new Form(); //store the Form class in the oFrom Variable.
 $oForm->data = $aExsistingDetails;
 
 
 if(isset($_POST["submit"])){
 	$oForm->data = $_POST;
-	$oForm->checkRequired("username");
-	$oForm->checkRequired("pass1");
-	$oForm->checkRequired("pass2");
-	$oForm->checkMatching("pass1", "pass2");
 	$oForm->checkRequired("firstName");
 	$oForm->checkRequired("lastName");
 	$oForm->checkRequired("mobile");
@@ -44,17 +39,9 @@ if(isset($_POST["submit"])){
 	$oForm->checkRequired("city");
 	$oForm->checkRequired("postcode");
 
-	$oCheckMember = $oCollection->findCustomerByUsername($_POST['username']);
-
-	if($oCheckMember != false){
-		$oForm->raiseError('username','Username name already taken');
-	}
 
 	if($oForm->isValid){
-		$oMember = new Member();
-
-		$oMember->username=$_POST['username'];
-		$oMember->password=$_POST['password'];
+	
 		$oMember->firstName=$_POST['firstName'];
 		$oMember->lastName=$_POST['lastName'];
 		$oMember->mobile=$_POST['mobile'];
@@ -66,16 +53,13 @@ if(isset($_POST["submit"])){
 
 		$oMember->save();
 
-		header("location: create-an-account.php");
+		header("location: success-created-account.php");
 		exit();
 
 	}
 
 }
 
-$oForm->makeTextInput('','username');
-$oForm->makeTextInput('','pass1');
-$oForm->makeTextInput('','pass2');
 $oForm->makeTextInput('','firstName');
 $oForm->makeTextInput('','lastName');
 $oForm->makeTextInput('','mobile');
@@ -83,10 +67,10 @@ $oForm->makeTextInput('','email');
 $oForm->makeTextInput('','address');
 $oForm->makeTextInput('','city');
 $oForm->makeTextInput('','postcode');
-$oForm->makeSubmit('save changes','submit');
+$oForm->makeSubmit('save edited changes','submit');
 
 $oView = new View();
-
+$oCollection = new Collection();
 $aAllProductTypes = $oCollection->getAllProductTypes();
 
 $iTypeID = 1;
@@ -94,7 +78,7 @@ if(isset($_GET["productType"])){
 	$iTypeID = $_GET["productType"];
 }
 
-require_once("includes/header-loggedin.php");
+require_once("includes/header.php");
 
 ?>
 

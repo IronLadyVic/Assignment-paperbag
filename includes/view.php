@@ -3,7 +3,6 @@ class View{
 	//$aProductTypes must be an array of ProductType objects
 	static public function renderNavigation($aProductTypes){
 		$sHTML = '<div id="right-navigation-shop">';
-
 		$sHTML .= '<nav id="shop-links">';
 		$sHTML .='<ul>';
 		for($i=0; $i<count($aProductTypes); $i++){
@@ -80,5 +79,35 @@ static public function renderProductOverlay($oOverlay){
 	return $sHTML;
 }
 
+static public function renderMemberDetails($oMember){
+	$sHTML='';
+	$sHTML.='<div id="left-container-account">';
+	$sHTML.='<ul>';
+		$sHTML.='<p class="header">my account details</p>';
+			$sHTML.='<li id="username">"'.$oMember->username.'"</li>';
+			$sHTML.='<li id="pass1">"'.$oMember->password.'"</li>';
+			$sHTML.='<li id="pass2">"'.$oMember->password.'"</li>';
+			$sHTML.='<p class="header">my personal details</p>';
+			$sHTML.='<li id="firstName">"'.$oMember->firstName.'"</li>';
+			$sHTML.='<li id="lastName">"'.$oMember->lastName.'"</li>';
+			$sHTML.='<li id="mobile">"'.$oMember->mobile.'"</li>';
+			$sHTML.='<li id="email">"'.$oMember->email.'"</li>';
+			$sHTML.='<li id="address">"'.$oMember->address.'"</li>';
+			$sHTML.='<li id="city">"'.$oMember->city.'"</li>';
+			$sHTML.='<li id="postcode">"'.$oMember->postcode.'"</li>';
+			$sHTML.='<a id="send" href="edit-my-account.php">edit my details</a>';		
+		$sHTML.='</ul>';	
+	$sHTML.='<p id="required">* required li - account members NZ address only</p>';
+	$sHTML.='</div>';
+
+	return $sHTML;
 }
+
+}
+
+
+
+
+
+
 ?>

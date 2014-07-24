@@ -42,11 +42,11 @@ if(isset($_POST["submit"])){
 		$oMember->address=$_POST['address'];
 		$oMember->city=$_POST['city'];
 		$oMember->postcode=$_POST['postcode'];
-		
+
 
 		$oMember->save();
 
-		header("location: create-an-account.php");
+		header("location: success-created-account.php");
 		exit();
 
 	}
@@ -66,14 +66,15 @@ $oForm->makeTextInput('','postcode');
 $oForm->makeSubmit('create an account','submit');
 
 $oView = new View();
-
+$oCollection = new Collection();
 $aAllProductTypes = $oCollection->getAllProductTypes();
 
 $iTypeID = 1;
 if(isset($_GET["productType"])){
 	$iTypeID = $_GET["productType"];
 }
-
+// $oType= new ProductType();
+// $oType->load($iTypeID);
 
 require_once("includes/header.php");
 ?>
@@ -91,7 +92,7 @@ require_once("includes/header.php");
 
 <?php echo View::renderNavigation($aAllProductTypes);?>
 
-
+<!-- </div> -->
 <?php
 require_once("includes/footer.php");
 ?>

@@ -67,6 +67,7 @@ div #top-left-nav{
 
 /*Top right navigation bar*/
 #items-im-selling a{
+	width: 100%;
 		color: #535353;
 	font-size: 14px;
 	margin-left: 267px;
@@ -176,6 +177,7 @@ div #left-container-cart{
 	color: #535353;
 
 }
+
 div #left-container-login{
 	height: 280px;
 	width: 692px;
@@ -970,10 +972,11 @@ p .description-text{
     border: 5px solid rgba(0,0,0,.1);
     cursor: pointer;
     height: 38px;
-    margin-left: 63px;
+    margin-left: 115px;
     margin-top: 0px;
     border: none;
     width: 125px;
+    color: #535353;
     position: absolute;
 }
 #upload-photo input[type="file"] {
@@ -1029,6 +1032,7 @@ p .description-text{
 	line-height: 90%;
 	color: #535353;
 }
+
 .header-personaldetails{
 	margin-top: 80px;
 	margin-left: 20px;
