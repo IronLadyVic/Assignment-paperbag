@@ -41,6 +41,13 @@ public function makeUpLoadBox($sLabelText, $sControlName){
 	$this->sHTML .='<span>'.$sError.'</span>'; 
 }
 
+public function makeHiddenField($sControlName, $sValue){
+	$this->sHTML .='<div id="upload-photo">';
+	$this->sHTML .='<input type="hidden" name="'.$sControlName.'" value="'.$sValue.'" />';			
+	$this->sHTML .='</div>';
+	
+}
+
 
 public function makeSubmit($sLabelText, $sControlName){
 	$this->sHTML .='<input id="send" type="'.$sControlName.'" name="'.$sControlName.'" value="'.$sLabelText.'">';
@@ -73,8 +80,32 @@ public function makeSubmit($sLabelText, $sControlName){
  	}
  }
 
+ public function checkUpload($sControlName, $sMimeType, $iSize){
+ 	$sErrorMessage = '';
+
+ 	if(empty($this->aFiles[$sControlName]['name'])){
+ 		$sErrorMessage = "No files specified";
+ 	}elseif($this->aFiles[$sControlName]['error'] != UPLOAD_ERR_OK){
+ 		$sErrorMessage = "File cannot be uploaded";
+ 	}elseif($this->aFiles[$sControlName]['type'] != $sMimeType){
+ 		$sErrorMessage = "Only".$sMimeType."format can be uploaded";
+ 	}elseif($this->aFiles[$sControlName]['size'] != $iSize){
+ 		$sErrorMessage = "Files cannot exceed".$iSize."bytes in size";
+ 	}
+ 	if($sErrorMessage != ""){
+ 		$this->aErrors[$sControlName] = $sErrorMessage;
+ 	}
+
+ }
+
  public function raiseError($sControlName, $sErrorMessage){
  	$this->aErrors[$sControlName] = $sErrorMessage;
+ }
+
+ public function moveFile($sControlName, $sNewFileName){
+ 		$newname = dirname(__FILE__).'/../assets/img/'.$sNewFileName;
+		
+		move_uploaded_file($this->aFiles[$sControlName]['tmp_name'],$newname);
  }
 
  public function __get($var){

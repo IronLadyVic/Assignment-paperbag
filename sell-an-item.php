@@ -1,16 +1,91 @@
 <?php
+require_once("includes/model-form.php");
+require_once("includes/view.php");
+require_once("includes/collection.php");
+require_once("includes/product.php");
+
+session_start();
+
+if(isset($_SESSION['MemberID'])){
+	header("Location: login.php");
+}
+
+$oProduct = new Product();
+$aExsistingData = array();
+
+$aExsistingData['ItemName'] = $oProduct->ItemName;
+$aExsistingData['TypeName'] = $oProduct->TypeName;
+$aExsistingData['Description'] = $oProduct->Description;
+$aExsistingData['Size'] = $oProduct->Size;
+$aExsistingData['Label'] = $oProduct->Label;
+$aExsistingData['Price'] = $oProduct->Price;
+$aExsistingData['PhotoPath'] = $oProduct->PhotoPath;
+
+
+
+$oForm = new Form();
+$oForm->data = $aExsistingData;
+
+if(isset($_POST['submit'])){
+	$oForm->data = $_POST;
+	$oForm->files = $_FILES;
+	$oForm->checkRequired('ItemName');
+	$oForm->checkRequired('TypeName');
+	$oForm->checkRequired('Description');
+	$oForm->checkRequired('Size');
+	$oForm->checkRequired('Label');
+	$oForm->checkRequired('Price');
+	$oForm->checkUpload('PhotoPath','image/jpg',1000);
+
+	if($oForm->isValid){
+		$sPhotoName = "Product".date("Y-m-d-H-i-s")."jpg";
+		$oForm->moveFile('PhotoPath',$sPhotoName);
+
+		$oProduct->ItemName = $_POST['ItemName'];
+		$oProduct->TypeName = $_POST['TypeName'];
+		$oProduct->Description = $_POST['Description'];
+		$oProduct->Size = $_POST['Size'];
+		$oProduct->Label = $_POST['Label'];
+		$oProduct->PhotoPath = $sPhotoName;
+		$oProduct->Price = $_POST['Price'];
+
+		$oProduct->save();
+
+		header("Location:success-created-item.php");
+		exit();
+	}
+}
+
+$oForm->makeTextInput('','item-name');
+$oForm->makeTextInput('','typeName');
+$oForm->makeTextInput('','description');
+$oForm->makeTextInput('','size');
+$oForm->makeTextInput('','lables');
+// $oForm->makeTextInput('','upload-photo');
+$oForm->makeTextInput('','browse');
+$oForm->makeHiddenField('MAX_FILE_SIZE',1000);
+$oForm->makeUpLoadBox('','browse-upload');
+$oForm->makeTextInput('','price');
+$oForm->makeSubmit('sell my item','submit');
+
+
+$oView = new View();//store the view class in the OView variable
+$oCollection = new Collection(); //store the Collection class in the oCollection variable.
+$aAllProductTypes = $oCollection->getAllProductTypes();
+
+$iTypeID = 1;
+if(isset($_GET["productType"])){
+	$iTypeID = $_GET["productType"];
+}
+
+
 require_once("includes/header.php");
 
 ?>
 <!-- left main container -->
 <div id="left-container-sell">
-<form enctype="multipart/form-data" action="" method="post" onsubmit="return checkAllFields()">
-		<fieldset>
-			<legend><strong>sell my item</strong></legend>
-			<label for="item-name"></label>
-			<input type="text" name="item-name" placeholder="*" id="item-name" onblur="checkInput(this.id)">
-			<span id="item-nameMessage"></span>
-			<label for="type"></label>
+	<?php echo $oForm->html;?>
+<!-- 
 			<select name="typeName" id="typeName" onblur="checkInput(this.id)">
 			<option value="choose">*</option>
 			<option value="jackets">jacket</option>
@@ -21,33 +96,7 @@ require_once("includes/header.php");
 			<option value="knitwear">knitwear</option>
 			<option value="dresses">dress</option>
 			<option value="skirts">skirt</option>
-			</select>
-			<span id="typeNameMessage"></span>
-			<br/>
-			<label for="description"></label>
-			<input type="text" name="description" placeholder="*" id="description" onblur="checkInput(this.id)">
-			<span id="descriptionMessage"></span>
-			<br/>
-			<label for="size"></label>
-			<input type="text" name="size" placeholder="*" id="size" onblur="checkInput(this.id)">
-			<span id="sizeMessage"></span>
-			<label for="labels"></label>
-			<input type="text" name="labels" placeholder="*" id="labels" onblur="checkInput(this.id)">
-			<span id="labelsMessage"></span>
-			<div id="upload-photo">
-				<input type="hidden" name="MAX_FILE_SIZE" value="1000000" />
-				<input name="uploaded_file" id="browse" type="file" />
-				<span style="-webkit-user-select: none; line-height: 400%; margin-left:-30px; font-size:10px;">double click here</span>
-				<input type="submit" value="upload file" id="browse-upload"/>
-			</div>
-			<label for="price"></label>
-			<input type="text" name="price" placeholder="*" id="price" onblur="checkNumeric(this.id)">
-			<span id="priceMessage"></span>
-			<p id="gst">price will automatically<br/>include 15% GST</p>
-			<input type="submit" name="submit" value="save edit" id="submit-item"> <!-- on submit page is redirected to success-created-item.html -->
-	
-		</fieldset>
-	</form>
+			</select> -->
 <p class="disclaimer">* - account members NZ address only</p>
 <div id="terms-conditions">
 	<p><strong>terms & conditions</strong></p><p>the price listed will automatically include GST with users input.<br/><br/> 
@@ -64,22 +113,10 @@ receive notification about payment pick up.<br/><br/>
 </div>
 </div>
 <!-- right main container -->
-<div id="right-navigation-shop">
-	<nav id="shop-links">
-		<ul>
-			<p><strong>shop</strong></p>
-			<li><a href="#">jackets</a></li>
-			<li><a href="#">tops</a></li>
-			<li><a href="#">tees</a></li>
-			<li><a href="#">pants</a></li>
-			<li><a href="#">shorts</a></li>
-			<li><a href="#">knitwear</a></li>
-			<li><a href="#">dresses</a></li>
-			<li><a href="#">skirts</a></li>
-		</ul>
-</nav>
-</div>
 <?php
-require_once("includes/footer-loggedin.php");
+echo View::renderNavigation($aAllProductTypes);
 
+
+
+require_once("includes/footer-loggedin.php");
 ?>

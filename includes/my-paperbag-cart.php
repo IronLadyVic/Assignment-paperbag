@@ -39,16 +39,16 @@ class Cart{
 
 //TESTING
 
-$oCart = new Cart();
+// $oCart = new Cart();
 
-$oCart->addProduct(2);
-$oCart->addProduct(3);
-$oCart->addProduct(4);
-$oCart->addProduct(4);
-$oCart->removeProduct(4);
+// $oCart->addProduct(2);
+// $oCart->addProduct(3);
+// $oCart->addProduct(4);
+// $oCart->addProduct(4);
+// $oCart->removeProduct(4);
 
-echo ("<pre>");
-print_r($oCart);
-echo ("</pre>");
+// echo ("<pre>");
+// print_r($oCart);
+// echo ("</pre>");
 
 ?>

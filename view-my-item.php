@@ -1,4 +1,19 @@
 <?php
+require_once("includes/model-form.php");
+require_once("includes/view.php");
+require_once("includes/collection.php");
+require_once("includes/member.php");
+
+session_start();
+
+$oView = new View();//store the view class in the OView variable
+$oCollection = new Collection(); //store the Collection class in the oCollection variable.
+$aAllProductTypes = $oCollection->getAllProductTypes();
+
+$iTypeID = 1;
+if(isset($_GET["productType"])){
+	$iTypeID = $_GET["productType"];
+}
 require_once("includes/header.php");
 
 ?>
@@ -22,7 +37,7 @@ require_once("includes/header.php");
 			<label for="price"></label><input type="text" name="price" placeholder="*" id="price">
 			<p id="gst">price will automatically<br/>include 15% GST</p>
 			<input type="submit" value="save edit" id="submit-item"> <!-- on submit page is redirected to success-created-item.html -->
-			<input type="image" name="image" id="item-image" alt="item-image">
+			<input type="image" name="image" id="view-image" alt="item-image">
 		</fieldset>
 	</form>
 <p class="disclaimer">* - account members NZ address only</p>
@@ -31,22 +46,11 @@ require_once("includes/header.php");
 </div>
 </div>
 <!-- right main container -->
-<div id="right-navigation-shop">
-	<nav id="shop-links">
-		<ul>
-			<p><strong>shop</strong></p>
-			<li><a href="#">jackets</a></li>
-			<li><a href="#">tops</a></li>
-			<li><a href="#">tees</a></li>
-			<li><a href="#">pants</a></li>
-			<li><a href="#">shorts</a></li>
-			<li><a href="#">knitwear</a></li>
-			<li><a href="#">dresses</a></li>
-			<li><a href="#">skirts</a></li>
-		</ul>
-</nav>
-</div>
+<!-- <div id="right-navigation-shop"> -->
 <?php
-require_once("includes/footer-loggedin.php");
+echo View::renderNavigation($aAllProductTypes);
 
+
+
+require_once("includes/footer-loggedin.php");
 ?>

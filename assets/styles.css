@@ -1103,7 +1103,15 @@ p .description-text{
 #item-image{
 	position: absolute;
 	margin-left: 350px;
-	margin-top: -138px;
+	margin-top: -139px;
+	width: 280px;
+	height: 320px;
+	outline: white 1px solid;
+}
+#view-image{
+	position: absolute;
+	margin-left: 350px;
+	margin-top: -105px;
 	width: 280px;
 	height: 320px;
 	outline: white 1px solid;
