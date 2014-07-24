@@ -28,9 +28,9 @@
 		<li id="location"><a href-"">contact + locate</a></li>
 	</ul>	
 </div>
-
-</div>
 <p class="copyright">Copyright &copy; 2014 paperbag boutique</p>
+</div>
+
 <script type="text/javascript" src="assets/javascript.js"></script>	
 </body>
 </html>

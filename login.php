@@ -1,44 +1,88 @@
 <?php
+require_once("includes/model-form.php");
+require_once("includes/view.php");
+require_once("includes/collection.php");
+require_once("includes/member.php");
+
+
+session_start();
+$oCollection = new Collection();
+$oForm = new Form();
+
+
+if(isset($_POST["submit"])){
+	$oForm->data = $_POST;
+	$oForm->checkRequired("username");
+	$oForm->checkRequired("password-login");
+
+	if($oForm->isValid){
+	
+	$oCheckMember = $oCollection->findCustomerByUsername($_POST["username"]);
+
+	if($oCheckMember == false){
+		$oForm->raiseError("username","Username is incorrect");
+	}else{
+		if($oCheckMember->password != $_POST["password-login"]){
+			$oForm->raiseError("password-login","password is incorrect");
+		}
+	}
+
+	if($oForm->isValid){
+
+		// $oMember = new Member();
+		// $oMember->username=$_POST['username'];
+		// $oMember->password=$_POST['password-login'];
+		// $oMember->load();
+
+		$_SESSION['MemberID'] = $oCheckMember->MemberID;
+		$_SESSION['firstName'] = $oCheckMember->FirstName;
+
+		header("Location:success-loggedin.php");//if succuss in login, change page to success page.
+		exit(); 
+		}	
+	}
+}
+	$oForm->makeTextInput('','username');
+	$oForm->makeTextInput('','password-login');
+	$oForm->makeSubmit('log in','submit');
+
+//product types & Render Navigation - right hand side using the View.
+
+$oView = new View();
+$oCollection = new Collection();
+$aAllProductTypes = $oCollection->getAllProductTypes();
+
+$iTypeID = 1;
+	if(isset($_GET["productType"])){
+		$iTypeID = $_GET["productType"];
+}
+
+
 require_once("includes/header.php");
 
 ?>
-<!-- left main container -->
+
+	<!-- left main container -->
 <div id="left-container-login">
-	<form action="index-loggedin.php" method="post">
-		<fieldset>
-			<legend><strong>log in</strong></legend>
-			<label for="username-login"></label><input type="text" name="username" placeholder="*" id="username-login" onblur="checkInput(this.id)">
-			<span id="username-loginMessage"></span>
-			<label for="password-login"></label><input type="password" name="password" placeholder="*" id="password-login" onblur="checkInput(this.id)">
-			<span id="password-loginMessage"></span>
-			<label for="submit-login"></label><input id="submit-login" type="submit" name="sumbit" value="log in">
-		</fieldset>
-	</form>
-	<div id="right-new-member">
-		<p><strong>new member</strong></p>
-		<p>create an account with paperbag boutique.<br/><br/>
-			you will be able to shop faster, list your clothing items you want to sell, make money and keep <br/>your information up to date.</p>
-			<a href="create-an-account.php"><ul id="create-an-account"><li>create an account</li></ul></a>
-	</div>
+<p class="header-login">log in</p>
+<?php echo $oForm->html; ?>
 <p class="required-login">* required input - NZ account holders only</p>
 </div>
+<div id="right-new-member">
+	<p class="header-new-member">new member</p>
+	<p>create an account with paperbag boutique.<br/><br/>
+		you will be able to shop faster, list your clothing items you want to sell, make money and keep <br/>your information up to date.</p>
+		<a href="create-an-account.php">
+			<ul id="create-an-account">
+				<li>create an account</li>
+			</ul>
+		</a>
+</div>	
 <!-- right main container -->
-<div id="right-navigation-shop">
-	<nav id="shop-links">
-		<ul>
-			<p><strong>shop</strong></p>
-			<li><a href="#">jackets</a></li>
-			<li><a href="#">tops</a></li>
-			<li><a href="#">tees</a></li>
-			<li><a href="#">pants</a></li>
-			<li><a href="#">shorts</a></li>
-			<li><a href="#">knitwear</a></li>
-			<li><a href="#">dresses</a></li>
-			<li><a href="#">skirts</a></li>
-		</ul>
-</nav>
-</div>
-<?php
+<!-- <div id="right-navigation-shop"> -->
+
+<?php echo View::renderNavigation($aAllProductTypes);
+
 require_once("includes/footer.php");
 
 ?>

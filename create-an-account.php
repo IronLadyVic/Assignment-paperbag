@@ -73,8 +73,7 @@ $iTypeID = 1;
 if(isset($_GET["productType"])){
 	$iTypeID = $_GET["productType"];
 }
-// $oType= new ProductType();
-// $oType->load($iTypeID);
+
 
 require_once("includes/header.php");
 ?>
@@ -92,7 +91,7 @@ require_once("includes/header.php");
 
 <?php echo View::renderNavigation($aAllProductTypes);?>
 
-<!-- </div> -->
+
 <?php
 require_once("includes/footer.php");
 ?>

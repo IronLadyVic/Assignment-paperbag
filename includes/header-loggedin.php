@@ -13,10 +13,10 @@
 	<meta name="author" content="Estelle Graham, paperbag boutique">
 	
 	
-	<title>PaperBag Boutique</title>
+	<title>PaperBag Boutique | your logged in</title>
 </head>
 <body>
-	<script></script>
+
 	<div id="main-container">
 <!-- left navigation -->
 <div id="top-left-nav">
@@ -28,14 +28,11 @@
 	</ul>
 </div>
 <!-- right navigation -->
-<?php
-if(isset($_SESSION['MemberID'])){?>
-	<div id="top-right-nav">
-	<span id="welcome-username">
-		<?php if(isset($_SESSION['MemberID'])){
-		echo ('welcome'.$_SESSION['firstName']);
-		?></span>
-	<p id="items-im-selling"><a href="items-im-selling.php">items im selling</a></p>
+<div id="top-right-nav">
+	<p id="welcome">welcome</p><span id="welcome-username">
+	
+	</span>
+	<p id="items-im-selling"><a href="items-im-selling.php">items selling</a></p>
 	<ul>
 		<li><a href="edit-my-account.php">edit my account</a></li>
 		<li><a href="login.php">log out</a></li>
@@ -44,17 +41,4 @@ if(isset($_SESSION['MemberID'])){?>
 		<li id="A_I">(0)</li>
 	</ul>
 </div>
-<?php }else{?>
-	<div id="top-right-nav">
-	<ul>
-		<li><a href="create-an-account.php">create an account</a></li>
-		<li><a href="login.php">log in</a></li>
-		<li><a href="">my paperbag</a></li>
-		<li id="cart"></li>
-		<li id="A_I">(0)</li>
-		
-	</ul>
-</div>
-<?php}?>
 
-?>

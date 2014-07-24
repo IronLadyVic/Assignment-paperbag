@@ -11,23 +11,12 @@ require_once("includes/header-loggedin.php");
 			<a href=""><ul id="sell-button"><li>list an item</li></ul></a>
 			</div>
 		</div>
+		
 <!-- right main container -->
-<div id="right-navigation-shop">
-	<nav id="shop-links">
-		<ul>
-			<p><strong>shop</strong></p>
-			<li><a href="#">jackets</a></li>
-			<li><a href="#">tops</a></li>
-			<li><a href="#">tees</a></li>
-			<li><a href="#">pants</a></li>
-			<li><a href="#">shorts</a></li>
-			<li><a href="#">knitwear</a></li>
-			<li><a href="#">dresses</a></li>
-			<li><a href="#">skirts</a></li>
-		</ul>
-</nav>
-</div>
-<?php
+<!-- <div id="right-navigation-shop"> -->
+
+<?php echo View::renderNavigation($aAllProductTypes);
+
 require_once("includes/footer-loggedin.php");
 
 ?>

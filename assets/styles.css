@@ -159,9 +159,22 @@ div #left-container-cart{
 	position: absolute;
 	margin-left: 320px;
 	padding-right: 40px;
-	margin-top: -45px;
+	margin-top: 80px;
 	color: #525252;
 	line-height: 130%;
+	width: 350px;
+}
+.header-login{
+	font-weight: bold;
+	line-height: 90%;
+	color: #535353;
+	margin-left: 18px;
+}
+.header-new-member{
+	font-weight: bold;
+	line-height: 90%;
+	color: #535353;
+
 }
 div #left-container-login{
 	height: 280px;
@@ -170,6 +183,34 @@ div #left-container-login{
 	position: absolute;
 	margin-top: 80px;
 }
+
+#left-container-login #username{
+	background-image:url('img/username-text.png');
+    background-repeat:no-repeat;
+   	background-position:left center;  
+   	padding-left:70px;
+   	font-size: 10px;
+   	margin-top: 110px;
+   	width: 210px;
+   	position: absolute;
+}
+#left-container-login #password-login{
+	background-image:url('img/password.png');
+    background-repeat:no-repeat;
+   	background-position:left center;  
+   	padding-left:70px;
+   	font-size: 10px;
+   	margin-top: 155px;
+   	width: 210px;
+   	position: absolute;
+   	
+}
+#left-container-login #send{
+	margin-left: 0px;
+	margin-top: 203px;
+   	width: 280px;
+}
+
 div #left-container h1{
 	position: relative;
 	margin-left: 20px;
@@ -387,9 +428,10 @@ input #username-login{
 }
 	
 .required-login{
-	margin-top: 145px;
+	margin-top: 90px;
 	font-size: 10px;
-	margin-left: 15px;}
+	margin-left: 15px;
+}
 
 
 #create-an-account{
@@ -560,15 +602,16 @@ span:after{
 
 }
 #item{
-	margin-bottom: 50px;
+	margin-bottom: 20px;
 	margin-left: -40px;
 	padding-right: 60px;
 	width: 300px;
 	margin-top: 20px;
 }
 #item a img{
-	width: 100%;
-	height: 100%;
+/*	width: 100%;
+	height: 100%;*/
+	margin-left: -20px;
 }
 
 #viewItem{
@@ -771,17 +814,19 @@ div .product-name{
 	background-image: url('img/description.png');
 	background-repeat: no-repeat;
 	height: 75px;
-	width: 350px;
+	width: 300px;
 	margin-left: -2px;
 	margin-top: -10px;
 	text-indent:80px;
-	line-height: 180%;
+	line-height: 200%;
 	padding-left: 8px;
+	margin-bottom: 20px;
 }
 p .description-text{
 	word-wrap:break-word;
 	padding-left: 10px;
 	line-height: 230%;
+	width: 200px;
 }
 
 .size{
@@ -806,7 +851,7 @@ p .description-text{
 	background-image: url('img/price.png');
 	background-repeat: no-repeat;
 	height: 30px;
-	margin-left: -2px;
+	margin-left: -5px;
 	line-height: 230%;;
 	text-indent:60px;
 }
@@ -1592,10 +1637,11 @@ div #footer-socialMedia{
 
 }
 .copyright {
-	position: absolute;
-	bottom:490px;
+	position: relative;
+	margin-right: 540px;
 	color: #bbb;
-	left: 20%;
+	padding-left: 40px;
+	margin-top: -9px;
 	font-size: 10px;
 }
 
