@@ -306,6 +306,7 @@ form input{
    	background-position:left center;  
    	padding-left:70px;
    	font-size: 10px;
+   	margin-top: 20px;
 }
 #pass1{
 	background-image:url('img/password.png');
@@ -332,7 +333,7 @@ form input{
    	padding-left:80px;
 	width: 183px;
 	font-size: 10px;
-
+	
 }
 #lastName{
 	background-image:url('img/lastname.png');
@@ -390,6 +391,7 @@ form input{
 #send{
 	width: 276px;
 	background-color: #B5E1E1;
+	color: #535353;
 }
 
 /*//end of form*/
@@ -892,7 +894,7 @@ p .description-text{
 	padding-left:80px;
 	width: 252px;
 	margin-bottom: 20px;
-	margin-top: 5px;
+	margin-top: 150px;
 
 }
 #typeName{
@@ -901,7 +903,7 @@ p .description-text{
 	background-position:left center;  
 	padding-left:80px;
 	height: 32px;
-	width: 330px;
+	width: 250px;
 	margin-bottom: 20px;
 	margin-top: 0px;
 	border: none;
@@ -913,11 +915,12 @@ p .description-text{
 #description{
 	background-image:url('img/description.png');
 	background-repeat:no-repeat;
-	background-position:left tops;  
+	background-position:left top;  
 	padding-left:80px;
 	width: 250px;
 	border: none;
-	margin-top:0px;
+
+	margin-top:-100px;
 }
 #size{
 	background-image:url('img/size.png');
@@ -941,7 +944,7 @@ p .description-text{
 }
 
 /*//upload button*/
-#upload-photo{
+/*#upload-photo{
 	width: 230px;
 	height: 38px;
 	background-color: white;
@@ -990,7 +993,7 @@ p .description-text{
     cursor: pointer;
    
 }
-
+*/
 #price{
 	background-image:url('img/price.png');
 	background-repeat:no-repeat;
@@ -1031,15 +1034,17 @@ p .description-text{
 	margin-left: 20px;
 	line-height: 90%;
 	color: #535353;
+	font-weight: bold;
 }
 
 .header-personaldetails{
 	margin-top: 80px;
 	margin-left: 20px;
-	line-height: 90%;
+	/*line-height: 90%;*/
 	color: #535353;
 	position: relative;
-	margin-bottom: 10px;
+	/*margin-bottom: 10px;*/
+	font-weight: bold;
 }
 #account-button{
 	width: 265px;

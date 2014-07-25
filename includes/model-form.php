@@ -30,6 +30,22 @@ class Form{
 
 	}
 
+	public function makePasswordInput($sLabelText, $sControlName){
+		$sData ="";
+		if(isset($this->aData[$sControlName])){
+			$sData = $this->aData[$sControlName];
+		}
+		$sError = "";
+		if(isset($this->aErrors[$sControlName])){
+			$sData = $this->aErrors[$sControlName];
+		}
+
+		$this->sHTML .='<label for="'.$sControlName.'">'.$sLabelText.'</label>';
+		$this->sHTML .='<input type="password" name="'.$sControlName.'" placeholder="*" id="'.$sControlName.'" value="'.$sData.'" onblur="checkInput(this.id)">';
+		$this->sHTML .='<span>'.$sError.'</span>';
+		// $this->sHTML .='<span id="usernameMessage">'.$sError.'</span>';
+
+	}
 public function makeUpLoadBox($sLabelText, $sControlName){
 	$sError = "";
 

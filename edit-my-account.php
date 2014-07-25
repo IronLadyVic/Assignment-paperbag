@@ -12,17 +12,19 @@ if(!isset($_SESSION['MemberID'])){
 
 $oMember = new Member();
 //load the member that is in session
-$oMember->load($_SESSION['MemberID']));
+$oMember->load($_SESSION['MemberID']);
 
 $aExsistingDetails = array();
-
-$aExsistingDetails['firstName'] = $oMember->firstName;
-$aExsistingDetails['lastName'] = $oMember->lastName;
-$aExsistingDetails['mobile'] = $oMember->mobile;
-$aExsistingDetails['email'] = $oMember->email;
-$aExsistingDetails['address'] = $oMember->address;
-$aExsistingDetails['city'] = $oMember->city;
-$aExsistingDetails['postcode'] = $oMember->postcode;
+$aExsistingDetails['username'] = $oMember->UserName;
+$aExsistingDetails['pass1'] = $oMember->Password;
+$aExsistingDetails['pass2'] = $oMember->Password;
+$aExsistingDetails['firstName'] = $oMember->FirstName; //$oMember->FirstName this is in the getter.
+$aExsistingDetails['lastName'] = $oMember->LastName;
+$aExsistingDetails['mobile'] = $oMember->Mobile;
+$aExsistingDetails['email'] = $oMember->Email;
+$aExsistingDetails['address'] = $oMember->StreetAddress;
+$aExsistingDetails['city'] = $oMember->City;
+$aExsistingDetails['postcode'] = $oMember->PostCode;
 
 
 $oForm = new Form(); //store the Form class in the oFrom Variable.
@@ -31,6 +33,8 @@ $oForm->data = $aExsistingDetails;
 
 if(isset($_POST["submit"])){
 	$oForm->data = $_POST;
+	$oForm->checkRequired("username");
+	$oForm->checkRequired("password");
 	$oForm->checkRequired("firstName");
 	$oForm->checkRequired("lastName");
 	$oForm->checkRequired("mobile");
@@ -41,7 +45,7 @@ if(isset($_POST["submit"])){
 
 
 	if($oForm->isValid){
-	
+		
 		$oMember->firstName=$_POST['firstName'];
 		$oMember->lastName=$_POST['lastName'];
 		$oMember->mobile=$_POST['mobile'];
@@ -59,7 +63,9 @@ if(isset($_POST["submit"])){
 	}
 
 }
-
+$oForm->makeTextInput('','username');
+$oForm->makeTextInput('','pass1');
+$oForm->makeTextInput('','pass2');
 $oForm->makeTextInput('','firstName');
 $oForm->makeTextInput('','lastName');
 $oForm->makeTextInput('','mobile');
@@ -85,7 +91,7 @@ require_once("includes/header.php");
 <!-- left main container -->
 <div id="left-container-account">
 <p class="header">edit my account</p>
-<p class="header-personaldetails">update details</p>
+<p class="header-personaldetails"></p>
 <?php echo $oForm->html; ?>
 
 

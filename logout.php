@@ -2,9 +2,11 @@
 
 session_start();
 
-unset($_SESSION['MemberID']);
-unset($_SESSION['firstName']);
-header('location: index.php');
+if(isset($_SESSION['MemberID'])){
+	
+session_destroy();
+}
+header('location: login.php');
 
 
 ?>

@@ -3,7 +3,7 @@ require_once("includes/model-form.php");
 require_once("includes/view.php");
 require_once("includes/collection.php");
 require_once("includes/product.php");
-
+require_once("includes/member.php");
 session_start();
 
 if(isset($_SESSION['MemberID'])){
@@ -84,6 +84,7 @@ require_once("includes/header.php");
 ?>
 <!-- left main container -->
 <div id="left-container-sell">
+<p class="header">sell my item</p>
 	<?php echo $oForm->html;?>
 <!-- 
 			<select name="typeName" id="typeName" onblur="checkInput(this.id)">

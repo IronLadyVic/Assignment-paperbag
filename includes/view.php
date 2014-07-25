@@ -70,7 +70,13 @@ static public function renderProductOverlay($oOverlay){
 		$sHTML.='<div class="size-enlarge">'.$oProductOverlay->Size.'</div>';
 		$sHTML.='<div class="label-enlarge">'.$oProductOverlay->Label.'</div>';
 		$sHTML.='<div class="price-enlarge">'.$oProductOverlay->Price.'</div>';
-		$sHTML.='<a href="my-paperbag-cart.php?ProductID='.$oProductOverlay->ProductID.'" class="submit-enlarge">add to my paperbag</a>';
+
+		if($_SESSION['MemberID'] == true){
+		$sHTML.='<a href="my-paperbag-cart.php?ProductID='.$oProductOverlay->ProductID.'" class="submit-enlarge">add to my paperbag</a>';}else{
+			$sHTML.='<a href="login.php'.$oProductOverlay->ProductID.'" class="submit-enlarge">add to my paperbag</a>';
+			return false;
+		} //need help on this one session can it be added to the view.
+
 		$sHTML.='</li>';
 	}
 	

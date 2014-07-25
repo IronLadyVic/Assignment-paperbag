@@ -22,30 +22,29 @@ if(isset($_POST["submit"])){
 	$oForm->checkRequired("username");
 	$oForm->checkRequired("password-login");
 
-	if($oForm->isValid){
-	
-	$oCheckMember = $oCollection->findCustomerByUsername($_POST["username"]);
+	if($oForm->isValid == true){
 
-	if($oCheckMember == false){
+	$sMemberUserName = $_POST['username'];
+	
+	$oMember = $oCollection->findCustomerByUsername($sMemberUserName);
+
+	if($oMember == false){
 		$oForm->raiseError("username","Username is incorrect");
-	}else if($oCheckMember->password != $_POST["password-login"]){
-			$oForm->raiseError("password-login","password is incorrect");
+	}else if($_POST["password-login"]!= $oMember->Password){
+			$oForm->raiseError("password-login","Password is incorrect");
 		
 	}else{
-		$_SESSION['MemberID'] = $oCheckMember->MemberID;
-
-		//istantiate a cart object using session.
+		$iMemberID = $oMember->MemberID;
+		$_SESSION['MemberID'] = $iMemberID;
 
 		header("Location:index-loggedin.php");
 		exit(); 
+		}
 	}
 }
-}
-
-		
 
 	$oForm->makeTextInput('','username');
-	$oForm->makeTextInput('','password-login');
+	$oForm->makePasswordInput('','password-login');
 	$oForm->makeSubmit('log in','submit');
 
 //product types & Render Navigation - right hand side using the View.

@@ -13,15 +13,25 @@
 	<meta name="author" content="Estelle Graham, paperbag boutique">
 
 
-	<title>PaperBag Boutique</title>
+<title>PaperBag Boutique</title>
 </head>
 <body>
+<?php
+require_once('includes/member.php');
 
-	<div id="main-container">
-<!-- left navigation -->
+echo '<div id="main-container">';
+// session_start();
+if(isset($_SESSION['MemberID'])){
+
+	$oMember = new Member();
+
+	$oMember->load($_SESSION['MemberID']);
+
+//so if the member is logged in do this
+echo'
 <div id="top-left-nav">
 	<ul>
-		<a href="index-loggedin.php"><li id="logo">Home</li></a>
+		<li id="logo"><a href="index-loggedin.php">Home</a></li>
 		<li><a href="producttype.php">shop online</a></li>
 		<li><a href="">collections</a></li>
 		<li><a href="sell-an-item.php">sell</a></li>
@@ -29,9 +39,9 @@
 </div>
 <!-- right navigation -->
 <div id="top-right-nav">
-	<p id="welcome">welcome</p><span id="welcome-username">
-
-	</span>
+	<p id="welcome">welcome</p><span id="welcome-username">';
+echo htmlentities('"'.$oMember->FirstName.'"');
+	echo '</span>
 	<p id="items-im-selling"><a href="items-im-selling.php">items im selling</a></p>
 	<ul>
 		<li><a href="edit-my-account.php">edit my account</a></li>
@@ -40,4 +50,25 @@
 		<li id="cart"></li>
 		<li id="A_I">(0)</li>
 	</ul>
+</div>';
+//so if the member is not logged in do this
+}else{
+	echo '<div id="top-left-nav">
+	<ul>
+		<li id="logo"><a href="index.php">Home</a></li>
+		<li><a href="producttype.php">shop online</a></li>
+		<li><a href="">collections</a></li>
+	</ul>
 </div>
+<!-- right navigation -->
+<div id="top-right-nav">
+	<ul>
+		<li><a href="create-an-account.php">create my account</a></li>
+		<li><a href="login.php">log in</a></li>
+		<li><a href="login.php">my paperbag</a></li>
+		<li id="cart"></li>
+		<li id="A_I">(0)</li>
+	</ul>
+</div>';
+}
+?>
