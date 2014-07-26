@@ -29,8 +29,32 @@ class Form{
 		// $this->sHTML .='<span id="usernameMessage">'.$sError.'</span>';
 
 	}
+	public function makeTextDropDown($sLabelText, $sControlName){
+		$sData ="";
+		if(isset($this->aData[$sControlName])){
+			$sData = $this->aData[$sControlName];
+		}
+		$sError = "";
+		if(isset($this->aErrors[$sControlName])){
+			$sData = $this->aErrors[$sControlName];
+		}
+		$this->sHTML .='<label for="'.$sControlName.'">'.$sLabelText.'</label>';
 
-	public function makePasswordInput($sLabelText, $sControlName){
+		$this->sHTML .='<select name="'.$sControlName.'" id="'.$sControlName.'" onblur="checkInput(this.id)">
+			<option value="'.$sData.'">*</option>
+			<option value="'.$sData.'">jacket</option>
+			<option value="'.$sData.'">top</option>
+			<option value="'.$sData.'">tee</option>
+			<option value="'.$sData.'">pants</option>
+			<option value="'.$sData.'">shorts</option>
+			<option value="'.$sData.'">knitwear</option>
+			<option value="'.$sData.'">dress</option>
+			<option value="'.$sData.'">skirt</option>
+			</select> ';
+		$this->sHTML .='<span>'.$sError.'</span>';
+	}
+
+	 public function makePasswordInput($sLabelText, $sControlName){
 		$sData ="";
 		if(isset($this->aData[$sControlName])){
 			$sData = $this->aData[$sControlName];
@@ -46,7 +70,7 @@ class Form{
 		// $this->sHTML .='<span id="usernameMessage">'.$sError.'</span>';
 
 	}
-public function makeUpLoadBox($sLabelText, $sControlName){
+ public function makeUpLoadBox($sLabelText, $sControlName){
 	$sError = "";
 
 	if(isset($this->aErrors[$sControlName])){
@@ -57,7 +81,7 @@ public function makeUpLoadBox($sLabelText, $sControlName){
 	$this->sHTML .='<span>'.$sError.'</span>'; 
 }
 
-public function makeHiddenField($sControlName, $sValue){
+ public function makeHiddenField($sControlName, $sValue){
 	$this->sHTML .='<div id="upload-photo">';
 	$this->sHTML .='<input type="hidden" name="'.$sControlName.'" value="'.$sValue.'" />';			
 	$this->sHTML .='</div>';
@@ -65,13 +89,13 @@ public function makeHiddenField($sControlName, $sValue){
 }
 
 
-public function makeSubmit($sLabelText, $sControlName){
+ public function makeSubmit($sLabelText, $sControlName){
 	$this->sHTML .='<input id="send" type="'.$sControlName.'" name="'.$sControlName.'" value="'.$sLabelText.'">';
 }
 
 
 
- public function checkRequired($sControlName){
+  public function checkRequired($sControlName){
  	$sData = "";
  	if(isset($this->aData[$sControlName])){
  		$sData =$this->aData[$sControlName];
@@ -82,7 +106,7 @@ public function makeSubmit($sLabelText, $sControlName){
 
  }
 
- public function checkMatching($sControlName1, $sControlName2){
+  public function checkMatching($sControlName1, $sControlName2){
  	$sData1 = "";
  	if(isset($this->aData[$sControlName1])){
  		$sData1 =$this->aData[$sControlName1];
@@ -96,7 +120,7 @@ public function makeSubmit($sLabelText, $sControlName){
  	}
  }
 
- public function checkUpload($sControlName, $sMimeType, $iSize){
+  public function checkUpload($sControlName, $sMimeType, $iSize){
  	$sErrorMessage = '';
 
  	if(empty($this->aFiles[$sControlName]['name'])){
@@ -114,11 +138,11 @@ public function makeSubmit($sLabelText, $sControlName){
 
  }
 
- public function raiseError($sControlName, $sErrorMessage){
+  public function raiseError($sControlName, $sErrorMessage){
  	$this->aErrors[$sControlName] = $sErrorMessage;
  }
 
- public function moveFile($sControlName, $sNewFileName){
+  public function moveFile($sControlName, $sNewFileName){
  		$newname = dirname(__FILE__).'/../assets/img/'.$sNewFileName;
 		
 		move_uploaded_file($this->aFiles[$sControlName]['tmp_name'],$newname);

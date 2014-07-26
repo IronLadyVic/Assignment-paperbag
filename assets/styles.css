@@ -47,6 +47,15 @@ div #top-left-nav{
 	margin-left: -42px;
 	
 }
+#logo a{
+	display: block;
+	font-size: 0px;
+	height: 100%;
+	width: 100%;
+	position: relative;
+	margin-left: -6px;
+	
+}
 #top-left-nav, li{
 	float: left;
 	color: #535353;
@@ -186,6 +195,14 @@ div #left-container-login{
 	margin-top: 80px;
 }
 
+#left-container-account #send{
+	position: absolute;
+	margin-left: 0px;
+	margin-top: 16px;
+	height: 32px;
+	width: 275px;
+}
+
 #left-container-login #username{
 	background-image:url('img/username-text.png');
     background-repeat:no-repeat;
@@ -306,7 +323,7 @@ form input{
    	background-position:left center;  
    	padding-left:70px;
    	font-size: 10px;
-   	margin-top: 20px;
+   	margin-top: 40px;
 }
 #pass1{
 	background-image:url('img/password.png');
@@ -392,6 +409,10 @@ form input{
 	width: 276px;
 	background-color: #B5E1E1;
 	color: #535353;
+	margin-top: 215px;
+	margin-left: -190px;
+	position: absolute;
+	width: 332px;
 }
 
 /*//end of form*/
@@ -432,7 +453,7 @@ input #username-login{
 }
 	
 .required-login{
-	margin-top: 90px;
+	margin-top: 320px;
 	font-size: 10px;
 	margin-left: 15px;
 }
@@ -894,35 +915,91 @@ p .description-text{
 	padding-left:80px;
 	width: 252px;
 	margin-bottom: 20px;
-	margin-top: 150px;
+	margin-top:110px;
+	font-size: 12px;
+}
+li #item-name-view{
+	background-image:url('img/item-name.png');
+	background-repeat:no-repeat;
+	background-position:left center;  
+	padding-left:80px;
+	width: 252px;
+	margin-bottom: 20px;
+	margin-top:110px;
+	font-size: 12px;
+}
+#item-name-items{
+	background-image:url('img/item-name.png');
+	background-repeat:no-repeat;
+	background-position:left center;  
+	padding-left:80px;
+	width: 252px;
+	margin-bottom: 20px;
+	margin-top: 20px;
+	position: absolute;
 
 }
 #typeName{
 	background-image:url('img/product-type.png');
 	background-repeat:no-repeat;
 	background-position:left center;  
-	padding-left:80px;
+	padding-left:25px;
 	height: 32px;
-	width: 250px;
-	margin-bottom: 20px;
-	margin-top: 0px;
+	width: 332px;
+	position: absolute;
+	margin-top: 155px;
+	margin-left: -342px;
 	border: none;
 	text-indent: 85px;
 	background-color: white;
+	font-size: 12px;
 }
-
 
 #description{
 	background-image:url('img/description.png');
 	background-repeat:no-repeat;
 	background-position:left top;  
 	padding-left:80px;
-	width: 250px;
+	width: 252px;
 	border: none;
-
-	margin-top:-100px;
+	margin-left: -340px;
+	margin-top: 200px;
+	position: absolute;
+	font-size: 12px;
 }
 #size{
+	background-image:url('img/size.png');
+	background-repeat:no-repeat;
+	background-position:left center;  
+	padding-left:35px;
+	width: 120px;
+	margin-top:242px;
+	margin-left: -163px;
+	position: absolute;
+	font-size: 12px;
+}
+#labels{
+	background-image:url('img/label.png');
+	background-repeat:no-repeat;
+	background-position:left center;  
+	padding-left:40px;
+	width: 120px;
+	margin-top:242px;
+	margin-left: -340px;
+	position: absolute;
+	font-size: 12px;
+}
+#description-items{
+	background-image:url('img/description.png');
+	background-repeat:no-repeat;
+	background-position:left top;  
+	padding-left:80px;
+	width: 250px;
+	border: none;
+	margin-top: 0px;
+	font-size: 12px;
+}
+#size-items{
 	background-image:url('img/size.png');
 	background-repeat:no-repeat;
 	background-position:left center;  
@@ -931,8 +1008,9 @@ p .description-text{
 	position: absolute;
 	margin-top: 18px;
 	margin-left: 0px;
+	font-size: 12px;
 }
-#labels{
+#labels-items{
 	background-image:url('img/label.png');
 	background-repeat:no-repeat;
 	background-position:left center;  
@@ -941,25 +1019,28 @@ p .description-text{
 	position: absolute;
 	margin-top: 18px;
 	margin-left: 170px;
+	font-size: 12px;
 }
 
+
 /*//upload button*/
-/*#upload-photo{
-	width: 230px;
+#upload-photo{
+	width: 240px;
 	height: 38px;
 	background-color: white;
 	border: none;
 	position: absolute;
-	margin-top: 65px;
+	margin-top: 121px;
 	background-image: url("img/upload-photo.png");
 	background-repeat: no-repeat;
 	background-position:left center;  
 	padding-left:90px;
 	cursor: pointer;
-}
+	font-size: 12px;
+	}
 #browse{
-	   background-color: #B5E1E1;
-    text-align: center;
+	/*  background-color: #B5E1E1;*/
+/*    text-align: center;
     border: 5px solid rgba(0,0,0,.1);
     cursor: pointer;
     height: 38px;
@@ -967,20 +1048,27 @@ p .description-text{
     border: none;
     margin-top: 0px;
     width: 50px;
+    outline: 1px red solid;*/
 }
+label #browse-upload{
+	text-align: center;
+}
+
 #browse-upload{
+	content: 'upload';
 	   background-color: #B5E1E1;
     text-align: center;
     line-height: 260%;
     border: 5px solid rgba(0,0,0,.1);
     cursor: pointer;
     height: 38px;
-    margin-left: 115px;
-    margin-top: 0px;
+    margin-left: 208px;
+    margin-top: 121px;
     border: none;
     width: 125px;
     color: #535353;
     position: absolute;
+
 }
 #upload-photo input[type="file"] {
     display: block;
@@ -993,25 +1081,26 @@ p .description-text{
     cursor: pointer;
    
 }
-*/
+
 #price{
 	background-image:url('img/price.png');
 	background-repeat:no-repeat;
 	background-position:left center;  
 	padding-left:50px;
 	width: 130px;
-	position: absolute;
+	position: relative;
 	margin-left: 0px;
-	margin-top: 120px;
-	font-size: 18px;
+	margin-top: 170px;
+	font-size: 12px;
+
 /*		position: absolute;
 	margin-top: 150px;
 	margin-left: -270px;*/ /*does not work in Firefox*/
 }
 #gst{
 	position: absolute;
-	margin-top: 118px;
-	margin-left: 190px;
+	margin-top: 225px;
+	margin-left: 210px;
 	font-size: 12px;
 	line-height: 150%;
 }
@@ -1027,7 +1116,8 @@ p .description-text{
 .disclaimer{
 	margin-left: 12px;
 	font-size: 10px;
-	margin-top: 200px;
+	margin-top:80px;
+	position: absolute;
 }
 /*success page*/
 .header{
@@ -1087,8 +1177,8 @@ p .description-text{
 	width: 300px;
 	height: 212px;
 	position: absolute;
-	margin-left: 350px;
-	margin-top: -380px;
+	margin-left: 360px;
+	margin-top: -270px;
 	line-height: 120%;
 }
 .agreement-box{
@@ -1349,7 +1439,7 @@ border-right: 5px solid white;
 	height: 32px;
 	width: 252px;
 	margin-bottom: 20px;
-	margin-top: 0px;
+	margin-top: 55px;
 	border: none;
 	text-indent: 80px;
 	background-color: white;
@@ -1362,7 +1452,7 @@ border-right: 5px solid white;
 	width: 130px;
 	position: absolute;
 	margin-left: 0px;
-	margin-top: 60px;
+	margin-top: 65px;
 	font-size: 18px;
 }
 
@@ -1372,7 +1462,7 @@ border-right: 5px solid white;
 	background-color:#B5E1E1;
 	color: #535353;
 	position: absolute;
-	margin-top: 60px;
+	margin-top: 67px;
 	margin-left: 190px;
 	text-decoration: none;
 
@@ -1393,12 +1483,12 @@ border-right: 5px solid white;
 	background-color:#FF6666;
 	color: #535353;
 	position: absolute;
-	margin-top: 105px;
+	margin-top: 112px;
 	margin-left: 0px;
 	
 }
 #withdraw-disclaimer{
-	margin-top: 100px;
+	margin-top: 110px;
 	position: absolute;
 	margin-left: 110px;
 	line-height: 140%;

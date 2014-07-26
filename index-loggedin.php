@@ -8,7 +8,7 @@ require_once("includes/member.php");
 session_start();
 //redirect to login page if member has not logged in.
 if(!isset($_SESSION['MemberID'])){
-  header("Location:login.php");
+  // header("Location:login.php");
 }
 
 require_once("includes/header.php");

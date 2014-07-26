@@ -7,7 +7,9 @@ require_once("includes/member.php");
 session_start();
 
 if(isset($_SESSION['MemberID'])){
-	header("Location: login.php");
+	
+}else{
+	header("Location: sell-an-item.php");
 }
 
 $oProduct = new Product();
@@ -40,7 +42,6 @@ if(isset($_POST['submit'])){
 	if($oForm->isValid){
 		$sPhotoName = "Product".date("Y-m-d-H-i-s")."jpg";
 		$oForm->moveFile('PhotoPath',$sPhotoName);
-
 		$oProduct->ItemName = $_POST['ItemName'];
 		$oProduct->TypeName = $_POST['TypeName'];
 		$oProduct->Description = $_POST['Description'];
@@ -57,13 +58,13 @@ if(isset($_POST['submit'])){
 }
 
 $oForm->makeTextInput('','item-name');
-$oForm->makeTextInput('','typeName');
+$oForm->makeTextDropDown('','typeName');
 $oForm->makeTextInput('','description');
 $oForm->makeTextInput('','size');
-$oForm->makeTextInput('','lables');
-// $oForm->makeTextInput('','upload-photo');
-$oForm->makeTextInput('','browse');
+$oForm->makeTextInput('','labels');
+// $oForm->makeTextInput('upload item','upload-photo');
 $oForm->makeHiddenField('MAX_FILE_SIZE',1000);
+// $oForm->makeTextInput('upload item','browse');
 $oForm->makeUpLoadBox('','browse-upload');
 $oForm->makeTextInput('','price');
 $oForm->makeSubmit('sell my item','submit');
@@ -85,19 +86,9 @@ require_once("includes/header.php");
 <!-- left main container -->
 <div id="left-container-sell">
 <p class="header">sell my item</p>
+<p id="gst">price will automatically<br/>include 15% GST</p>
 	<?php echo $oForm->html;?>
-<!-- 
-			<select name="typeName" id="typeName" onblur="checkInput(this.id)">
-			<option value="choose">*</option>
-			<option value="jackets">jacket</option>
-			<option value="tops">top</option>
-			<option value="tees">tee</option>
-			<option value="pants">pants</option>
-			<option value="shorts">shorts</option>
-			<option value="knitwear">knitwear</option>
-			<option value="dresses">dress</option>
-			<option value="skirts">skirt</option>
-			</select> -->
+
 <p class="disclaimer">* - account members NZ address only</p>
 <div id="terms-conditions">
 	<p><strong>terms & conditions</strong></p><p>the price listed will automatically include GST with users input.<br/><br/> 

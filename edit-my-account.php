@@ -45,7 +45,8 @@ if(isset($_POST["submit"])){
 
 
 	if($oForm->isValid){
-		
+		$oMember->username=$_POST['username'];
+		$oMember->password=$_POST['password'];
 		$oMember->firstName=$_POST['firstName'];
 		$oMember->lastName=$_POST['lastName'];
 		$oMember->mobile=$_POST['mobile'];
@@ -73,7 +74,7 @@ $oForm->makeTextInput('','email');
 $oForm->makeTextInput('','address');
 $oForm->makeTextInput('','city');
 $oForm->makeTextInput('','postcode');
-$oForm->makeSubmit('save edited changes','submit');
+$oForm->makeSubmit('save changes','submit');
 
 $oView = new View();
 $oCollection = new Collection();

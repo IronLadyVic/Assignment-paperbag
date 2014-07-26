@@ -41,7 +41,11 @@ class View{
 			$sHTML.='<div class="label">'.$oProduct->Label.'</div>';
 			$sHTML.='<div class="price">'.$oProduct->Price.'</div>';
 			$sHTML.='<div>';
+			if(isset($_SESSION['MemberID']) == true){
 			$sHTML.='<a href="my-paperbag-cart.php?ProductID='.$oProduct->ProductID.'" class="submit">add to my paperbag</a>';
+		}else{
+			$sHTML.='<a href="login.php" class="submit">add to my paperbag</a>';
+		}
 			$sHTML.='</div>';
 			$sHTML.='</li>';
 		}
@@ -71,11 +75,16 @@ static public function renderProductOverlay($oOverlay){
 		$sHTML.='<div class="label-enlarge">'.$oProductOverlay->Label.'</div>';
 		$sHTML.='<div class="price-enlarge">'.$oProductOverlay->Price.'</div>';
 
-		if($_SESSION['MemberID'] == true){
-		$sHTML.='<a href="my-paperbag-cart.php?ProductID='.$oProductOverlay->ProductID.'" class="submit-enlarge">add to my paperbag</a>';}else{
-			$sHTML.='<a href="login.php'.$oProductOverlay->ProductID.'" class="submit-enlarge">add to my paperbag</a>';
-			return false;
-		} //need help on this one session can it be added to the view.
+		if(isset($_SESSION['MemberID']) == true){
+			$sHTML.='<a href="my-paperbag-cart.php?ProductID='.$oProductOverlay->ProductID.'" class="submit-enlarge">add to my paperbag</a>';}
+			else{
+				return false;
+			$sHTML.='<a href="login.php" class="submit-enlarge">add to my paperbag</a>';
+		}
+
+		
+		
+		 //need help on this one session can it be added to the view.
 
 		$sHTML.='</li>';
 	}
@@ -108,6 +117,44 @@ static public function renderMemberDetails($oMember){
 
 	return $sHTML;
 }
+
+
+
+
+static public function renderProductDetails($oProduct){
+	$sHTML = '';
+	$sHTML .='<div id="left-container-sell">';
+	$sHTML.='<p class="header">items im selling</p>';
+	$sHTML.='<ul>';
+	$sHTML.='<li id="item-name-view">'.$oProduct->ItemName.'</li>';
+	$sHTML.='<li id="typeName-view" ">'.$oProduct->TypeName.'</li>';		
+	$sHTML.='<li id="description-view" ">'.$oProduct->Description.'</li>';			
+	$sHTML.='<li id="size-view" ">'.$oProduct->Size.'</li>';		
+	$sHTML.='<li id="labels-view" ">'.$oProduct->Label.'</li>';
+	$sHTML.='<li id="price-items-im-selling"></li>';	
+	$sHTML.='<div id="edit-sell-item"><a href="edit-sell-an-item.php">edit item</a></div>' ;
+	$sHTML.='<div id="remove-sell-item"><a href="">remove item</a></div> ';
+	$sHTML.='<p id="withdraw-disclaimer">you can withdraw your item selling<br/> 
+by clicking remove item. <br/> 
+a charge of $50.00 will be issued <br/> 
+to your email on removal of item.</p>';
+	$sHTML.='<li type="image" name="image" id="item-image" alt="item-image"readonly></li>';
+	$sHTML.='<img alt="next" src="assets/img/view-next-item.png" id="next-item-text"></img>';
+	$sHTML.='<div id="next-item">';
+		$sHTML.='<p><a href="items-im-selling.php">1</a> '; //use query strin here to access/get the producttype the memberid is selling.
+		$sHTML.='</p><p><a href="items-im-selling.php">2</a></p>';
+		$sHTML.='<p><a href="items-im-selling.php">3</a></p>';
+		$sHTML.='<p><a href="items-im-selling.php">4</a></p>';
+		$sHTML.='<p><a href="items-im-selling.php">5</a></p>';
+	$sHTML.='</div>';
+$sHTML.='<p class="disclaimer">* - account members NZ address only</p>';
+$sHTML.='</ul>';
+$sHTML.='</div>';
+	return $sHTML;
+
+}
+
+
 
 }
 
