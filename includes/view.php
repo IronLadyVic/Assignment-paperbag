@@ -148,16 +148,16 @@ static public function renderProductDetails($oProduct){
 
 		foreach ($aProducts as $keyProductId => $value) {
 
-			
+
 
 			$oProduct = new Product();
 			$oProduct->load($keyProductId);
 	
-		$sHTML.='<p><a href="items-im-selling.php?ProductID="'.$keyProductId.'>1</a></p>'; //use query string here to access/get the producttype the memberid is selling.
-		$sHTML.='<p><a href="items-im-selling.php?ProductID="'.$keyProductId.'>2</a></p>';
-		$sHTML.='<p><a href="items-im-selling.php?ProductID="'.$keyProductId.'>3</a></p>';
-		$sHTML.='<p><a href="items-im-selling.php?ProductID="'.$keyProductId.'>4</a></p>';
-		$sHTML.='<p><a href="items-im-selling.php?ProductID="'.$keyProductId.'>5</a></p>';
+		$sHTML.='<p><a href="items-im-selling.php?ProductID='.$keyProductId.'">1</a></p>'; //use query string here to access the productID the Member is selling.
+		$sHTML.='<p><a href="items-im-selling.php?ProductID='.$keyProductId.'">2</a></p>';
+		$sHTML.='<p><a href="items-im-selling.php?ProductID='.$keyProductId.'">3</a></p>';
+		$sHTML.='<p><a href="items-im-selling.php?ProductID='.$keyProductId.'">4</a></p>';
+		$sHTML.='<p><a href="items-im-selling.php?ProductID='.$keyProductId.'">5</a></p>';
 		
 	}
 $sHTML.='<p class="disclaimer-view">* - account members NZ address only</p>';	
@@ -166,7 +166,52 @@ $sHTML.='<p class="disclaimer-view">* - account members NZ address only</p>';
 	return $sHTML;
 }
 
+static public function renderCart($oCart){
+	$sHTML = '<div id="left-container-cart">
+	<p class="header"><strong>my paperbag</strong></p>
+	<div class="datagrid"><table>
+		<thead>
+			<tr>
+				<th id="item-text">item</th>
+				<th id="producttype-text">product type</th>
+				<th id="description-text">description</th>
+				<th id="size-text">size</th>
+				<th id="label-text">label</th>
+				<th id="price-text">price</th>
+			</tr>
+		</thead>';
+		$aContents = $oCart->Contents;
+		foreach($aContents as $keyProductID => $value) {
+			$oProduct = new Product();
 
+			$oProduct = load($keyProductID);
+			// $sHTML .= '<tfoot><tr><td colspan="7"><div id="subtotal"><p>subtotal incl. GST $</p></div></tr></tfoot>';
+			$sHTML .='<tbody><tr><td id="product-image">'.$oProduct->PhotoPath.'</td>
+			<td valign="top">'.$oProduct->TypeName.'</td>
+			<td valign="top">'.$oProduct->Description.'</td>
+			<td valign="top">'.$oProduct->Size.'</td>
+			<td valign="top">'.$oProduct->Label.'</td>
+			<td valign="top">'.$oProduct->Price.'</td>
+		</tr>';
+	
+		$sHTML .='<div id="cart-buttons">';
+		$sHTML .='<tr>';
+		$sHTML .='<td id="remove-items" type="submit" value="remove-items"><a href="remove-item.php?ProductID'.$keyProductID.'"></a></td>';
+		$sHTML .='<td id="add-items" type="submit" value="add-items"</td>';
+		$sHTML .='<td id="checkout" type="submit" value="checkout"</td>';
+		$sHTML .='</tr>';
+		$sHTML .='</div>';
+		$sHTML .='</tbody>';
+}
+
+return $sHTML .= '</table>';
+$sHTML .='</div>';
+
+$sHTML .='<a href=""><img alt="next" src="assets/img/previous.png" id="previous"></img></a>';
+$sHTML .='<a href=""><img alt="next" src="assets/img/next.png" id="next"></img></a>';
+$sHTML .='</div>';
+
+}
 
 }
 

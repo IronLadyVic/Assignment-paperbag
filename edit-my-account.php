@@ -18,7 +18,7 @@ $aExsistingDetails = array();
 $aExsistingDetails['username'] = $oMember->UserName;
 $aExsistingDetails['pass1'] = $oMember->Password;
 $aExsistingDetails['pass2'] = $oMember->Password;
-$aExsistingDetails['firstName'] = $oMember->FirstName; //$oMember->FirstName this is in the getter.
+$aExsistingDetails['firstName'] = $oMember->FirstName; //$oMember->FirstName in the get function. Allowing to read the properties.
 $aExsistingDetails['lastName'] = $oMember->LastName;
 $aExsistingDetails['mobile'] = $oMember->Mobile;
 $aExsistingDetails['email'] = $oMember->Email;
@@ -92,7 +92,7 @@ require_once("includes/header.php");
 <!-- left main container -->
 <div id="left-container-account">
 <p class="header">edit my account</p>
-<p class="header-personaldetails"></p>
+
 <?php echo $oForm->html; ?>
 
 

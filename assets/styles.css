@@ -323,7 +323,7 @@ form input{
    	background-position:left center;  
    	padding-left:70px;
    	font-size: 10px;
-   	margin-top: 40px;
+   	margin-top: 120px;
 }
 #pass1{
 	background-image:url('img/password.png');
@@ -401,10 +401,18 @@ form input{
    	font-size: 10px;
 }
 #required{
+	margin-top: 40px;
 	margin-left: 12px;
 	font-size: 10px;
 
 }
+#required-edit-sell-an-item{
+	margin-top: 100px;
+	margin-left: 12px;
+	font-size: 10px;
+
+}
+
 #send{
 	width: 276px;
 	background-color: #B5E1E1;
@@ -1095,6 +1103,13 @@ label #browse-upload{
 	font-size: 12px;
 	line-height: 150%;
 }
+#gst-edit-item{
+	position: absolute;
+	margin-top: -32px;
+	margin-left: 210px;
+	font-size: 12px;
+	line-height: 150%;
+}
 #submit-item{
 	width: 330px;
 	height: 30px;
@@ -1106,6 +1121,10 @@ label #browse-upload{
 }
 
 /*success page*/
+.success-statements{
+	margin-left: 20px;
+	color: #535353;
+}
 .header{
 	margin-left: 20px;
 	line-height: 90%;
@@ -1128,7 +1147,7 @@ label #browse-upload{
 	background-color: #B5E1E1;
 	position: absolute;
 	margin-top: 10px;
-	margin-left: 0px;
+	margin-left: 20px;
 	color: #535353;
 	text-align: center;
 	text-indent: 55px;
@@ -1140,7 +1159,7 @@ label #browse-upload{
 	background-color: #B5E1E1;
 	position: absolute;
 	margin-top: 10px;
-	margin-left: 320px;
+	margin-left: 340px;
 	color: #535353;
 	text-align: center;
 	text-indent: 0px;
@@ -1152,7 +1171,7 @@ label #browse-upload{
 	background-color: #B5E1E1;
 	position: absolute;
 	margin-top: 10px;
-	margin-left: 0px;
+	margin-left: 20px;
 	color: #535353;
 	text-align: center;
 	text-indent: 55px;
@@ -1581,6 +1600,15 @@ border-right: 5px solid white;
 	height: 320px;
 	outline: white 1px solid;
 }
+#item-image-edit{
+	position: absolute;
+	margin-left: 350px;
+	margin-top: -50px;
+	width: 280px;
+	height: 320px;
+	outline: white 1px solid;
+}
+
 
 div #next-item{
 	outline: red 1px solid;

@@ -13,9 +13,11 @@ if(!isset($_SESSION['MemberID'])){
 
 require_once("includes/header.php");
 
-?>
-<!-- left main container -->
-<div id="left-container">
+
+// <!-- left main container -->
+$sHTML = "";
+
+echo '<div id="left-container">
 	<div class="gallery items-3">
   <div id="item-1" class="control-operator"></div>
   <div id="item-2" class="control-operator"></div>
@@ -61,8 +63,8 @@ require_once("includes/header.php");
 		<img src="assets/img/index-rightColomn.png" alt="second-hand-clothes" id="index-clothes"/>
 		<a href="#"><li id="brands-we-except">brands we except</li></a>
 	</ul>
-</div>
-<?php
+</div>';
+
 require_once("includes/footer-loggedin.php");
 
 

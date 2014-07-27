@@ -1,20 +1,39 @@
 <?php
+require_once("includes/model-form.php");
+require_once("includes/view.php");
+require_once("includes/collection.php");
+require_once("includes/member.php");
+
+session_start();
+
+if(!isset($_SESSION['MemberID'])){
+	header("Location:login.php");
+}
+
+$oView = new View();
+$oCollection = new Collection();
+$aAllProductTypes = $oCollection->getAllProductTypes();
+
+
+$iTypeID = 1;
+if(isset($_GET["productType"])){
+	$iTypeID = $_GET["productType"];
+}
+
 require_once("includes/header.php");
-
-?>
-<!-- left main container -->
-<div id="left-container-login">
-	<div class="header">
-		<p><strong>success!</strong></p>
-		<p>thank you for selling your item on behalf of
+// <!-- left main container -->
+$sHTML="";
+echo '<div id="left-container-login">
+	<div>
+		<p class="header">success!</p>
+		<p class="success-statements">thank you for selling your item on behalf of
 paperbag boutique.<br/><br/>please click below to see your clothing items you have listed.</p>
-		<a href="items-im-selling.html"><ul id="view-your-items-listed"><li>view items listed</li></ul></a>
+		<a href="items-im-selling.php"><ul id="view-your-items-listed"><li>items im selling</li></ul></a>
 			</div>
-		</div>
-<!-- right main container -->
-<!-- <div id="right-navigation-shop"> -->
+		</div>';
+// <!-- right main container -->
 
-<?php echo View::renderNavigation($aAllProductTypes);
+echo View::renderNavigation($aAllProductTypes);
 
 require_once("includes/footer-loggedin.php");
 

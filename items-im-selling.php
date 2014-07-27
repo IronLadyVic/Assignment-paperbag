@@ -31,13 +31,12 @@ if(isset($_GET["productType"])){
 
 require_once("includes/header.php");
 
-?>
-<!-- left main container -->
-<?php echo View::renderProductDetails($oProduct);?>
- <!-- right main container -->
 
-<?php echo View::renderNavigation($aAllProductTypes);?>
-<?php
+// <!-- left main container -->
+echo View::renderProductDetails($oProduct);
+ // <!-- right main container -->
+
+echo View::renderNavigation($aAllProductTypes);
 
 require_once("includes/footer-loggedin.php");
 
