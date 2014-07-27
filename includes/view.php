@@ -33,7 +33,7 @@ class View{
 
 			$oProduct = $aProducts[$i];
 			$sHTML.='<li id="item">';
-			$sHTML.='<a href="#" onclick="showItem('.$oProduct->TypeID.')">+ view<img class="image" src="assets/img/'.$oProduct->PhotoPath.'"/></a>';
+			$sHTML.='<a href="#" onclick="showItem('.$oProduct->TypeID.')">+ view<img class="image" alt="product-type-image" src="assets/img/'.$oProduct->PhotoPath.'"/></a>';
 			$sHTML.='<div class="product-name">'.$oProduct->ItemName.'</div>';
 			$sHTML.='<div class="producttype-name">'.$oProduct->TypeName.'</div>';
 			$sHTML.='<div class="description"><p class="description-text">'.$oProduct->Description.'</p></div>';
@@ -122,44 +122,55 @@ static public function renderMemberDetails($oMember){
 
 
 static public function renderProductDetails($oProduct){
-	$sHTML = '';
-	$sHTML .='<div id="left-container-sell">';
+	$sHTML='';
+	$sHTML='<div id="left-container-sell">';
 	$sHTML.='<p class="header">items im selling</p>';
-	$sHTML.='<ul>';
-	$sHTML.='<li id="item-name-view">'.$oProduct->ItemName.'</li>';
-	$sHTML.='<li id="typeName-view" ">'.$oProduct->TypeName.'</li>';		
-	$sHTML.='<li id="description-view" ">'.$oProduct->Description.'</li>';			
-	$sHTML.='<li id="size-view" ">'.$oProduct->Size.'</li>';		
-	$sHTML.='<li id="labels-view" ">'.$oProduct->Label.'</li>';
-	$sHTML.='<li id="price-items-im-selling"></li>';	
-	$sHTML.='<div id="edit-sell-item"><a href="edit-sell-an-item.php">edit item</a></div>' ;
-	$sHTML.='<div id="remove-sell-item"><a href="">remove item</a></div> ';
-	$sHTML.='<p id="withdraw-disclaimer">you can withdraw your item selling<br/> 
-by clicking remove item. <br/> 
-a charge of $50.00 will be issued <br/> 
-to your email on removal of item.</p>';
-	$sHTML.='<li type="image" name="image" id="item-image" alt="item-image"readonly></li>';
-	$sHTML.='<img alt="next" src="assets/img/view-next-item.png" id="next-item-text"></img>';
-	$sHTML.='<div id="next-item">';
-		$sHTML.='<p><a href="items-im-selling.php">1</a> '; //use query strin here to access/get the producttype the memberid is selling.
-		$sHTML.='</p><p><a href="items-im-selling.php">2</a></p>';
-		$sHTML.='<p><a href="items-im-selling.php">3</a></p>';
-		$sHTML.='<p><a href="items-im-selling.php">4</a></p>';
-		$sHTML.='<p><a href="items-im-selling.php">5</a></p>';
-	$sHTML.='</div>';
-$sHTML.='<p class="disclaimer">* - account members NZ address only</p>';
-$sHTML.='</ul>';
-$sHTML.='</div>';
+	$sHTML.='<ul>';		
+		$sHTML.='<li id="item-name-view">'.$oProduct->ItemName.'</li>';
+		$sHTML.='<li id="typeName-view" ">'.$oProduct->TypeName.'</li>';		
+		$sHTML.='<li id="description-view" ">'.$oProduct->Description.'</li>';			
+		$sHTML.='<li id="size-view" ">'.$oProduct->Size.'</li>';		
+		$sHTML.='<li id="labels-view" ">'.$oProduct->Label.'</li>';
+		$sHTML.='<li id="price-view">'.$oProduct->Price.'</li>';	
+		$sHTML.='<div id="edit-sell-item"><a href="edit-sell-an-item.php">edit item</a></div>' ;
+		$sHTML.='<div id="remove-sell-item"><a href="">remove item</a></div> ';
+		$sHTML.='<p id="withdraw-disclaimer">you can withdraw your sell item<br/> 
+		by clicking remove item. <br/> 
+		A charge of $50.00 will be issued <br/> 
+		to your email on removal of item.</p>';
+		$sHTML.='<img id="item-image-view" alt="item-image" src="assets/img/'.$oProduct->PhotoPath.'"/>';
+		$sHTML.='<img alt="next" src="assets/img/view-next-item.png" id="next-item-text"></img>';
+		$sHTML.='</ul>';
+		$sHTML.='</div>';
+
+		$sHTML.='<div id="next-item">';
+		$aProducts = $oProduct->Contents;
+
+		foreach ($aProducts as $keyProductId => $value) {
+
+			
+
+			$oProduct = new Product();
+			$oProduct->load($keyProductId);
+	
+		$sHTML.='<p><a href="items-im-selling.php?ProductID="'.$keyProductId.'>1</a></p>'; //use query string here to access/get the producttype the memberid is selling.
+		$sHTML.='<p><a href="items-im-selling.php?ProductID="'.$keyProductId.'>2</a></p>';
+		$sHTML.='<p><a href="items-im-selling.php?ProductID="'.$keyProductId.'>3</a></p>';
+		$sHTML.='<p><a href="items-im-selling.php?ProductID="'.$keyProductId.'>4</a></p>';
+		$sHTML.='<p><a href="items-im-selling.php?ProductID="'.$keyProductId.'>5</a></p>';
+		
+	}
+$sHTML.='<p class="disclaimer-view">* - account members NZ address only</p>';	
+		$sHTML.='</div>';
+		
 	return $sHTML;
-
 }
 
 
 
 }
 
-
-
+		
 
 
 

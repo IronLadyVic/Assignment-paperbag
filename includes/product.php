@@ -17,7 +17,7 @@ class Product{
 	private $sPhotoPath;
 	private $iActive;
 	private $bExisting;
-
+	private $aContents;
 
 	public function __construct(){
 		$this->iProductID = 0;
@@ -33,6 +33,7 @@ class Product{
 		$this->sPhotoPath = "";
 		$this->iActive = "";
 		$this->bExisting = false;
+		$this->aContents = array();
 	
 	}
 
@@ -69,6 +70,8 @@ class Product{
 		
 		$this->bExisting = true;
 	}
+
+
 
 	public function save(){
 		//open connection
@@ -131,6 +134,7 @@ public function __get($var){
 		case "Price":return $this->fPrice;break;
 		case "PhotoPath":return $this->sPhotoPath;break;
 		case "Active":return $this->iActive;break;
+		case "Contents":return $this->aContents;break;
 		default: die($var."Does not exsist with Product Item");
 		
 	}
