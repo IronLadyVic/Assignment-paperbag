@@ -1723,7 +1723,7 @@ div #right-container{
 #search-bar input{
 	position: relative;
 	margin-top: 550px;
-	margin-left: 40px;
+	margin-left: -440px;
 	height: 32px;
 	width: 231px;
 	border: #B5E1E1  1px solid;
@@ -1747,7 +1747,7 @@ div #footer-shop{
 	position: relative;
 	width: 150px;
 	margin-top: -36px;
-	margin-left: 310px;
+	margin-left: 350px;
 	padding-right: 30px;
 	border-top:1px solid  #535353;
 	
@@ -1766,7 +1766,7 @@ div #footer-collections{
 	position: relative;
 	width: 150px;
 	margin-top: -43px;
-	margin-left: 520px;
+	margin-left: 570px;
 	padding-right: 30px;
 	border-top:1px solid  #535353;
 	
@@ -1801,7 +1801,7 @@ div #footer-socialMedia{
 	position: relative;
 	width: 150px;
 	margin-top: -43px;
-	margin-left: 730px;
+	margin-left: 790px;
 	padding-right: 30px;
 	border-top:1px solid  #535353;
 	
@@ -1865,10 +1865,10 @@ div #footer-socialMedia{
 }
 .copyright {
 	position: relative;
-	margin-right: 540px;
+	margin-right: 500px;
 	color: #bbb;
 	padding-left: 40px;
-	margin-top: -9px;
+	margin-top: -5px;
 	font-size: 10px;
 }
 

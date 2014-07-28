@@ -1,4 +1,8 @@
 <?php
+error_reporting(E_ALL | E_STRICT);  
+ini_set('display_startup_errors',1);  
+ini_set('display_errors',1);
+
 require_once("includes/model-form.php");
 require_once("includes/view.php");
 require_once("includes/collection.php");
@@ -6,6 +10,9 @@ require_once("includes/member.php");
 
 
 session_start();
+if(isset($_SESSION['MemberID'])){
+	unset($_SESSION['MemberID']);
+}
 
 $oCollection = new Collection();
 $oView = new View();
