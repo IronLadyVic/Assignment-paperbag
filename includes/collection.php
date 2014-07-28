@@ -29,29 +29,29 @@ class Collection{
 
  	}
 
- 	// public function findProductByItemName($oItemName){
- 	// 	$aProducts = array();
+ 	public function findProductByItemName($oItemName){
+ 		$aProducts = array();
 
- 	// 	$oConnection = new Connection();
+ 		$oConnection = new Connection();
 
- 	// 	$sSql = "SELECT ProductID
-		// 		FROM tbproduct
-		// 		WHERE TypeID = '".$oItemName."'";
+ 		$sSql = "SELECT ProductID
+				FROM tbproduct
+				WHERE TypeID = '".$oItemName."'";
 
-		// $oResult = $oConnection->query($sSql);
+		$oResult = $oConnection->query($sSql);
 
-		// $aProducts = $oConnection->fetch_array($oResult);
-		// $oConnection->close_connection();
+		$aProducts = $oConnection->fetch_array($oResult);
+		$oConnection->close_connection();
 
-		// if($aProducts == false){
-		// 	return false;
-		// }else{
-		// 	$oProduct = new Product();
-		// 	$oProduct->load($aProducts['ProductID']);
-		// 	return $oProduct;
-		// }
+		if($aProducts == false){
+			return false;
+		}else{
+			$oProduct = new Product();
+			$oProduct->load($aProducts['ProductID']);
+			return $oProduct;
+		}
 
- 	// }
+ 	}
 
  	public function findCustomerByUsername($sUsername){
 

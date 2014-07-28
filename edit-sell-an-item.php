@@ -6,24 +6,19 @@ require_once("includes/product.php");
 require_once("includes/member.php");
 
 session_start();
-
-if(isset($_SESSION['MemberID'])){
-	
-}else{
-	header("Location: login.php");
+//redirect to login page if member has not logged in.
+if(!isset($_SESSION['MemberID'])){
+	header("Location:login.php");
 }
-
-
-
 
 $oProduct = new Product();
+//load the product of that member in te session
+$oProduct->load($_SESSION['ProductID']);
 
-
-$iProductID = 1;
-if(isset($_GET["ProductID"])){
-	$iProductID = $_GET["ProductID"];
-}
-
+// $iProductID = 1;
+// if(isset($_GET["ProductID"])){
+// 	$iProductID = $_GET["ProductID"];
+// }
 
 
 $aExsistingData = array();

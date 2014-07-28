@@ -13,7 +13,7 @@ class Form{
 		$this->aFiles = array();
 		$this->aErrors = array();
 	}
-	public function makeTextInput($sLabelText, $sControlName){
+	public function makeTextInput($sLabelText, $sControlName, $sClassName=""){
 		$sData ="";
 		if(isset($this->aData[$sControlName])){
 			$sData = $this->aData[$sControlName];
@@ -24,8 +24,8 @@ class Form{
 		}
 
 		$this->sHTML .='<label for="'.$sControlName.'">'.$sLabelText.'</label>';
-		$this->sHTML .='<input type="text" name="'.$sControlName.'" placeholder="*" id="'.$sControlName.'" value="'.$sData.'" onblur="checkInput(this.id)">';
-		$this->sHTML .='<span>'.$sError.'</span>';
+		$this->sHTML .='<input type="text" name="'.$sControlName.'" class="'.$sClassName.'" placeholder="*" id="'.$sControlName.'" value="'.$sData.'" onblur="checkInput(this.id)">';
+		$this->sHTML .='<span id="'.$sControlName.'Message">'.$sError.'</span>';
 		// $this->sHTML .='<span id="usernameMessage">'.$sError.'</span>';
 
 	}

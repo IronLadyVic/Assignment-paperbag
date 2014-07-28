@@ -15,16 +15,13 @@ $oMember = new Member();
 $oMember->load($_SESSION['MemberID']);
 
 $aExsistingDetails = array();
-$aExsistingDetails['username'] = $oMember->UserName;
-$aExsistingDetails['pass1'] = $oMember->Password;
-$aExsistingDetails['pass2'] = $oMember->Password;
-$aExsistingDetails['firstName'] = $oMember->FirstName; //$oMember->FirstName in the get function. Allowing to read the properties.
-$aExsistingDetails['lastName'] = $oMember->LastName;
-$aExsistingDetails['mobile'] = $oMember->Mobile;
-$aExsistingDetails['email'] = $oMember->Email;
-$aExsistingDetails['address'] = $oMember->StreetAddress;
-$aExsistingDetails['city'] = $oMember->City;
-$aExsistingDetails['postcode'] = $oMember->PostCode;
+$aExsistingDetails['firstName-edit'] = $oMember->FirstName; //$oMember->FirstName in the get function. Allowing to read the properties.
+$aExsistingDetails['lastName-edit'] = $oMember->LastName;
+$aExsistingDetails['mobile-edit'] = $oMember->Mobile;
+$aExsistingDetails['email-edit'] = $oMember->Email;
+$aExsistingDetails['address-edit'] = $oMember->StreetAddress;
+$aExsistingDetails['city-edit'] = $oMember->City;
+$aExsistingDetails['postcode-edit'] = $oMember->PostCode;
 
 
 $oForm = new Form(); //store the Form class in the oFrom Variable.
@@ -33,27 +30,26 @@ $oForm->data = $aExsistingDetails;
 
 if(isset($_POST["submit"])){
 	$oForm->data = $_POST;
-	$oForm->checkRequired("username");
-	$oForm->checkRequired("password");
-	$oForm->checkRequired("firstName");
-	$oForm->checkRequired("lastName");
-	$oForm->checkRequired("mobile");
-	$oForm->checkRequired("email");
-	$oForm->checkRequired("address");
-	$oForm->checkRequired("city");
-	$oForm->checkRequired("postcode");
+	
+	$oForm->checkRequired("firstName-edit");
+	$oForm->checkRequired("lastName-edit");
+	$oForm->checkRequired("mobile-edit");
+	$oForm->checkRequired("email-edit");
+	$oForm->checkRequired("address-edit");
+	$oForm->checkRequired("city-edit");
+	$oForm->checkRequired("postcode-edit");
 
-
+	//echo "bla";
 	if($oForm->isValid){
-		$oMember->username=$_POST['username'];
-		$oMember->password=$_POST['password'];
-		$oMember->firstName=$_POST['firstName'];
-		$oMember->lastName=$_POST['lastName'];
-		$oMember->mobile=$_POST['mobile'];
-		$oMember->email=$_POST['email'];
-		$oMember->address=$_POST['address'];
-		$oMember->city=$_POST['city'];
-		$oMember->postcode=$_POST['postcode'];
+		//echo "bla1";
+	
+		$oMember->firstName=$_POST['firstName-edit'];
+		$oMember->lastName=$_POST['lastName-edit'];
+		$oMember->mobile=$_POST['mobile-edit'];
+		$oMember->email=$_POST['email-edit'];
+		$oMember->address=$_POST['address-edit'];
+		$oMember->city=$_POST['city-edit'];
+		$oMember->postcode=$_POST['postcode-edit'];
 		
 
 		$oMember->save();
@@ -64,16 +60,14 @@ if(isset($_POST["submit"])){
 	}
 
 }
-$oForm->makeTextInput('','username');
-$oForm->makeTextInput('','pass1');
-$oForm->makeTextInput('','pass2');
-$oForm->makeTextInput('','firstName');
-$oForm->makeTextInput('','lastName');
-$oForm->makeTextInput('','mobile');
-$oForm->makeTextInput('','email');
-$oForm->makeTextInput('','address');
-$oForm->makeTextInput('','city');
-$oForm->makeTextInput('','postcode');
+
+$oForm->makeTextInput('','firstName-edit');
+$oForm->makeTextInput('','lastName-edit');
+$oForm->makeTextInput('','mobile-edit');
+$oForm->makeTextInput('','email-edit');
+$oForm->makeTextInput('','address-edit');
+$oForm->makeTextInput('','city-edit');
+$oForm->makeTextInput('','postcode-edit');
 $oForm->makeSubmit('save changes','submit');
 
 $oView = new View();

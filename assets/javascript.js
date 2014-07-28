@@ -233,9 +233,15 @@ function hideItem(){
 }
 
 
+//-----------------------------
 
+var aElements = document.getElementByClassName("required");
 
-
+for(var iCount=0; iCount<aElements.length; iCount++){
+	aElements[iCount].onblur = function(){
+		checkField(this.id);
+	}
+}
 
 
 

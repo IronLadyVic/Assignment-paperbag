@@ -1,4 +1,6 @@
 <?php
+
+
 class View{
 	//$aProductTypes must be an array of ProductType objects
 	static public function renderNavigation($aProductTypes){
@@ -132,7 +134,7 @@ static public function renderProductDetails($oProduct){
 		$sHTML.='<li id="size-view" ">'.$oProduct->Size.'</li>';		
 		$sHTML.='<li id="labels-view" ">'.$oProduct->Label.'</li>';
 		$sHTML.='<li id="price-view">'.$oProduct->Price.'</li>';	
-		$sHTML.='<div id="edit-sell-item"><a href="edit-sell-an-item.php">edit item</a></div>' ;
+		$sHTML.='<div id="edit-sell-item"><a href="edit-sell-an-item.php?productID='.$oProduct->ProductID.'">edit item</a></div>' ;
 		$sHTML.='<div id="remove-sell-item"><a href="">remove item</a></div> ';
 		$sHTML.='<p id="withdraw-disclaimer">you can withdraw your sell item<br/> 
 		by clicking remove item. <br/> 
@@ -147,8 +149,6 @@ static public function renderProductDetails($oProduct){
 		$aProducts = $oProduct->Contents;
 
 		foreach ($aProducts as $keyProductId => $value) {
-
-
 
 			$oProduct = new Product();
 			$oProduct->load($keyProductId);
@@ -180,23 +180,25 @@ static public function renderCart($oCart){
 				<th id="price-text">price</th>
 			</tr>
 		</thead>';
+		$oCart = new Cart();
 		$aContents = $oCart->Contents;
-		foreach($aContents as $keyProductID => $value) {
+		foreach($aContents as $keyProductID => $value){
 			$oProduct = new Product();
 
 			$oProduct = load($keyProductID);
 			// $sHTML .= '<tfoot><tr><td colspan="7"><div id="subtotal"><p>subtotal incl. GST $</p></div></tr></tfoot>';
-			$sHTML .='<tbody><tr><td id="product-image">'.$oProduct->PhotoPath.'</td>
-			<td valign="top">'.$oProduct->TypeName.'</td>
-			<td valign="top">'.$oProduct->Description.'</td>
-			<td valign="top">'.$oProduct->Size.'</td>
-			<td valign="top">'.$oProduct->Label.'</td>
-			<td valign="top">'.$oProduct->Price.'</td>
-		</tr>';
+			$sHTML .='<tbody><tr>';
+			$sHTML .='<td id="product-image">'.$oProduct->PhotoPath.'</td>';
+			$sHTML .='<td valign="top">'.$oProduct->TypeName.'</td>';
+			$sHTML .='<td valign="top">'.$oProduct->Description.'</td>';
+			$sHTML .='<td valign="top">'.$oProduct->Size.'</td>';
+			$sHTML .='<td valign="top">'.$oProduct->Label.'</td>';
+			$sHTML .='<td valign="top">'.$oProduct->Price.'</td>';
+		$sHTML .='</tr>';
 	
 		$sHTML .='<div id="cart-buttons">';
 		$sHTML .='<tr>';
-		$sHTML .='<td id="remove-items" type="submit" value="remove-items"><a href="remove-item.php?ProductID'.$keyProductID.'"></a></td>';
+		$sHTML .='<td id="remove-items" type="submit" value="remove-items"><a href="remove-item.php?ProductID='.$keyProductID.'"></a></td>';
 		$sHTML .='<td id="add-items" type="submit" value="add-items"</td>';
 		$sHTML .='<td id="checkout" type="submit" value="checkout"</td>';
 		$sHTML .='</tr>';
@@ -205,11 +207,11 @@ static public function renderCart($oCart){
 }
 
 return $sHTML .= '</table>';
-$sHTML .='</div>';
+$sHTML ='</div>';
 
-$sHTML .='<a href=""><img alt="next" src="assets/img/previous.png" id="previous"></img></a>';
-$sHTML .='<a href=""><img alt="next" src="assets/img/next.png" id="next"></img></a>';
-$sHTML .='</div>';
+$sHTML ='<a href=""><img alt="next" src="assets/img/previous.png" id="previous"></img></a>';
+$sHTML ='<a href=""><img alt="next" src="assets/img/next.png" id="next"></img></a>';
+$sHTML ='</div>';
 
 }
 

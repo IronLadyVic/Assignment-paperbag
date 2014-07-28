@@ -3,10 +3,12 @@ require_once("includes/model-form.php");
 require_once("includes/view.php");
 require_once("includes/collection.php");
 require_once("includes/product.php");
+require_once("includes/model-my-paperbag-cart.php");
 
 session_start();
 
-$oCart = $_SESSION['Cart'];
+$oCart = new Cart();
+
 
 if(!isset($_SESSION['MemberID'])){
 	header('Location:login.php');
@@ -23,11 +25,10 @@ if(isset($_GET["productType"])){
 	$iTypeID = $_GET["productType"];
 }
 
-
 require_once("includes/header.php");
 
 // <!-- left main container -->
-// <!-- <div id="left-container-cart">
+
 echo View::renderCart($oCart);
 
 

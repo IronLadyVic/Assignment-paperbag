@@ -1,6 +1,6 @@
 <!-- footer -->
 <div id="search-bar">
-	<form><input type="search" name="search" placeholder="search"></form>
+	<form><input id="search" type="search" name="search" placeholder="search"></form>
 </div>
 <div id="footer-shop">
 <p><strong>shop</strong></p>

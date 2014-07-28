@@ -101,12 +101,16 @@ div #top-left-nav{
 	margin-top: -20px;
 	position: absolute;
 }
-div #top-right-nav{
-	float: right;
+
+
+#top-right-nav{
+	position: absolute;
 	margin-top: 20px;
 	margin-bottom: 50px;
+	margin-left: 650px;
 	
 }
+
 #top-right-nav li a{
 	text-decoration: none;
 	color: #535353;
@@ -148,6 +152,7 @@ div #left-container{
 	background-color: #EEEEEE;
 	position: absolute;
 	margin-top: 80px;
+	margin-left: 20px;
 }
 
 div #left-container-account{
@@ -322,15 +327,15 @@ form input{
     background-repeat:no-repeat;
    	background-position:left center;  
    	padding-left:70px;
-   	font-size: 10px;
-   	margin-top: 120px;
+   	font-size: 12px;
+   	margin-top: 10px;
 }
 #pass1{
 	background-image:url('img/password.png');
     background-repeat:no-repeat;
    	background-position:left center;  
    	padding-left:70px;
-   	font-size: 10px;
+   	font-size: 12px;
 }
 #pass2{
 	position: relative;
@@ -340,7 +345,7 @@ form input{
    	background-position:left center;  
    	padding-left:120px;
    	width: 139px;
-   	font-size: 10px;
+   	font-size: 12px;
 }
 
 #firstName{
@@ -349,7 +354,7 @@ form input{
    	background-position:left center;  
    	padding-left:80px;
 	width: 183px;
-	font-size: 10px;
+	font-size: 12px;
 	
 }
 #lastName{
@@ -358,15 +363,15 @@ form input{
    	background-position:left center;  
    	padding-left:75px;
    	width: 182px;
-   	font-size: 10px;
+   	font-size: 12px;
 }
 #mobile{
 	background-image:url('img/mobile.png');
     background-repeat:no-repeat;
    	background-position:left center;  
-   	padding-left:45px;
+   	padding-left:50px;
    	width: 217px;
-   	font-size: 10px;
+   	font-size: 12px;
 }
 #email{
 	background-image:url('img/email.png');
@@ -374,7 +379,7 @@ form input{
    	background-position:left center;  
    	padding-left:45px;
    	width: 212px;
-   	font-size: 10px;
+   	font-size: 12px;
 }
 #address{
 	background-image:url('img/address.png');
@@ -382,7 +387,7 @@ form input{
    	background-position:left center;  
    	padding-left:95px;
    	width: 285px;
-   	font-size: 10px;
+   	font-size: 12px;
 }
 #city{
 	background-image:url('img/city.png');
@@ -390,7 +395,7 @@ form input{
    	background-position:left center;  
    	padding-left:35px;
    	width: 105px;
-   	font-size: 10px;
+   	font-size: 12px;
 }
 #postcode{
 	background-image:url('img/postcode.png');
@@ -398,7 +403,64 @@ form input{
    	background-position:left center;  
    	padding-left:60px;
    	width: 185px;
-   	font-size: 10px;
+   	font-size: 12px;
+}
+#firstName-edit{
+	background-image:url('img/firstname.png');
+    background-repeat:no-repeat;
+   	background-position:left center;  
+   	padding-left:80px;
+	width: 183px;
+	font-size: 12px;
+	margin-top: 110px;
+}
+#lastName-edit{
+	background-image:url('img/lastname.png');
+    background-repeat:no-repeat;
+   	background-position:left center;  
+   	padding-left:75px;
+   	width: 182px;
+   	font-size: 12px;
+}
+#mobile-edit{
+	background-image:url('img/mobile.png');
+    background-repeat:no-repeat;
+   	background-position:left center;  
+   	padding-left:50px;
+   	width: 217px;
+   	font-size: 12px;
+}
+#email-edit{
+	background-image:url('img/email.png');
+    background-repeat:no-repeat;
+   	background-position:left center;  
+   	padding-left:45px;
+   	width: 212px;
+   	font-size: 12px;
+}
+#address-edit{
+	background-image:url('img/address.png');
+    background-repeat:no-repeat;
+   	background-position:left center;  
+   	padding-left:95px;
+   	width: 285px;
+   	font-size: 12px;
+}
+#city-edit{
+	background-image:url('img/city.png');
+    background-repeat:no-repeat;
+   	background-position:left center;  
+   	padding-left:35px;
+   	width: 105px;
+   	font-size: 12px;
+}
+#postcode-edit{
+	background-image:url('img/postcode.png');
+    background-repeat:no-repeat;
+   	background-position:left center;  
+   	padding-left:60px;
+   	width: 185px;
+   	font-size: 12px;
 }
 #required{
 	margin-top: 40px;
@@ -629,7 +691,7 @@ span:after{
 /*//shop online*/
 #left-container-shop{
 	height: 500px;
-	width: 830px;
+	width: 1100px;
 	position: absolute;
 	margin-top: 80px;
 
@@ -1442,12 +1504,12 @@ border-right: 5px solid white;
 	background-position:left center;  
 	padding-left:90px;
 	position: absolute;
-	font-size: 14px;
+	font-size: 12px;
 	background-color: white;
 	width: 260px;
 	height: 32px;
 	margin-left: -20px;
-	line-height: 230%;
+	line-height: 290%;
 
 }
 #typeName-view{
@@ -1456,7 +1518,7 @@ border-right: 5px solid white;
 	background-position:left center;  
 	padding-left:100px;
 	position: absolute;
-	font-size: 14px;
+	font-size: 12px;
 	background-color: white;
 	width: 250px;
 	height: 32px;
@@ -1472,9 +1534,9 @@ border-right: 5px solid white;
 	background-position:left top;  
 	padding-left:85px;
 	padding-right:5px;
-	padding-top: 5px;
+	padding-top: 8px;
 	position: absolute;
-	font-size: 14px;
+	font-size: 12px;
 	background-color: white;
 	width: 262px;
 	height: 75px;
@@ -1489,12 +1551,12 @@ border-right: 5px solid white;
 	background-position:left center;  
 	padding-left:45px;
 	position: absolute;
-	font-size: 14px;
+	font-size: 12px;
 	background-color: white;
 	width: 125px;
 	height: 32px;
 	margin-left: -20px;
-	line-height: 240%;
+	line-height: 270%;
 	margin-top: 180px;
 
 }
@@ -1504,12 +1566,12 @@ border-right: 5px solid white;
 	background-position:left center;  
 	padding-left:45px;
 	position: absolute;
-	font-size: 14px;
+	font-size: 12px;
 	background-color: white;
 	width: 124px;
 	height: 32px;
 	margin-left: 162px;
-	line-height: 240%;
+	line-height: 270%;
 	margin-top: 180px;
 }
 #price-view{
@@ -1661,7 +1723,7 @@ div #right-container{
 	background-color: #666666;
 	position: absolute;
 	margin-top: 80px;
-	margin-left: 692px;
+	margin-left: 770px;
 }
 #index-clothes{
 	height: 408px;
@@ -1700,7 +1762,7 @@ div #right-container{
 	z-index: 100;
 	position: absolute;
 	margin-top: 80px;
-	margin-left: 692px;
+	margin-left: 780px;
 	height: 420px;
 	width: 267px;
 }
@@ -1719,6 +1781,9 @@ div #right-container{
 }
 
 /*footer*/
+#search{
+	margin-left: -400px;
+}
 
 #search-bar input{
 	position: relative;
@@ -1865,10 +1930,10 @@ div #footer-socialMedia{
 }
 .copyright {
 	position: relative;
-	margin-right: 500px;
+	margin-right: 540px;
 	color: #bbb;
 	padding-left: 40px;
-	margin-top: -5px;
+	margin-top: -9px;
 	font-size: 10px;
 }
 
