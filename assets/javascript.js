@@ -55,46 +55,7 @@ function checkInput(sNameId){
 return bValid;
 }
 
-//onkey event used for Username
 
-// function colorField(sFieldId){
-
-// 	var oField = document.getElementById(sFieldId);
-
-// 	var sDataValue = oField.value;
-
-// 	var oUsername = document.getElementById('username');
-// 	var oFirstName = document.getElementById('firstName');
-// 	var oLastName = document.getElementById('lastName');
-// 	var oMobile = document.getElementById('mobile');
-// 	var oEmail = document.getElementById('email');
-// 	var oAddress = document.getElementById('address');
-// 	var oCity = document.getElementById('city');
-// 	var oPostCode = document.getElementById('postcode');
-
-// 	var oValid = "#B4E0E0";
-// 	var oInvalid = "#FF6666";
-
-// 	var oMessage = document.getElementById('confirmMessage');
-
-// 	var oRegExp = new RegExp("[a-zA-Z]");
-
-// 	if(oRegExp.test(sDataValue) == false){
-// 		//bad
-// 		oUsername.style.backgroundColor = oInvalid;
-// 		oMessage.style.color = oInvalid;
-// 		oMessage.innerHTML = "username must be alphabetic";
-		
-
-// 	}else{
-// 		//good
-// 		oUsername.style.backgroundColor = oValid;
-// 		oMessage.style.color = oValid;
-// 		oMessage.innerHTML = "";
-// 	}
-
-
-// }
 
 
 function checkPasswordMatch(){
@@ -233,7 +194,7 @@ function hideItem(){
 }
 
 
-//-----------------------------
+//-----------------------------JS Form Validation to work with PHP-------------------------//
 
 var aElements = document.getElementByClassName("required");
 
@@ -244,9 +205,58 @@ for(var iCount=0; iCount<aElements.length; iCount++){
 }
 
 
+var aElementPasswords = document.getElementByClassName("required");
+
+for(var iCount=0; iCount<aElementPasswords.length; iCount++){
+	aElementPasswords[iCount].onkeyup= function(){
+		checkPasswordMatch();
+	}
+}
 
 
 
+
+//TESTING//
+//onkey event used for Username
+
+// function colorField(sFieldId){
+
+// 	var oField = document.getElementById(sFieldId);
+
+// 	var sDataValue = oField.value;
+
+// 	var oUsername = document.getElementById('username');
+// 	var oFirstName = document.getElementById('firstName');
+// 	var oLastName = document.getElementById('lastName');
+// 	var oMobile = document.getElementById('mobile');
+// 	var oEmail = document.getElementById('email');
+// 	var oAddress = document.getElementById('address');
+// 	var oCity = document.getElementById('city');
+// 	var oPostCode = document.getElementById('postcode');
+
+// 	var oValid = "#B4E0E0";
+// 	var oInvalid = "#FF6666";
+
+// 	var oMessage = document.getElementById('confirmMessage');
+
+// 	var oRegExp = new RegExp("[a-zA-Z]");
+
+// 	if(oRegExp.test(sDataValue) == false){
+// 		//bad
+// 		oUsername.style.backgroundColor = oInvalid;
+// 		oMessage.style.color = oInvalid;
+// 		oMessage.innerHTML = "username must be alphabetic";
+		
+
+// 	}else{
+// 		//good
+// 		oUsername.style.backgroundColor = oValid;
+// 		oMessage.style.color = oValid;
+// 		oMessage.innerHTML = "";
+// 	}
+
+
+// }
 
 
 

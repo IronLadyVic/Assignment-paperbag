@@ -1,9 +1,9 @@
 <?php
-error_reporting(E_ALL | E_STRICT);  
-ini_set('display_startup_errors',1);  
-ini_set('display_errors',1);
+// error_reporting(E_ALL | E_STRICT);  
+// ini_set('display_startup_errors',1);  
+// ini_set('display_errors',1);
 
-require_once("includes/model-form.php");
+require_once("includes/view-form.php");
 require_once("includes/view.php");
 require_once("includes/collection.php");
 require_once("includes/member.php");
@@ -44,7 +44,7 @@ if(isset($_POST["submit"])){
 		$iMemberID = $oMember->MemberID;
 		$_SESSION['MemberID'] = $iMemberID;
 
-		header("Location:index-loggedin.php");
+		header("Location:success-loggedin.php");
 		exit(); 
 		}
 	}
@@ -67,13 +67,12 @@ $iTypeID = 1;
 
 require_once("includes/header.php");
 
-?>
-
-<!-- left main container -->
-<div id="left-container-login">
-<p class="header-login">log in</p>
-<?php echo $oForm->html; ?>
-<p class="required-login">* required input - NZ account holders only</p>
+// <!-- left main container -->
+// $sHTML = "";
+echo '<div id="left-container-login">
+<p class="header-login">log in</p>';
+echo $oForm->html; 
+echo '<p class="required-login">* required input - NZ account holders only</p>
 </div>
 <div id="right-new-member">
 	<p class="header-new-member">new member</p>
@@ -84,10 +83,10 @@ require_once("includes/header.php");
 				<li>create an account</li>
 			</ul>
 		</a>
-</div>	
-<!-- right main container -->
+</div>';
+// <!-- right main container -->
 
-<?php echo View::renderNavigation($aAllProductTypes);
+echo View::renderNavigation($aAllProductTypes);
 
 require_once("includes/footer.php");
 

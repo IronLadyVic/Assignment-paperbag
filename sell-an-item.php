@@ -1,5 +1,5 @@
 <?php
-require_once("includes/model-form.php");
+require_once("includes/view-form.php");
 require_once("includes/view.php");
 require_once("includes/collection.php");
 require_once("includes/product.php");
@@ -13,6 +13,7 @@ if(isset($_SESSION['MemberID'])){
 }
 
 $oProduct = new Product();
+$oProduct->load($_SESSION['ProductID']);
 $aExsistingData = array();
 
 $aExsistingData['ItemName'] = $oProduct->ItemName;

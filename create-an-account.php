@@ -1,5 +1,9 @@
 <?php
-require_once("includes/model-form.php");
+// error_reporting(E_ALL | E_STRICT);  
+// ini_set('display_startup_errors',1);  
+// ini_set('display_errors',1);
+
+require_once("includes/view-form.php");
 require_once("includes/view.php");
 require_once("includes/collection.php");
 require_once("includes/member.php");
@@ -54,8 +58,8 @@ if(isset($_POST["submit"])){
 }
 
 $oForm->makeTextInput('','username');
-$oForm->makeTextInput('','pass1');
-$oForm->makeTextInput('','pass2');
+$oForm->makePasswordInput('','pass1');
+$oForm->makePasswordInput('','pass2');
 $oForm->makeTextInput('','firstName');
 $oForm->makeTextInput('','lastName');
 $oForm->makeTextInput('','mobile');

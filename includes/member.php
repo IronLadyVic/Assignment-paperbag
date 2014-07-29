@@ -83,14 +83,14 @@ class Member{
 		//execute query from database and insert data into....
 		$sSQL = "INSERT INTO tbmember(UserName, Password, FirstName, LastName, Mobile, Email, StreetAddress, City, PostCode) 
 		VALUES ('".$this->sUserName."',
-			'".$this->sPassword."',
-			'".$this->sFirstName."',
-			'".$this->sLastName."',
-			'".$this->iMobile."',
-			'".$this->sEmail."',
-			'".$this->sStreetAddress."',
-			'".$this->sCity."',
-			'".$this->iPostCode."')";
+			'".$oConnection->escape_value($this->sPassword)."',
+			'".$oConnection->escape_value($this->sFirstName)."',
+			'".$oConnection->escape_value($this->sLastName)."',
+			'".$oConnection->escape_value($this->iMobile)."',
+			'".$oConnection->escape_value($this->sEmail)."',
+			'".$oConnection->escape_value($this->sStreetAddress)."',
+			'".$oConnection->escape_value($this->sCity)."',
+			'".$oConnection->escape_value($this->iPostCode)."')";
 		//if the query runs, the result is ture and the save function will insert into id. if not true, then the query has failed.
 		$bResult = $oConnection->query($sSQL);
 		if($bResult == true){
@@ -102,10 +102,13 @@ class Member{
 	}
 		else{
 		$sSQL = "UPDATE tbmember 
-		SET UserName='".$this->sUserName."', Password='".$this->sPassword."',
-			FirstName='".$this->sFirstName."',LastName='".$this->sLastName."',
-			Mobile='".$this->iMobile."',Email='".$this->sEmail."',StreetAddress='".$this->sStreetAddress."',
-			City='".$this->sCity."',PostCode='".$this->iPostCode."'
+		SET FirstName='".$oConnection->escape_value($this->sFirstName)."',
+			LastName='".$oConnection->escape_value($this->sLastName)."',
+			Mobile='".$oConnection->escape_value($this->iMobile)."',
+			Email='".$oConnection->escape_value($this->sEmail)."',
+			StreetAddress='".$oConnection->escape_value($this->sStreetAddress)."',
+			City='".$oConnection->escape_value($this->sCity)."',
+			PostCode='".$oConnection->escape_value($this->iPostCode)."'
 			WHERE tbmember.MemberID=".$this->iMemberID;
 		
 			$bResult = $oConnection->query($sSQL);

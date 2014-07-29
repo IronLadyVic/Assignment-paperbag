@@ -1,5 +1,5 @@
 <?php
-require_once("includes/model-form.php");
+require_once("includes/view-form.php");
 require_once("includes/view.php");
 require_once("includes/collection.php");
 require_once("includes/member.php");
@@ -81,23 +81,23 @@ if(isset($_GET["productType"])){
 
 require_once("includes/header.php");
 
-?>
-
-<!-- left main container -->
-<div id="left-container-account">
-<p class="header">edit my account</p>
-
-<?php echo $oForm->html; ?>
 
 
-<p id="required">* required input - account members NZ address only</p>
-</div>
+// <!-- left main container -->
 
-<!-- <div id="right-navigation-shop"> -->
+$sHTML ="";
+echo '<div id="left-container-account">
+<p class="header">edit my account</p>';
 
-<?php echo View::renderNavigation($aAllProductTypes);?>
+echo $oForm->html;
 
 
-<?php
+echo '<p id="required">* required input - account members NZ address only</p>
+</div>';
+
+// <!-- <div id="right-navigation-shop"> -->
+
+echo View::renderNavigation($aAllProductTypes);
+
 require_once("includes/footer-loggedin.php");
 ?>

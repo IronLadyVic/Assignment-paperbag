@@ -10,7 +10,7 @@ class View{
 		for($i=0; $i<count($aProductTypes); $i++){
 			$oType = $aProductTypes[$i];
 			$sHTML .='<li>';
-			$sHTML .='<a href="producttype.php?productType='.$oType->TypeID.'">';//this query string will link to product type ie. Jackets, tees, tshirt
+			$sHTML .='<a href="producttype.php?productType='.htmlentities($oType->TypeID).'">';//this query string will link to product type ie. Jackets, tees, tshirt
 			$sHTML .= $oType->TypeName;
 			$sHTML .='</a>';
 			$sHTML .='</li>'; 
@@ -35,16 +35,16 @@ class View{
 
 			$oProduct = $aProducts[$i];
 			$sHTML.='<li id="item">';
-			$sHTML.='<a href="#" onclick="showItem('.$oProduct->TypeID.')">+ view<img class="image" alt="product-type-image" src="assets/img/'.$oProduct->PhotoPath.'"/></a>';
-			$sHTML.='<div class="product-name">'.$oProduct->ItemName.'</div>';
-			$sHTML.='<div class="producttype-name">'.$oProduct->TypeName.'</div>';
-			$sHTML.='<div class="description"><p class="description-text">'.$oProduct->Description.'</p></div>';
-			$sHTML.='<div class="size">'.$oProduct->Size.'</div>';
-			$sHTML.='<div class="label">'.$oProduct->Label.'</div>';
-			$sHTML.='<div class="price">'.$oProduct->Price.'</div>';
+			$sHTML.='<a href="#" onclick="showItem('.htmlentities($oProduct->TypeID).')">+ view<img class="image" alt="product-type-image" src="assets/img/'.htmlentities($oProduct->PhotoPath).'"/></a>';
+			$sHTML.='<div class="product-name">'.htmlentities($oProduct->ItemName).'</div>';
+			$sHTML.='<div class="producttype-name">'.htmlentities($oProduct->TypeName).'</div>';
+			$sHTML.='<div class="description"><p class="description-text">'.htmlentities($oProduct->Description).'</p></div>';
+			$sHTML.='<div class="size">'.htmlentities($oProduct->Size).'</div>';
+			$sHTML.='<div class="label">'.htmlentities($oProduct->Label).'</div>';
+			$sHTML.='<div class="price">'.htmlentities($oProduct->Price).'</div>';
 			$sHTML.='<div>';
 			if(isset($_SESSION['MemberID']) == true){
-			$sHTML.='<a href="my-paperbag-cart.php?ProductID='.$oProduct->ProductID.'" class="submit">add to my paperbag</a>';
+			$sHTML.='<a href="my-paperbag-cart.php?ProductID='.htmlentities($oProduct->ProductID).'" class="submit">add to my paperbag</a>';
 		}else{
 			$sHTML.='<a href="login.php" class="submit">add to my paperbag</a>';
 		}
@@ -69,16 +69,16 @@ static public function renderProductOverlay($oOverlay){
 		$oProductOverlay = $aProducts[$i];
 
 		$sHTML.='<li id="item-enlarge">';
-			$sHTML.='<div class="shop-image-enlarge"><a href="#" onclick="showItem('.$oProductOverlay->TypeID.')"><img src="assets/img/'.$oProductOverlay->PhotoPath.'"/></a></div>';
-		$sHTML.='<div class="product-name-enlarge">'.$oProductOverlay->ItemName.'</div>';
-		$sHTML.='<div class="producttype-name-enlarge">'.$oProductOverlay->TypeName.'</div>';
-		$sHTML.='<div class="description-enlarge"><p class="description-text-enlarge">'.$oProductOverlay->Description.'</p></div>';
-		$sHTML.='<div class="size-enlarge">'.$oProductOverlay->Size.'</div>';
-		$sHTML.='<div class="label-enlarge">'.$oProductOverlay->Label.'</div>';
-		$sHTML.='<div class="price-enlarge">'.$oProductOverlay->Price.'</div>';
+			$sHTML.='<div class="shop-image-enlarge"><a href="#" onclick="showItem('.htmlentities($oProductOverlay->TypeID).')"><img src="assets/img/'.htmlentities($oProductOverlay->PhotoPath).'"/></a></div>';
+		$sHTML.='<div class="product-name-enlarge">'.htmlentities($oProductOverlay->ItemName).'</div>';
+		$sHTML.='<div class="producttype-name-enlarge">'.htmlentities($oProductOverlay->TypeName).'</div>';
+		$sHTML.='<div class="description-enlarge"><p class="description-text-enlarge">'.htmlentities($oProductOverlay->Description).'</p></div>';
+		$sHTML.='<div class="size-enlarge">'.htmlentities($oProductOverlay->Size).'</div>';
+		$sHTML.='<div class="label-enlarge">'.htmlentities($oProductOverlay->Label).'</div>';
+		$sHTML.='<div class="price-enlarge">'.htmlentities($oProductOverlay->Price).'</div>';
 
 		if(isset($_SESSION['MemberID']) == true){
-			$sHTML.='<a href="my-paperbag-cart.php?ProductID='.$oProductOverlay->ProductID.'" class="submit-enlarge">add to my paperbag</a>';}
+			$sHTML.='<a href="my-paperbag-cart.php?ProductID='.htmlentities($oProductOverlay->ProductID).'" class="submit-enlarge">add to my paperbag</a>';}
 			else{
 				return false;
 			$sHTML.='<a href="login.php" class="submit-enlarge">add to my paperbag</a>';
@@ -101,17 +101,17 @@ static public function renderMemberDetails($oMember){
 	$sHTML.='<div id="left-container-account">';
 	$sHTML.='<ul>';
 		$sHTML.='<p class="header">my account details</p>';
-			$sHTML.='<li id="username">"'.$oMember->username.'"</li>';
-			$sHTML.='<li id="pass1">"'.$oMember->password.'"</li>';
-			$sHTML.='<li id="pass2">"'.$oMember->password.'"</li>';
+			$sHTML.='<li id="username">"'.htmlentities($oMember->username).'"</li>';
+			$sHTML.='<li id="pass1">"'.htmlentities($oMember->password).'"</li>';
+			$sHTML.='<li id="pass2">"'.htmlentities($oMember->password).'"</li>';
 			$sHTML.='<p class="header">my personal details</p>';
-			$sHTML.='<li id="firstName">"'.$oMember->firstName.'"</li>';
-			$sHTML.='<li id="lastName">"'.$oMember->lastName.'"</li>';
-			$sHTML.='<li id="mobile">"'.$oMember->mobile.'"</li>';
-			$sHTML.='<li id="email">"'.$oMember->email.'"</li>';
-			$sHTML.='<li id="address">"'.$oMember->address.'"</li>';
-			$sHTML.='<li id="city">"'.$oMember->city.'"</li>';
-			$sHTML.='<li id="postcode">"'.$oMember->postcode.'"</li>';
+			$sHTML.='<li id="firstName">"'.htmlentities($oMember->firstName).'"</li>';
+			$sHTML.='<li id="lastName">"'.htmlentities($oMember->lastName).'"</li>';
+			$sHTML.='<li id="mobile">"'.htmlentities($oMember->mobile).'"</li>';
+			$sHTML.='<li id="email">"'.htmlentities($oMember->email).'"</li>';
+			$sHTML.='<li id="address">"'.htmlentities($oMember->address).'"</li>';
+			$sHTML.='<li id="city">"'.htmlentities($oMember->city).'"</li>';
+			$sHTML.='<li id="postcode">"'.htmlentities($oMember->postcode).'"</li>';
 			$sHTML.='<a id="send" href="edit-my-account.php">edit my details</a>';		
 		$sHTML.='</ul>';	
 	$sHTML.='<p id="required">* required li - account members NZ address only</p>';
@@ -128,19 +128,19 @@ static public function renderProductDetails($oProduct){
 	$sHTML='<div id="left-container-sell">';
 	$sHTML.='<p class="header">items im selling</p>';
 	$sHTML.='<ul>';		
-		$sHTML.='<li id="item-name-view">'.$oProduct->ItemName.'</li>';
-		$sHTML.='<li id="typeName-view" ">'.$oProduct->TypeName.'</li>';		
-		$sHTML.='<li id="description-view" ">'.$oProduct->Description.'</li>';			
-		$sHTML.='<li id="size-view" ">'.$oProduct->Size.'</li>';		
-		$sHTML.='<li id="labels-view" ">'.$oProduct->Label.'</li>';
-		$sHTML.='<li id="price-view">'.$oProduct->Price.'</li>';	
-		$sHTML.='<div id="edit-sell-item"><a href="edit-sell-an-item.php?productID='.$oProduct->ProductID.'">edit item</a></div>' ;
+		$sHTML.='<li id="item-name-view">'.htmlentities($oProduct->ItemName).'</li>';
+		$sHTML.='<li id="typeName-view" ">'.htmlentities($oProduct->TypeName).'</li>';		
+		$sHTML.='<li id="description-view" ">'.htmlentities($oProduct->Description).'</li>';			
+		$sHTML.='<li id="size-view" ">'.htmlentities($oProduct->Size).'</li>';		
+		$sHTML.='<li id="labels-view" ">'.htmlentities($oProduct->Label).'</li>';
+		$sHTML.='<li id="price-view">'.htmlentities($oProduct->Price).'</li>';	
+		$sHTML.='<div id="edit-sell-item"><a href="edit-sell-an-item.php?productID='.htmlentities($oProduct->ProductID).'">edit item</a></div>' ;
 		$sHTML.='<div id="remove-sell-item"><a href="">remove item</a></div> ';
 		$sHTML.='<p id="withdraw-disclaimer">you can withdraw your sell item<br/> 
 		by clicking remove item. <br/> 
 		A charge of $50.00 will be issued <br/> 
 		to your email on removal of item.</p>';
-		$sHTML.='<img id="item-image-view" alt="item-image" src="assets/img/'.$oProduct->PhotoPath.'"/>';
+		$sHTML.='<img id="item-image-view" alt="item-image" src="assets/img/'.htmlentities($oProduct->PhotoPath).'"/>';
 		$sHTML.='<img alt="next" src="assets/img/view-next-item.png" id="next-item-text"></img>';
 		$sHTML.='</ul>';
 		$sHTML.='</div>';
@@ -188,12 +188,12 @@ static public function renderCart($oCart){
 			$oProduct = load($keyProductID);
 			// $sHTML .= '<tfoot><tr><td colspan="7"><div id="subtotal"><p>subtotal incl. GST $</p></div></tr></tfoot>';
 			$sHTML .='<tbody><tr>';
-			$sHTML .='<td id="product-image">'.$oProduct->PhotoPath.'</td>';
-			$sHTML .='<td valign="top">'.$oProduct->TypeName.'</td>';
-			$sHTML .='<td valign="top">'.$oProduct->Description.'</td>';
-			$sHTML .='<td valign="top">'.$oProduct->Size.'</td>';
-			$sHTML .='<td valign="top">'.$oProduct->Label.'</td>';
-			$sHTML .='<td valign="top">'.$oProduct->Price.'</td>';
+			$sHTML .='<td id="product-image">'.htmlentities($oProduct->PhotoPath).'</td>';
+			$sHTML .='<td valign="top">'.htmlentities($oProduct->TypeName).'</td>';
+			$sHTML .='<td valign="top">'.htmlentities($oProduct->Description).'</td>';
+			$sHTML .='<td valign="top">'.htmlentities($oProduct->Size).'</td>';
+			$sHTML .='<td valign="top">'.htmlentities($oProduct->Label).'</td>';
+			$sHTML .='<td valign="top">'.htmlentities($oProduct->Price).'</td>';
 		$sHTML .='</tr>';
 	
 		$sHTML .='<div id="cart-buttons">';

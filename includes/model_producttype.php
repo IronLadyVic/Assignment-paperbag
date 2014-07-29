@@ -58,6 +58,8 @@ class ProductType{
 		$this->bExisting = true;
 	}
 
+
+	//added escape value function to reject bad data input into SQL in the update and insert.
 	public function save(){
 		//open connection
 		$oConnection = new Connection();
@@ -66,9 +68,9 @@ class ProductType{
 		//execute query from database and insert data into....
 		$sSQL = "INSERT INTO producttype(TypeName, Description, DisplayOrder) 
 		VALUES (
-			'".$this->sTypeName."',
-			'".$this->sDescription."',
-			'".$this->iDisplayOrder."')";
+			'".$oConnection->escape_value($this->sTypeName)."',
+			'".$oConnection->escape_value($this->sDescription)."',
+			'".$oConnection->escape_value($this->iDisplayOrder)."')";
 		//if the query runs, the result is ture and the save function will insert into id. if not true, then the query has failed.
 		$bResult = $oConnection->query($sSQL);
 		if($bResult == true){
@@ -80,9 +82,9 @@ class ProductType{
 	}
 		else{
 		$sSQL = "UPDATE producttype 
-		SET TypeName='".$this->sTypeName."',
-			Description='".$this->sDescription."', 
-			DisplayOrder='".$this->iDisplayOrder."'
+		SET TypeName='".$oConnection->escape_value($this->sTypeName)."',
+			Description='".$oConnection->escape_value($this->sDescription)."', 
+			DisplayOrder='".$oConnection->escape_value($this->iDisplayOrder)."'
 			WHERE producttype.TypeID=".$this->iTypeID;
 		
 			$bResult = $oConnection->query($sSQL);
