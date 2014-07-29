@@ -51,7 +51,7 @@ class Form{
 			<option value="'.$sData.'">dress</option>
 			<option value="'.$sData.'">skirt</option>
 			</select> ';
-		$this->sHTML .='<span>'.$sError.'</span>';
+		$this->sHTML .='<span id="'.$sControlName.'Message">'.$sError.'</span>';
 	}
 
 	 public function makePasswordInput($sLabelText, $sControlName){

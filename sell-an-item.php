@@ -1,4 +1,5 @@
 <?php
+define("MAX_SIZE","10000000");
 require_once("includes/view-form.php");
 require_once("includes/view.php");
 require_once("includes/collection.php");
@@ -13,16 +14,20 @@ if(isset($_SESSION['MemberID'])){
 }
 
 $oProduct = new Product();
-$oProduct->load($_SESSION['ProductID']);
+// $oProduct->load($_SESSION['ProductID']);
 $aExsistingData = array();
 
-$aExsistingData['ItemName'] = $oProduct->ItemName;
-$aExsistingData['TypeName'] = $oProduct->TypeName;
-$aExsistingData['Description'] = $oProduct->Description;
-$aExsistingData['Size'] = $oProduct->Size;
-$aExsistingData['Label'] = $oProduct->Label;
-$aExsistingData['Price'] = $oProduct->Price;
-$aExsistingData['PhotoPath'] = $oProduct->PhotoPath;
+// $aExsistingData['ItemName'.$oProduct->ProductID] = $oProduct->ItemName;
+$aExsistingData['item-name'] = $oProduct->ItemName;
+$aExsistingData['typeName'] = $oProduct->TypeName;
+$aExsistingData['description'] = $oProduct->Description;
+$aExsistingData['size'] = $oProduct->Size;
+$aExsistingData['labels'] = $oProduct->Label;
+// $aExsistingData['item-image-edit'] = $oProduct->PhotoPath;
+$aExsistingData['upload-photo'] = $oProduct->PhotoPath;
+$aExsistingData['MAX_FILE_SIZE'] = $oProduct->PhotoPath;
+// $aExsistingData['browse'] = $oProduct->PhotoPath;
+$aExsistingData['price'] = $oProduct->Price;
 
 
 
@@ -32,23 +37,26 @@ $oForm->data = $aExsistingData;
 if(isset($_POST['submit'])){
 	$oForm->data = $_POST;
 	$oForm->files = $_FILES;
-	$oForm->checkRequired('ItemName');
-	$oForm->checkRequired('TypeName');
-	$oForm->checkRequired('Description');
-	$oForm->checkRequired('Size');
-	$oForm->checkRequired('Label');
-	$oForm->checkRequired('Price');
-	$oForm->checkUpload('PhotoPath','image/jpg',1000);
+	$oForm->checkRequired('item-name');
+$oForm->checkRequired('typeName');
+$oForm->checkRequired('description');
+$oForm->checkRequired('size');
+$oForm->checkRequired('labels');
+$oForm->checkRequired('upload-photo');
+$oForm->checkUpload("photo", "image/jpeg", 'MAX_SIZE');
+$oForm->checkRequired('price');
 
+	
 	if($oForm->isValid){
-		$sPhotoName = "Product".date("Y-m-d-H-i-s")."jpg";
-		$oForm->moveFile('PhotoPath',$sPhotoName);
-		$oProduct->ItemName = $_POST['ItemName'];
-		$oProduct->TypeName = $_POST['TypeName'];
-		$oProduct->Description = $_POST['Description'];
-		$oProduct->Size = $_POST['Size'];
-		$oProduct->Label = $_POST['Label'];
-		$oProduct->PhotoPath = $sPhotoName;
+		
+		$oProduct->ItemName = $_POST['item-name'];
+		$oProduct->TypeName = $_POST['typeName'];
+		$oProduct->Description = $_POST['description'];
+		$oProduct->Size = $_POST['size'];
+		$oProduct->Label = $_POST['labels'];
+		$oProduct->moveFile('PhotoPath',$sPhotoName);
+			$sPhotoName = "Product".date("Y-m-d-H-i-s")."jpg";
+			$oProduct->PhotoPath = $sPhotoName;
 		$oProduct->Price = $_POST['Price'];
 
 		$oProduct->save();
@@ -63,12 +71,17 @@ $oForm->makeTextDropDown('','typeName');
 $oForm->makeTextInput('','description');
 $oForm->makeTextInput('','size');
 $oForm->makeTextInput('','labels');
-// $oForm->makeTextInput('upload item','upload-photo');
-$oForm->makeHiddenField('MAX_FILE_SIZE',1000);
-// $oForm->makeTextInput('upload item','browse');
-$oForm->makeUpLoadBox('','browse-upload');
+$oForm->makeUpLoadBox("double click here","upload-photo");
+$oForm->makeHiddenField("MAX_FILE_SIZE", 'MAX_SIZE');
+// $oForm->makeTextInput("upload","browse-upload");
 $oForm->makeTextInput('','price');
-$oForm->makeSubmit('sell my item','submit');
+$oForm->makeSubmit('save changes','submit');
+
+
+
+$oView = new View();
+$oCollection = new Collection();
+$aAllProductTypes = $oCollection->getAllProductTypes();
 
 
 $oView = new View();//store the view class in the OView variable

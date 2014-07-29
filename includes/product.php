@@ -8,8 +8,8 @@ class Product{
 	private $iSellerID;
 	private $iBuyerID;
 	private $iTypeID;
-	private $sTypeName;
 	private $sItemName;
+	private $sTypeName;
 	private $sDescription;
 	private $sSize;
 	private $sLabel;
@@ -24,8 +24,8 @@ class Product{
 		$this->iSellerID = 0;
 		$this->iBuyerID = 0;
 		$this->iTypeID = 0;
-		$this->sTypeName = "";
 		$this->sItemName = "";
+		$this->sTypeName = "";
 		$this->sDescription = "";
 		$this->sSize = "";
 		$this->sLabel = "";
@@ -42,7 +42,7 @@ class Product{
 		//open connection
 		$oConnection = new Connection();
 		//execute query from database
-		$sSQL = "SELECT ProductID, SellerID, BuyerID, TypeID, TypeName, ItemName, Description, Size, Label, Price, PhotoPath, Active 
+		$sSQL = "SELECT ProductID, SellerID, BuyerID, TypeID, ItemName, TypeName, Description, Size, Label, Price, PhotoPath, Active 
 		FROM tbproduct
 		WHERE ProductID = ".$iProductID;
 		// echo $sSQL;
@@ -56,8 +56,8 @@ class Product{
 		$this->iSellerID = $aProduct['SellerID'];
 		$this->iBuyerID = $aProduct['BuyerID'];
 		$this->iTypeID = $aProduct['TypeID'];
-		$this->sTypeName = $aProduct['TypeName'];
 		$this->sItemName = $aProduct['ItemName'];
+		$this->sTypeName = $aProduct['TypeName'];
 		$this->sDescription =$aProduct['Description'];
 		$this->sSize = $aProduct['Size'];
 		$this->sLabel = $aProduct['Label'];
@@ -79,11 +79,8 @@ class Product{
 
 		if($this->bExisting == false){
 		//execute query from database and insert data into....
-		$sSQL = "INSERT INTO tbproduct(SellerID, BuyerID, TypeID, TypeName, ItemName, Description, Size, Label, Price, PhotoPath, Active) 
+		$sSQL = "INSERT INTO tbproduct(ItemName, TypeName, Description, Size, Label, Price, PhotoPath, Active) 
 		VALUES (
-			'".$oConnection->escape_value($this->iSellerID)."',
-			'".$oConnection->escape_value($this->iBuyerID)."',
-			'".$oConnection->escape_value($this->iTypeID)."',
 			'".$oConnection->escape_value($this->sTypeName)."',
 			'".$oConnection->escape_value($this->sItemName)."',
 			'".$oConnection->escape_value($this->sDescription)."',
@@ -91,7 +88,7 @@ class Product{
 			'".$oConnection->escape_value($this->sLabel)."',
 			'".$oConnection->escape_value($this->fPrice)."',
 			'".$oConnection->escape_value($this->sPhotoPath)."',
-			'".$oConnection->escape_value($this->iActive)."')";
+			";
 		//if the query runs, the result is ture and the save function will insert into id. if not true, then the query has failed.
 		$bResult = $oConnection->query($sSQL);
 		if($bResult == true){
@@ -103,16 +100,14 @@ class Product{
 	}
 		else{
 		$sSQL = "UPDATE tbproduct 
-		SET SellerID='".$oConnection->escape_value($this->iSellerID)."', 
-			TypeID='".$oConnection->escape_value($this->iTypeID)."', 
+		SET ItemName='".$oConnection->escape_value($this->sItemName)."',  
 			TypeName='".$oConnection->escape_value($this->sTypeName)."',
-			ItemName='".$oConnection->escape_value($this->sItemName)."', 
 			Description='".$oConnection->escape_value($this->sDescription)."',
 			Size='".$oConnection->escape_value($this->sSize)."', 
 			Label='".$oConnection->escape_value($this->sLabel)."', 
 			Price='".$oConnection->escape_value($this->fPrice)."',
-			PhotoPath='".$oConnection->escape_value($this->sPhotoPath)."', 
-			Active='".$oConnection->escape_value($this->iActive)."'
+			PhotoPath='".$oConnection->escape_value($this->sPhotoPath)."'
+			
 			WHERE tbproduct.ProductID=".$this->iProductID;
 		
 			$bResult = $oConnection->query($sSQL);
@@ -132,8 +127,8 @@ public function __get($var){
 		case "SellerID":return $this->iSellerID;break;
 		case "BuyerID":return $this->iBuyerID;break;
 		case "TypeID":return $this->iTypeID;break;
-		case "TypeName":return $this->sTypeName;break;
 		case "ItemName":return $this->sItemName;break;
+		case "TypeName":return $this->sTypeName;break;
 		case "Description":return $this->sDescription;break;
 		case "Size":return $this->sSize;break;
 		case "Label":return $this->sLabel;break;
@@ -157,11 +152,11 @@ public function __set($var, $value){
 		case "TypeID":
 		$this->iTypeID = $value;
 		break;
-		case "TypeName":
-		$this->sTypeName = $value;
-		break;
 		case "ItemName":
 		$this->sItemName = $value;
+		break;
+		case "TypeName":
+		$this->sTypeName = $value;
 		break;
 		case "Description":
 		$this->sDescription = $value;

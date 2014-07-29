@@ -16,7 +16,7 @@ if(!isset($_SESSION['MemberID'])){
 
 $oProduct = new Product();
 //load the product of that member in te session
-// $oProduct->load($_SESSION['ProductID']);
+$oProduct->load($_SESSION['ProductID']);
 
 // $iProductID = 1;
 // if(isset($_GET["ProductID"])){
