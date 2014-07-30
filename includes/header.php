@@ -40,7 +40,7 @@ echo'
 <!-- right navigation -->
 <div id="top-right-nav">
 	<p id="welcome">welcome</p><span id="welcome-username">';
-echo htmlentities('"'.$oMember->FirstName.'"');
+echo htmlentities(''.$oMember->FirstName.'');
 	echo '</span>
 	<p id="items-im-selling"><a href="items-im-selling.php">items im selling</a></p>
 	<ul>

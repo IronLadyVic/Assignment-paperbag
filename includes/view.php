@@ -180,13 +180,12 @@ static public function renderCart($oCart){
 				<th id="price-text">price</th>
 			</tr>
 		</thead>';
-		$oCart = new Cart();
+	
 		$aContents = $oCart->Contents;
 		foreach($aContents as $keyProductID => $value){
 			$oProduct = new Product();
+			$oProduct->load($keyProductID);
 
-			$oProduct = load($keyProductID);
-			// $sHTML .= '<tfoot><tr><td colspan="7"><div id="subtotal"><p>subtotal incl. GST $</p></div></tr></tfoot>';
 			$sHTML .='<tbody><tr>';
 			$sHTML .='<td id="product-image">'.htmlentities($oProduct->PhotoPath).'</td>';
 			$sHTML .='<td valign="top">'.htmlentities($oProduct->TypeName).'</td>';
@@ -194,16 +193,17 @@ static public function renderCart($oCart){
 			$sHTML .='<td valign="top">'.htmlentities($oProduct->Size).'</td>';
 			$sHTML .='<td valign="top">'.htmlentities($oProduct->Label).'</td>';
 			$sHTML .='<td valign="top">'.htmlentities($oProduct->Price).'</td>';
-		$sHTML .='</tr>';
-	
-		$sHTML .='<div id="cart-buttons">';
-		$sHTML .='<tr>';
-		$sHTML .='<td id="remove-items" type="submit" value="remove-items"><a href="remove-item.php?ProductID='.$keyProductID.'"></a></td>';
-		$sHTML .='<td id="add-items" type="submit" value="add-items"</td>';
-		$sHTML .='<td id="checkout" type="submit" value="checkout"</td>';
-		$sHTML .='</tr>';
-		$sHTML .='</div>';
-		$sHTML .='</tbody>';
+			// $sHTML .= '<tfoot><tr><td colspan="7"><div id="subtotal"><p>subtotal incl. GST $'..'</p></div></tr></tfoot>';
+			$sHTML .='</tr>';
+			$sHTML .='<div id="cart-buttons">';
+			$sHTML .='<tr>';
+
+			$sHTML .='<td id="remove-items" type="submit" value="remove-items"><a href="remove-item.php?productID='.$keyProductID.'"></a></td>';
+			$sHTML .='<td id="add-items" type="submit" value="add-items"</td>';
+			$sHTML .='<td id="checkout" type="submit" value="checkout"</td>';
+			$sHTML .='</tr>';
+			$sHTML .='</div>';
+			$sHTML .='</tbody>';
 }
 
 return $sHTML .= '</table>';

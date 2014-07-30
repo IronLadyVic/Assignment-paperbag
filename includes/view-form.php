@@ -24,12 +24,44 @@ class Form{
 		}
 
 		$this->sHTML .='<label for="'.$sControlName.'">'.$sLabelText.'</label>';
-		$this->sHTML .='<input type="text" name="'.$sControlName.'" class="'.$sClassName.'" placeholder="*" id="'.$sControlName.'" value="'.$sData.'" onblur="checkInput(this.id)" onkeyup="checkPasswordMatch(); return true;">';
+		$this->sHTML .='<input type="text" name="'.$sControlName.'" class="'.$sClassName.'" placeholder="*" id="'.$sControlName.'" value="'.$sData.'" onblur="checkInput(this.id)" >';
 		$this->sHTML .='<span id="'.$sControlName.'Message">'.$sError.'</span>';
-		// $this->sHTML .='<span id="usernameMessage">'.$sError.'</span>';
+		
 
 	}
-	public function makeTextDropDown($sLabelText, $sControlName){
+	public function makeNumericInput($sLabelText, $sControlName, $sClassName=""){
+		$sData ="";
+		if(isset($this->aData[$sControlName])){
+			$sData = $this->aData[$sControlName];
+		}
+		$sError = "";
+		if(isset($this->aErrors[$sControlName])){
+			$sData = $this->aErrors[$sControlName];
+		}
+
+		$this->sHTML .='<label for="'.$sControlName.'">'.$sLabelText.'</label>';
+		$this->sHTML .='<input type="text" name="'.$sControlName.'" class="'.$sClassName.'" placeholder="*" id="'.$sControlName.'" value="'.$sData.'" onblur="checkNumeric(this.id)">';
+		$this->sHTML .='<span id="'.$sControlName.'Message">'.$sError.'</span>';
+		
+
+	}
+	public function makeEmailInput($sLabelText, $sControlName, $sClassName=""){
+		$sData ="";
+		if(isset($this->aData[$sControlName])){
+			$sData = $this->aData[$sControlName];
+		}
+		$sError = "";
+		if(isset($this->aErrors[$sControlName])){
+			$sData = $this->aErrors[$sControlName];
+		}
+
+		$this->sHTML .='<label for="'.$sControlName.'">'.$sLabelText.'</label>';
+		$this->sHTML .='<input type="text" name="'.$sControlName.'" class="'.$sClassName.'" placeholder="*" id="'.$sControlName.'" value="'.$sData.'" onblur="checkEmail(this.id)">';
+		$this->sHTML .='<span id="'.$sControlName.'Message">'.$sError.'</span>';
+		
+
+	}
+	public function makeTextDropDown($sLabelText, $sControlName, $sClassName=""){
 		$sData ="";
 		if(isset($this->aData[$sControlName])){
 			$sData = $this->aData[$sControlName];
@@ -54,7 +86,7 @@ class Form{
 		$this->sHTML .='<span id="'.$sControlName.'Message">'.$sError.'</span>';
 	}
 
-	 public function makePasswordInput($sLabelText, $sControlName){
+	 public function makePasswordInput($sLabelText, $sControlName, $sClassName=""){
 		$sData ="";
 		if(isset($this->aData[$sControlName])){
 			$sData = $this->aData[$sControlName];
@@ -70,7 +102,7 @@ class Form{
 		
 
 	}
- public function makeUpLoadBox($sLabelText, $sControlName){
+ public function makeUpLoadBox($sLabelText, $sControlName, $sClassName=""){
 	$sError = "";
 
 	if(isset($this->aErrors[$sControlName])){
@@ -79,7 +111,7 @@ class Form{
 	$this->sHTML .='<div id="upload-photo">';
 	$this->sHTML.='<label for="'.$sControlName.'">'.$sLabelText.'</label>';
 	$this->sHTML.='<input type="file" name="'.$sControlName.'" placeholder="*" id="'.$sControlName.'" onblur="checkInput(this.id)">';
-	$this->sHTML .='<span id="'.$sControlName.'Message">'.$sError.'</span>';
+	// $this->sHTML .='<span id="'.$sControlName.'Message">'.$sError.'</span>';
 	$this->sHTML .='</div>';
 }
 

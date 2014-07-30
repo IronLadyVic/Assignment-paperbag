@@ -7,11 +7,16 @@ require_once("includes/model-my-paperbag-cart.php");
 
 session_start();
 
-$oCart = new Cart();
-
 
 if(!isset($_SESSION['MemberID'])){
-	header('Location:login.php');
+
+	$keyProductID = array_search('Remove', $_POST);
+
+	if ($key != false) {
+		$oCart = new Cart();
+		$oCart->removeProduct($keyProductID);
+	}
+	
 }
 
 
@@ -37,6 +42,6 @@ echo View::renderCart($oCart);
 
 echo View::renderNavigation($aAllProductTypes);
 
-require_once("includes/footer-loggedin.php");
+require_once("includes/footer.php");
 
 ?>

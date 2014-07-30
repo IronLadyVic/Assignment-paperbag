@@ -7,6 +7,7 @@ require_once("includes/view-form.php");
 require_once("includes/view.php");
 require_once("includes/collection.php");
 require_once("includes/member.php");
+require_once("includes/encoder.php");
 
 session_start();
 $oCollection = new Collection();
@@ -38,7 +39,7 @@ if(isset($_POST["submit"])){
 		$oMember = new Member();
 
 		$oMember->username=$_POST['username'];
-		$oMember->password=$_POST['password'];
+		$oMember->password=create_hash::encode($_POST['password']);
 		$oMember->firstName=$_POST['firstName'];
 		$oMember->lastName=$_POST['lastName'];
 		$oMember->mobile=$_POST['mobile'];
@@ -62,11 +63,11 @@ $oForm->makePasswordInput('','pass1');
 $oForm->makePasswordInput('','pass2');
 $oForm->makeTextInput('','firstName');
 $oForm->makeTextInput('','lastName');
-$oForm->makeTextInput('','mobile');
-$oForm->makeTextInput('','email');
+$oForm->makeNumericInput('','mobile');
+$oForm->makeEmailInput('','email');
 $oForm->makeTextInput('','address');
 $oForm->makeTextInput('','city');
-$oForm->makeTextInput('','postcode');
+$oForm->makeNumericInput('','postcode');
 $oForm->makeSubmit('create an account','submit');
 
 $oView = new View();

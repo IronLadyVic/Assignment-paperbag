@@ -29,7 +29,7 @@ class Collection{
 
  	}
 
- 	public function findProductByItemName($oItemName){
+public function findProductByItemName($oItemName){
  		$aProducts = array();
 
  		$oConnection = new Connection();
@@ -53,7 +53,7 @@ class Collection{
 
  	}
 
- 	public function findCustomerByUsername($sUsername){
+ public function findCustomerByUsername($sUsername){
 
  		$aMembers = array();
 
@@ -77,15 +77,40 @@ class Collection{
 		}
 
  	}
+
+ 	// static public function addGST($oProduct){
+ 	// 	$aProducts = array();
+
+ 	// 	$oConnection = new Connection();
+
+ 	// 	$sSql = "SELECT Price
+		// 		FROM tbproduct
+		// 		WHERE ProductID = '".$oProduct."'";
+
+		// $oResult = $oConnection->query($sSql);
+
+		// $aProducts = $oConnection->fetch_array($oResult);
+		// $oConnection->close_connection();
+
+		// if($aProducts == false){
+		// 	return false;
+		// }else{
+		// 	$oProduct = new Product();
+		// 	$oProduct->load($aProducts['Price']);
+		// 	return $oProduct;
+		// }
+
+ 	// }
+
 }
 //TESTING
 
 // $oCollection = new Collection();
 
-// $aProductTypes = $oCollection->getAllProductTypes();
+// $oProduct = $oCollection->addGST();
 
 // echo "<pre>";
-// print_r($aProductTypes);
+// print_r($$oProduct);
 // echo "</pre>";
 
 ?>

@@ -563,6 +563,7 @@ span:after{
     height: 0px;
 }
 
+
 .form-error:after{    
     content: "";
 	position: absolute;
@@ -693,6 +694,12 @@ span #password-loginMessage{
     margin-left: -100px;
     margin-top: 0px;
 }
+/*span #upload-photoMessage{
+	margin-left: 120px;
+	position: absolute;
+	margin-top: 150px;
+
+}*/
 /*//shop online*/
 #left-container-shop{
 	height: 500px;
@@ -1096,6 +1103,18 @@ div #upload-photo{
 	margin-left: 70px;
 	position: absolute;
 
+}
+
+#productImage-Upload img{
+	width: 280px;
+	height: 320px;
+	background-color: white;
+	position: absolute;
+/*	outline: red 1px solid;*/
+	margin-left: 370px;
+	margin-top: 5px;
+	font-size: 0px;
+	border: none;
 }
 #upload-photo label{
 	background-color: white;
@@ -1809,6 +1828,10 @@ div #footer-shop{
 	line-height: 180%;
 	width: 150px;
 	margin-left: -65px;
+}
+#footer-shop li a{
+	width: 200px;
+	height: 25px;
 }
 div #footer-collections{
 	position: relative;

@@ -31,7 +31,7 @@ class Product{
 		$this->sLabel = "";
 		$this->fPrice = "";
 		$this->sPhotoPath = "";
-		$this->iActive = "";
+		$this->iActive = 0;
 		$this->bExisting = false;
 		$this->aContents = array();
 	
@@ -81,14 +81,15 @@ class Product{
 		//execute query from database and insert data into....
 		$sSQL = "INSERT INTO tbproduct(ItemName, TypeName, Description, Size, Label, Price, PhotoPath, Active) 
 		VALUES (
-			'".$oConnection->escape_value($this->sTypeName)."',
 			'".$oConnection->escape_value($this->sItemName)."',
+			'".$oConnection->escape_value($this->sTypeName)."',
 			'".$oConnection->escape_value($this->sDescription)."',
 			'".$oConnection->escape_value($this->sSize)."',
 			'".$oConnection->escape_value($this->sLabel)."',
 			'".$oConnection->escape_value($this->fPrice)."',
 			'".$oConnection->escape_value($this->sPhotoPath)."',
-			";
+			'".$oConnection->escape_value($this->iActive)."'
+			)";
 		//if the query runs, the result is ture and the save function will insert into id. if not true, then the query has failed.
 		$bResult = $oConnection->query($sSQL);
 		if($bResult == true){
@@ -106,8 +107,8 @@ class Product{
 			Size='".$oConnection->escape_value($this->sSize)."', 
 			Label='".$oConnection->escape_value($this->sLabel)."', 
 			Price='".$oConnection->escape_value($this->fPrice)."',
-			PhotoPath='".$oConnection->escape_value($this->sPhotoPath)."'
-			
+			PhotoPath='".$oConnection->escape_value($this->sPhotoPath)."',
+			Active='".$oConnection->escape_value($this->iActive)."'
 			WHERE tbproduct.ProductID=".$this->iProductID;
 		
 			$bResult = $oConnection->query($sSQL);
@@ -134,7 +135,7 @@ public function __get($var){
 		case "Label":return $this->sLabel;break;
 		case "Price":return $this->fPrice;break;
 		case "PhotoPath":return $this->sPhotoPath;break;
-		case "Active":return $this->iActive;break;
+		// case "Active":return $this->iActive;break;
 		case "Contents":return $this->aContents;break;
 		default: die($var."Does not exsist with Product Item");
 		

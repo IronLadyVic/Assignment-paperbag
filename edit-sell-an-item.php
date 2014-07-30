@@ -15,14 +15,8 @@ if(!isset($_SESSION['MemberID'])){
 
 
 $oProduct = new Product();
-//load the product of that member in te session
-$oProduct->load($_SESSION['ProductID']);
-
-// $iProductID = 1;
-// if(isset($_GET["ProductID"])){
-// 	$iProductID = $_GET["ProductID"];
-// }
-
+//load the product of that member in the GET array
+$oProduct->load($_GET['productID']); //the Control name is the query string for that productID
 
 $aExsistingData = array();
 
@@ -66,7 +60,7 @@ $oForm->checkRequired('price');
 		$oProduct->moveFile('PhotoPath',$sPhotoName);
 			$sPhotoName = "Product".date("Y-m-d-H-i-s")."jpg";
 			$oProduct->PhotoPath = $sPhotoName;
-		$oProduct->Price = $_POST['Price'];
+		$oProduct->Price = $_POST['Price']*0.15;
 
 		$oProduct->save();
 
@@ -108,6 +102,11 @@ require_once("includes/header.php");
 echo '<div id="left-container-sell">
 <p class="header">edit my item</p>
 <p id="gst">price will automatically<br/>include 15% GST</p>';
+
+echo '<div id="productImage-Upload">
+	<img id="item-image-view" alt="item-image" src="assets/img/'.htmlentities($oProduct->PhotoPath).'"</img>
+	
+</div>';
 
 echo $oForm->html;
 

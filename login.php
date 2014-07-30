@@ -1,13 +1,13 @@
 <?php
-// error_reporting(E_ALL | E_STRICT);  
-// ini_set('display_startup_errors',1);  
-// ini_set('display_errors',1);
+error_reporting(E_ALL | E_STRICT);  
+ini_set('display_startup_errors',1);  
+ini_set('display_errors',1);
 
 require_once("includes/view-form.php");
 require_once("includes/view.php");
 require_once("includes/collection.php");
 require_once("includes/member.php");
-
+require_once("includes/encoder.php");
 
 session_start();
 if(isset($_SESSION['MemberID'])){
@@ -37,7 +37,7 @@ if(isset($_POST["submit"])){
 
 	if($oMember == false){
 		$oForm->raiseError("username","Username is incorrect");
-	}else if($_POST["password-login"]!= $oMember->Password){
+	}else if(create_hash::encode($_POST["password-login"])!= $oMember->Password){
 			$oForm->raiseError("password-login","Password is incorrect");
 		
 	}else{

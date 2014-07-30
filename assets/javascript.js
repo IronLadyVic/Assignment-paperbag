@@ -205,16 +205,29 @@ for(var iCount=0; iCount<aElements.length; iCount++){
 }
 
 
-var aElementPasswords = document.getElementByClassName("required");
+var aPasswordElements = document.getElementByClassName("required");
 
-for(var iCount=0; iCount<aElementPasswords.length; iCount++){
-	aElementPasswords[iCount].onkeyup= function(){
+for(var iCount=0; iCount<aPasswordElements.length; iCount++){
+	aPasswordElements[iCount].onkeyup= function(){
 		checkPasswordMatch();
 	}
 }
 
+var aNumberElements = document.getElementByClassName("required");
 
+for(var iCount=0; iCount<aNumberElements.length; iCount++){
+	aNumberElements[iCount].onblur= function(){
+		checkNumeric();
+	}
+}
 
+var aEmailElements = document.getElementByClassName("required");
+
+for(var iCount=0; iCount<aEmailElements.length; iCount++){
+	aEmailElements[iCount].onblur= function(){
+		checkEmail();
+	}
+}
 
 //TESTING//
 //onkey event used for Username
