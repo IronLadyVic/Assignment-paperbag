@@ -31,7 +31,17 @@ if(isset($_GET["productType"])){
 
 require_once("includes/header.php");
 
+//paginator//
+$sURL = 'items-im-selling.php?productID='.$iProductID;
+$iItemsPerPage = 1;
+$iTotalCount = 
 
+
+
+
+
+
+echo View::renderPaginator($sURL,$iTotalCount,$iItemsPerPage,$iCurrentPage);
 // <!-- left main container -->
 echo View::renderProductDetails($oProduct);
  // <!-- right main container -->

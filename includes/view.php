@@ -144,25 +144,8 @@ static public function renderProductDetails($oProduct){
 		$sHTML.='<img alt="next" src="assets/img/view-next-item.png" id="next-item-text"></img>';
 		$sHTML.='</ul>';
 		$sHTML.='</div>';
-
-		$sHTML.='<div id="next-item">';
-		$aProducts = $oProduct->Contents;
-
-		foreach ($aProducts as $keyProductId => $value) {
-
-			$oProduct = new Product();
-			$oProduct->load($keyProductId);
-	
-		$sHTML.='<p><a href="items-im-selling.php?ProductID='.$keyProductId.'">1</a></p>'; //use query string here to access the productID the Member is selling.
-		$sHTML.='<p><a href="items-im-selling.php?ProductID='.$keyProductId.'">2</a></p>';
-		$sHTML.='<p><a href="items-im-selling.php?ProductID='.$keyProductId.'">3</a></p>';
-		$sHTML.='<p><a href="items-im-selling.php?ProductID='.$keyProductId.'">4</a></p>';
-		$sHTML.='<p><a href="items-im-selling.php?ProductID='.$keyProductId.'">5</a></p>';
-		
-	}
-$sHTML.='<p class="disclaimer-view">* - account members NZ address only</p>';	
-		$sHTML.='</div>';
-		
+		$sHTML.='<p class="disclaimer-view">* - account members NZ address only</p>';	
+			
 	return $sHTML;
 }
 
@@ -214,6 +197,26 @@ $sHTML ='<a href=""><img alt="next" src="assets/img/next.png" id="next"></img></
 $sHTML ='</div>';
 
 }
+
+	public function renderPaginator($sURL,$iTotalCount,$iItemsPerPage,$iCurrentPage){
+		
+		$iNumberOfPages = ceil($iTotalCount/$iItemsPerPage);
+		
+        $sHTML='<ul id="next-item">';
+       
+        for($i=1; $i<=$iNumberOfPages; $i++){
+			if($i==$iCurrentPage){
+				$sHTML .='<li><a class="current" href="'.$sURL.'&page='.$i.'">'.$i.'</a></li>';
+			}else{
+				$sHTML .='<li><a href="'.$sURL.'&page='.$i.'">'.$i.'</a></li>';
+			}
+	        
+		}
+        $sHTML .='</ul>';
+
+		return $sHTML;
+
+	}
 
 }
 

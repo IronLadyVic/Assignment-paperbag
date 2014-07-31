@@ -177,8 +177,8 @@ class Form{
  }
 
   public function moveFile($sControlName, $sNewFileName){
- 		$newname = dirname(__FILE__).'paperbagboutique/assets/img'.$sNewFileName;
-		
+ 		
+		$newname = dirname(__FILE__).'/../assets/img/'.$sNewFileName;
 		move_uploaded_file($this->aFiles[$sControlName]['tmp_name'],$newname);
  }
 

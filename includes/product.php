@@ -79,17 +79,18 @@ class Product{
 
 		if($this->bExisting == false){
 		//execute query from database and insert data into....
-		$sSQL = "INSERT INTO tbproduct(ItemName, TypeName, Description, Size, Label, Price, PhotoPath, Active) 
+		$sSQL = "INSERT INTO tbproduct(SellerID, TypeID, TypeName, ItemName, Description, Size, Label, Price, PhotoPath, Active) 
 		VALUES (
-			'".$oConnection->escape_value($this->sItemName)."',
+			'".$oConnection->escape_value($this->iSellerID)."',
+			'".$oConnection->escape_value($this->iTypeID)."',
 			'".$oConnection->escape_value($this->sTypeName)."',
+			'".$oConnection->escape_value($this->sItemName)."',
 			'".$oConnection->escape_value($this->sDescription)."',
 			'".$oConnection->escape_value($this->sSize)."',
 			'".$oConnection->escape_value($this->sLabel)."',
 			'".$oConnection->escape_value($this->fPrice)."',
 			'".$oConnection->escape_value($this->sPhotoPath)."',
-			'".$oConnection->escape_value($this->iActive)."'
-			)";
+			'".$oConnection->escape_value($this->iActive)."')";
 		//if the query runs, the result is ture and the save function will insert into id. if not true, then the query has failed.
 		$bResult = $oConnection->query($sSQL);
 		if($bResult == true){
@@ -101,16 +102,18 @@ class Product{
 	}
 		else{
 		$sSQL = "UPDATE tbproduct 
-		SET ItemName='".$oConnection->escape_value($this->sItemName)."',  
+		SET SellerID='".$oConnection->escape_value($this->iSellerID)."', 
+			TypeID='".$oConnection->escape_value($this->iTypeID)."', 
 			TypeName='".$oConnection->escape_value($this->sTypeName)."',
+			ItemName='".$oConnection->escape_value($this->sItemName)."', 
 			Description='".$oConnection->escape_value($this->sDescription)."',
 			Size='".$oConnection->escape_value($this->sSize)."', 
 			Label='".$oConnection->escape_value($this->sLabel)."', 
 			Price='".$oConnection->escape_value($this->fPrice)."',
-			PhotoPath='".$oConnection->escape_value($this->sPhotoPath)."',
+			PhotoPath='".$oConnection->escape_value($this->sPhotoPath)."', 
 			Active='".$oConnection->escape_value($this->iActive)."'
 			WHERE tbproduct.ProductID=".$this->iProductID;
-		
+
 			$bResult = $oConnection->query($sSQL);
 
 		if($bResult == false){
@@ -121,7 +124,6 @@ class Product{
 	$oConnection->close_connection();
 
 }
-
 public function __get($var){
 	switch ($var) {
 		case "ProductID":return $this->iProductID;break;

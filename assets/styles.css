@@ -27,7 +27,7 @@ figure .item a{
 
 
 
-#logo{
+#top-left-nav #logo{
 	background-image: url("img/logo.png");
 	background-repeat: no-repeat;
 	font-size: 0px;
@@ -39,13 +39,35 @@ figure .item a{
 	margin-left: -42px;
 	
 }
-#logo a{
+#top-left-nav #logo a{
 	display: block;
 	font-size: 0px;
 	height: 100%;
 	width: 100%;
 	position: relative;
 	margin-left: -6px;
+	
+}
+li #shop-online-header{
+	width: 150px;
+	height: 30px;
+}
+li #sell-header{
+	margin-top: -30px;
+	margin-left: 260px;
+		width: 150px;
+	height: 30px;
+}
+li #shop-online-header a{
+	width: 150px;
+	height: 30px;
+}
+li #sell-header a{
+	width: 150px;
+	height: 30px;
+}
+div #top-left-nav{
+	width: 450px;
 	
 }
 #top-left-nav, li{
@@ -152,7 +174,7 @@ div #left-container-account{
 	width: 692px;
 	background-color: #EEEEEE;
 	position: absolute;
-	margin-top: 80px;
+	margin-top: 100px;
 
 }
 div #left-container-cart{
@@ -716,8 +738,8 @@ span #password-loginMessage{
 	margin-top: 20px;
 }
 #item a img{
-/*	width: 100%;
-	height: 100%;*/
+	/*max-width: 350px;*/
+	max-height: 400px;
 	margin-left: -20px;
 }
 
@@ -984,7 +1006,7 @@ p .description-text{
 	width: 692px;
 	background-color: #EEEEEE;
 	position: absolute;
-	margin-top: 80px;
+	margin-top: 100px;
 }
 #sell-tem{
 	width: 280px;
@@ -1018,7 +1040,7 @@ p .description-text{
 	background-position:left center;  
 	padding-left:25px;
 	height: 32px;
-	width: 332px;
+	width: 309px;
 	position: absolute;
 	margin-top: 155px;
 	margin-left: -342px;
@@ -1603,7 +1625,7 @@ border-right: 5px solid white;
 
 	margin-left: -520px;
 	font-size: 10px;
-	margin-top:20px;
+	margin-top:40px;
 	position: absolute;
 
 }
@@ -1662,9 +1684,15 @@ border-right: 5px solid white;
 	position: absolute;
 	margin-left: 350px;
 	margin-top: 0px;
-	width: 280px;
-	height: 320px;
-	outline: white 1px solid;
+		max-width:250px;
+	max-height:auto;
+	
+	border: none;
+	/*outline: white 1px solid;*/
+}
+#item-image-view img{
+	max-width:260px;
+max-height:auto;
 }
 #item-image-edit{
 	position: absolute;
@@ -1672,6 +1700,22 @@ border-right: 5px solid white;
 	margin-top: -50px;
 	width: 280px;
 	height: 320px;
+	outline: white 1px solid;
+}
+div #sell-my-product-Upload{
+	width: 100px;
+	height: 150px;
+	position: absolute;
+	margin-top: 218px;
+	margin-left: 10px;
+}
+
+#item-image-sell{
+	position: absolute;
+	margin-left: 350px;
+	margin-top: 0px;
+	width: 120px;
+	height: 150px;
 	outline: white 1px solid;
 }
 
@@ -1682,7 +1726,7 @@ div #next-item{
 	height: 30px;
 	position: absolute;
 	margin-left: 530px;
-	margin-top: 452px;
+	margin-top: 470px;
 	color: black;
 }
 
@@ -1706,7 +1750,7 @@ div #next-item p a{width: 140px;
 	font-size: 0px;
 	position: absolute;
 	margin-left: 390px;
-	margin-top: 340px;
+	margin-top: 390px;
 	border: none;
 
 }
@@ -1785,12 +1829,14 @@ div #right-container{
 }
 
 /*footer*/
-
+div #search-bar-shop{
+margin-left: -450px;
+}
 
 #search-bar input{
 	position: relative;
-	margin-top: 550px;
-	margin-left: -350px;
+	margin-top: 600px;
+	margin-left: -420px;
 	height: 32px;
 	width: 231px;
 	border: #B5E1E1  1px solid;
@@ -1801,7 +1847,7 @@ div #right-container{
 #search-bar-shop input{
 	position: relative;
 	margin-top: 2000px;
-	margin-left: -350px;
+	margin-left: -400px;
 	height: 32px;
 	width: 231px;
 	border: #B5E1E1  1px solid;
@@ -1810,11 +1856,41 @@ div #right-container{
 
 }
 
-div #footer-shop{
+div #footer-about{
 	position: relative;
 	width: 150px;
+	height: 100px;
+	
 	margin-top: -36px;
 	margin-left: 350px;
+	padding-right: 30px;
+	border-top:1px solid  #535353;
+	
+}
+#footer-about p{
+	width: 150px;
+	color: #535353;
+}
+
+#footer-about li{
+	line-height: 180%;
+	width: 150px;
+	margin-left: -65px;
+	margin-top: 0px;
+
+}
+#footer-about li:nth-child(2){
+	line-height: 180%;
+	width: 150px;
+	margin-top: 0px;
+	
+}
+
+div #footer-shop{
+	position: absolute;
+	width: 150px;
+	margin-top: -100px;
+	margin-left: 570px;
 	padding-right: 30px;
 	border-top:1px solid  #535353;
 	
@@ -1828,40 +1904,17 @@ div #footer-shop{
 	line-height: 180%;
 	width: 150px;
 	margin-left: -65px;
-}
-#footer-shop li a{
-	width: 200px;
-	height: 25px;
-}
-div #footer-collections{
-	position: relative;
-	width: 150px;
-	margin-top: -43px;
-	margin-left: 570px;
-	padding-right: 30px;
-	border-top:1px solid  #535353;
-	
-}
-#footer-collections p{
-	width: 150px;
-	color: #535353;
-}
+	margin-top: 0px;
 
-#footer-collections li{
+}
+#footer-shop li:nth-child(2){
 	line-height: 180%;
 	width: 150px;
 	margin-left: -65px;
-	margin-top: -50px;
-
-}
-#footer-collections li:nth-child(2){
-	line-height: 180%;
-	width: 150px;
-	margin-left: -65px;
-	margin-top: -25px;
+	margin-top: 0px;
 	
 }
-#footer-collections li:nth-child(3){
+#footer-shop li:nth-child(3){
 	line-height: 180%;
 	width: 150px;
 	margin-left: -65px;
@@ -1869,9 +1922,9 @@ div #footer-collections{
 	
 }
 div #footer-socialMedia{
-	position: relative;
+	position: absolute;
 	width: 150px;
-	margin-top: -43px;
+	margin-top: -100px;
 	margin-left: 790px;
 	padding-right: 30px;
 	border-top:1px solid  #535353;
@@ -1889,7 +1942,7 @@ div #footer-socialMedia{
 	height: 50px;
 	position: relative;
 	margin-left: -65px;
-	margin-top: -50px;
+	margin-top: 0px;
 	z-index: 10;
 	background-image: url("img/instagram.png");
 	background-repeat: no-repeat;
@@ -1899,8 +1952,8 @@ div #footer-socialMedia{
 	width: 50px;
 	height: 50px;
 	position: relative;
-	margin-left: -15px;
-	margin-top: -50px;
+	margin-left: -40px;
+	margin-top: 0px;
 	z-index: 10;
 	background-image: url("img/twitter.png");
 	background-repeat: no-repeat;
@@ -1910,7 +1963,7 @@ div #footer-socialMedia{
 	width: 50px;
 	height: 50px;
 	position: relative;
-	margin-left: 34px;
+	margin-left: 35px;
 	margin-top: -50px;
 	z-index: 10;
 	background-image: url("img/facebook.png");
@@ -1936,7 +1989,7 @@ div #footer-socialMedia{
 }
 .copyright {
 	position: relative;
-	margin-right: 540px;
+	margin-right: 500px;
 	color: #bbb;
 	padding-left: 40px;
 	margin-top: -9px;

@@ -2,24 +2,18 @@
 require_once("includes/view-form.php");
 require_once("includes/view.php");
 require_once("includes/collection.php");
-require_once("includes/product.php");
-require_once("includes/model-my-paperbag-cart.php");
+require_once("includes/member.php");
 
 session_start();
 
-$oCart = $_SESSION[''];
-
 if(!isset($_SESSION['MemberID'])){
-		header("Location: login.php");
-	}
-
-
-
-
+	header("Location:login.php");
+}
 
 $oView = new View();
 $oCollection = new Collection();
 $aAllProductTypes = $oCollection->getAllProductTypes();
+
 
 $iTypeID = 1;
 if(isset($_GET["productType"])){
@@ -27,17 +21,20 @@ if(isset($_GET["productType"])){
 }
 
 require_once("includes/header.php");
-
 // <!-- left main container -->
-
-echo $oView->renderCart($oCart);
-
-
+$sHTML="";
+echo '<div id="left-container-login">
+	<div>
+		<p class="header">success!</p>
+		<p class="success-statements">you have now edited your item on behalf of
+paperbag boutique.<br/><br/>please click below to see your clothing items you have listed.</p>
+		<a href="items-im-selling.php"><ul id="view-your-items-listed"><li>items im selling</li></ul></a>
+			</div>
+		</div>';
 // <!-- right main container -->
-
 
 echo View::renderNavigation($aAllProductTypes);
 
-require_once("includes/footer.php");
+require_once("includes/footer-loggedin.php");
 
 ?>

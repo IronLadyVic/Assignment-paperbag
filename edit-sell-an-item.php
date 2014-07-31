@@ -20,16 +20,13 @@ $oProduct->load($_GET['productID']); //the Control name is the query string for 
 
 $aExsistingData = array();
 
-// $aExsistingData['ItemName'.$oProduct->ProductID] = $oProduct->ItemName;
 $aExsistingData['item-name'] = $oProduct->ItemName;
 $aExsistingData['typeName'] = $oProduct->TypeName;
 $aExsistingData['description'] = $oProduct->Description;
 $aExsistingData['size'] = $oProduct->Size;
 $aExsistingData['labels'] = $oProduct->Label;
-// $aExsistingData['item-image-edit'] = $oProduct->PhotoPath;
 $aExsistingData['upload-photo'] = $oProduct->PhotoPath;
-$aExsistingData['MAX_FILE_SIZE'] = $oProduct->PhotoPath;
-// $aExsistingData['browse'] = $oProduct->PhotoPath;
+// $aExsistingData['MAX_FILE_SIZE'] = $oProduct->PhotoPath;
 $aExsistingData['price'] = $oProduct->Price;
 
 
@@ -41,15 +38,14 @@ if(isset($_POST['submit'])){
 	$oForm->data = $_POST;
 	$oForm->files = $_FILES;
 	$oForm->checkRequired('item-name');
-$oForm->checkRequired('typeName');
-$oForm->checkRequired('description');
-$oForm->checkRequired('size');
-$oForm->checkRequired('labels');
-$oForm->checkRequired('upload-photo');
-$oForm->checkUpload("photo", "image/jpeg", MAX_SIZE);
-$oForm->checkRequired('price');
+	$oForm->checkRequired('typeName');
+	$oForm->checkRequired('description');
+	$oForm->checkRequired('size');
+	$oForm->checkRequired('labels');
+	// $oForm->checkUpload("upload-photo", "image/png", MAX_SIZE);
+	$oForm->checkRequired('price');
 
-	
+
 	if($oForm->isValid){
 		
 		$oProduct->ItemName = $_POST['item-name'];
@@ -57,20 +53,26 @@ $oForm->checkRequired('price');
 		$oProduct->Description = $_POST['description'];
 		$oProduct->Size = $_POST['size'];
 		$oProduct->Label = $_POST['labels'];
-		$oProduct->moveFile('PhotoPath',$sPhotoName);
-			$sPhotoName = "Product".date("Y-m-d-H-i-s")."jpg";
+		// print_r($_FILES);
+		if($_FILES["upload-photo"]["error"]==0){
+			$sPhotoName = "product".date("Y-m-d-H-i-s").".png";
 			$oProduct->PhotoPath = $sPhotoName;
-		$oProduct->Price = $_POST['Price']*0.15;
+			$oForm->moveFile('upload-photo',$sPhotoName);
+		}
+		
+		
+		$oProduct->Price = $_POST['price'];
+		$oProduct->Active = 1;
 
 		$oProduct->save();
 
-		header("Location:success-created-item.php");
+		header("Location:success-edited-item.php");
 		exit();
 	}
 }
 
 $oForm->makeTextInput('','item-name');
-$oForm->makeTextDropDown('','typeName');
+$oForm->makeTextInput('','typeName');
 $oForm->makeTextInput('','description');
 $oForm->makeTextInput('','size');
 $oForm->makeTextInput('','labels');

@@ -15,21 +15,7 @@ if(isset($_SESSION['MemberID'])){
 
 $oProduct = new Product();
 
-$aExsistingData = array();
-$aExsistingData['item-name'] = $oProduct->ItemName;
-$aExsistingData['typeName'] = $oProduct->TypeName;
-$aExsistingData['description'] = $oProduct->Description;
-$aExsistingData['size'] = $oProduct->Size;
-$aExsistingData['labels'] = $oProduct->Label;
-// $aExsistingData['item-image-edit'] = $oProduct->PhotoPath;
-$aExsistingData['upload-photo'] = $oProduct->PhotoPath;
-// $aExsistingData['browse'] = $oProduct->PhotoPath;
-$aExsistingData['price'] = $oProduct->Price;
-
-
-
 $oForm = new Form();
-$oForm->data = $aExsistingData;
 
 if(isset($_POST['submit'])){
 	$oForm->data = $_POST;
@@ -39,24 +25,27 @@ if(isset($_POST['submit'])){
 	$oForm->checkRequired('description');
 	$oForm->checkRequired('size');
 	$oForm->checkRequired('labels');
-	$oForm->checkUpload("photo", "image/jpeg", 'MAX_SIZE');
+	// $oForm->checkUpload("upload-photo", "image/png", MAX_SIZE);
 	$oForm->checkRequired('price');
 
-	
-	if($oForm->isValid){
-		$sPhotoName = 'Product'.date("Y-m-d-H-i-s")."jpg";
-		$oForm->moveFile('upload-photo',$sPhotoName);
-			
 
+	if($oForm->isValid){
+		$oProduct->SellerID = $_SESSION['MemberID'];
 		$oProduct->ItemName = $_POST['item-name'];
 		$oProduct->TypeName = $_POST['typeName'];
 		$oProduct->Description = $_POST['description'];
 		$oProduct->Size = $_POST['size'];
 		$oProduct->Label = $_POST['labels'];
-		$oProduct->PhotoPath = $sPhotoName;	
-		$oProduct->Price = $_POST['Price'];
-		$oProduct->Active = 1;
+		// print_r($_FILES);
+		if($_FILES["upload-photo"]["error"]==0){
+			$sPhotoName = "product".date("Y-m-d-H-i-s").".png";
+			$oProduct->PhotoPath = $sPhotoName;
+			$oForm->moveFile('upload-photo',$sPhotoName);
+		}
 		
+		
+		$oProduct->Price = $_POST['price'];
+		$oProduct->Active = 1;
 
 		$oProduct->save();
 
@@ -66,20 +55,17 @@ if(isset($_POST['submit'])){
 }
 
 $oForm->makeTextInput('','item-name');
-$oForm->makeTextDropDown('','typeName');
+$oForm->makeTextInput('','typeName');
 $oForm->makeTextInput('','description');
 $oForm->makeTextInput('','size');
 $oForm->makeTextInput('','labels');
 $oForm->makeUpLoadBox("double click here","upload-photo");
-$oForm->makeHiddenField("MAX_FILE_SIZE", 'MAX_SIZE');
-$oForm->makeNumericInput('','price');
+$oForm->makeHiddenField("MAX_FILE_SIZE", MAX_SIZE);
+// $oForm->makeTextInput("upload","browse-upload");
+$oForm->makeTextInput('','price');
 $oForm->makeSubmit('save changes','submit');
 
 
-
-$oView = new View();
-$oCollection = new Collection();
-$aAllProductTypes = $oCollection->getAllProductTypes();
 
 
 $oView = new View();//store the view class in the OView variable
@@ -94,14 +80,16 @@ if(isset($_GET["productType"])){
 
 require_once("includes/header.php");
 
-?>
-<!-- left main container -->
-<div id="left-container-sell">
-<p class="header">sell my item</p>
-<p id="gst">price will automatically<br/>include 15% GST</p>
-	<?php echo $oForm->html;?>
 
-<p class="disclaimer">* - account members NZ address only</p>
+// <!-- left main container -->
+echo '<div id="left-container-sell">
+<p class="header">sell my item</p>
+<p id="gst">price will automatically<br/>include 15% GST</p>';
+
+
+echo $oForm->html;
+
+echo '<p class="disclaimer">* - account members NZ address only</p>
 <div id="terms-conditions">
 	<p><strong>terms & conditions</strong></p><p>the price listed will automatically include GST with users input.<br/><br/> 
 
@@ -115,9 +103,9 @@ receive notification about payment pick up.<br/><br/>
 *please fill in all fields on application.</p>
 
 </div>
-</div>
-<!-- right main container -->
-<?php
+</div>';
+// <!-- right main container -->
+
 echo View::renderNavigation($aAllProductTypes);
 
 

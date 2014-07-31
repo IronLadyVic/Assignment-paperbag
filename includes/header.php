@@ -32,9 +32,9 @@ echo'
 <div id="top-left-nav">
 	<ul>
 		<li id="logo"><a href="index-loggedin.php">Home</a></li>
-		<li><a href="producttype.php">shop online</a></li>
-		<li><a href="">collections</a></li>
-		<li><a href="sell-an-item.php">sell</a></li>
+		<li id="shop-online-header"><a href="producttype.php">shop online</a></li>
+		<li id="sell-header"><a href="sell-an-item.php">sell</a></li>
+		
 	</ul>
 </div>
 <!-- right navigation -->
@@ -55,9 +55,10 @@ echo htmlentities(''.$oMember->FirstName.'');
 }else{
 	echo '<div id="top-left-nav">
 	<ul>
-		<li id="logo"><a href="index.php">Home</a></li>
-		<li><a href="producttype.php">shop online</a></li>
-		<li><a href="">collections</a></li>
+		<li id="logo"><a href="index-loggedin.php">Home</a></li>
+		<li id="shop-online-header"><a href="producttype.php">shop online</a></li>
+		
+		
 	</ul>
 </div>
 <!-- right navigation -->
