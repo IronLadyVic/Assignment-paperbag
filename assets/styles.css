@@ -180,7 +180,7 @@ div #left-container-account{
 div #left-container-cart{
 	height: 400px;
 	width: 692px;
-
+	margin-bottom: 100px;
 	position: absolute;
 	margin-top: 80px;
 }
@@ -199,6 +199,17 @@ div #left-container-cart{
 	color: #535353;
 	margin-left: 18px;
 }
+.header-contact{
+	background-image: url('img/contact-us-text.png');
+	background-repeat: no-repeat;
+	width: 200px;
+	height: 50px;
+	margin-left: 20px;
+	line-height: 90%;
+	color: #535353;
+	font-weight: bold;
+
+}
 .header-new-member{
 	font-weight: bold;
 	line-height: 90%;
@@ -213,7 +224,98 @@ div #left-container-cart{
 	position: absolute;
 	margin-top: 90px;
 }
-
+#left-container-other{
+	height: 400px;
+	width: 750px;
+	background-color: #EEEEEE;
+	position: absolute;
+	margin-top: 90px;
+}
+#phone{
+	background-image:url('img/phone.png');
+    background-repeat:no-repeat;
+   	background-position:left center;  
+   	background-color: white;
+   	padding-left:70px;
+   	font-size: 14px;
+   	
+   	width: 220px;
+   	height: 32px;
+   	margin-left: -20px;
+   	margin-top: -20px;
+   	line-height: 220%;
+}
+#email-contact{
+	background-image:url('img/email.png');
+    background-repeat:no-repeat;
+   	background-position:left center;  
+   	background-color: white;
+   	padding-left:70px;
+   	font-size: 14px;
+   	
+   	width: 220px;
+   	height: 32px;
+   	margin-left: -290px;
+   	margin-top: 25px;
+   	line-height: 220%;
+}
+#location-contact{
+	background-image:url('img/locate.png');
+    background-repeat:no-repeat;
+   	background-position:left top;  
+   	background-color: white;
+   	padding-left:70px;
+   	font-size: 14px;
+   	margin-top: 10px;
+   	width: 220px;
+   	height: 35px;
+   	margin-left: -290px;
+   	margin-top: 70px;
+   	padding-top: 5px;
+}
+#drop-off{
+	background-image:url('img/drop-off.png');
+    background-repeat:no-repeat;
+   	background-position:left top;  
+   	background-color: white;
+   	padding-left:70px;
+   	font-size: 14px;
+ 
+   	width: 220px;
+   	height: 50px;
+   	margin-left: -290px;
+   	margin-top: 120px;
+   	padding-top: 5px;
+   	
+}
+#hours{
+	background-image:url('img/shop-hours.png');
+    background-repeat:no-repeat;
+   	background-position:left top;  
+   	background-color: white;
+   	padding-left:85px;
+	   	font-size: 14px;
+	   	line-height: 140%;
+   	width: 205px;
+   	height: 40px;
+   	margin-left: -290px;
+   	margin-top: 185px;
+   	padding-top: 5px;
+   	
+}
+#map{
+	position: absolute;
+	margin-left: 340px;
+	margin-top: -20px;
+	height: 320px;
+	width: 280px;
+	outline: red 1px solid;
+}
+#hello-image{
+	position: absolute;
+	margin-left: 560px;
+	margin-top: -360px;
+}
 #left-container-account #send{
 	position: absolute;
 	margin-left: 0px;
@@ -612,8 +714,8 @@ span:after{
     font-size: 10px;
     display: inline-block;
     text-indent: 8px;
-    margin-left: -130px;
-    margin-top: -8px;
+    margin-left: -115px;
+    margin-top: 95px;
 }
 
 #left-container-login #usernameMessage{
@@ -672,8 +774,8 @@ span #password-loginMessage{
     font-size: 10px;
     display: inline-block;
     text-indent: 8px;
-    margin-left: -130px;
-    margin-top: -12px;
+    margin-left: -115px;
+    margin-top: 189px;
 }
 
 #sizeMessage{
@@ -683,8 +785,8 @@ span #password-loginMessage{
     font-size: 10px;
     display: inline-block;
     text-indent: 8px;
-    margin-left: 53px;
-    margin-top: 3px;
+    margin-left: -115px;
+    margin-top: 232px;
 }
 #labelsMessage{
 	position: absolute;
@@ -693,8 +795,8 @@ span #password-loginMessage{
     font-size: 10px;
     display: inline-block;
     text-indent: 8px;
-    margin-left: 226px;
-    margin-top: 3px;
+  	margin-left: -280px;
+    margin-top: 232px;
 }
 #priceMessage{
 	position: absolute;
@@ -703,8 +805,8 @@ span #password-loginMessage{
     font-size: 10px;
     display: inline-block;
     text-indent: 8px;
-    margin-left: 75px;
-    margin-top: 108px;
+  	margin-left: -110px;
+    margin-top: 160px;
 }
 #typeNameMessage{
 	position: absolute;
@@ -713,8 +815,8 @@ span #password-loginMessage{
     font-size: 10px;
     display: inline-block;
     text-indent: 8px;
-    margin-left: -100px;
-    margin-top: 0px;
+    margin-left: -115px;
+    margin-top: 143px;
 }
 /*span #upload-photoMessage{
 	margin-left: 120px;
@@ -1212,8 +1314,21 @@ label #browse-upload{
 .success-statements{
 	margin-left: 20px;
 	color: #535353;
+	line-height: 150%;
+	width: 500px;
+
 }
 .header{
+	margin-left: 20px;
+	line-height: 90%;
+	color: #535353;
+	font-weight: bold;
+}
+.header-hello{
+	background-image: url('img/hello.png');
+	background-repeat: no-repeat;
+	width: 200px;
+	height: 50px;
 	margin-left: 20px;
 	line-height: 90%;
 	color: #535353;
@@ -1310,6 +1425,10 @@ my paperbag shopping cart - table*/
 	width: 800px;
 	margin-left:20px;
 	margin-top: 30px;
+
+}
+.product-contents{
+	/*position: absolute;*/
 }
 .datagrid table { 
 	border-collapse: collapse; 
@@ -1340,6 +1459,7 @@ border-right: 5px solid white;
 .datagrid tbody{
 	background-color: #EEEEEE;
 	border-bottom: 3px solid white;
+	margin-top: 50px;
 }
 
 .datagrid table tbody td { 
@@ -1386,10 +1506,11 @@ border-right: 5px solid white;
 }
 #product-image{
 	width: 300px;
-	height: 250px;
-	background-image: url('img/CelineJacket.png');
+	height: 350px;
+	
 	background-size: 100%;
 	background-repeat: no-repeat;
+	font-size: 0px;
 }
 #item-text{
 	width: 250px;
@@ -1450,30 +1571,54 @@ border-right: 5px solid white;
 	width: 160px;
 	height: 30px;
 	background-color:#FF6666;
-	float: left;
-	color: #525252;
+	position: absolute;
+	color: white;
 	text-align: center;
-	font-size: 12px;
+	font-size: 14px;
 	margin-right: 5px;
+	margin-left: 260px;
+}
+#remove-items a{
+	width: 160px;
+	height:45px;
+	display: block;
+	text-decoration: none;
+	color: white;
 }
 #add-items{
 	width: 160px;
 	height: 30px;
 	background-color:#D1ECEC;
-	float: left;
+	position: absolute;
 	color: #525252;
 	text-align: center;
-	font-size: 12px;
-	margin-right: 5px;
+	font-size: 14px;
+	margin-left: 440px;
+}
+#add-items a{
+	
+	background-color:#D1ECEC;
+	display: block;
+	color: #525252;
+	text-decoration: none;
+	
 }
 #checkout{
 	width: 160px;
 	height: 30px;
 	background-color: #D1ECEC;
-	float: left;
+	position: absolute;
 	color: #525252;
 	text-align: center;
-	font-size: 12px;
+	font-size: 14px;
+	margin-left: 620px;
+
+}
+#checkout a{
+	background-color:#D1ECEC;
+	display: block;
+	color: #525252;
+	text-decoration: none;
 
 }
 #next-item-cart{
@@ -1746,13 +1891,13 @@ div #next-item p a{width: 140px;
 }
 #next-item-text{
 	width: 95px;
-	height: 25px;
+	height: 30px;
 	font-size: 0px;
 	position: absolute;
-	margin-left: 390px;
+	margin-left: 400px;
 	margin-top: 390px;
 	border: none;
-
+	
 }
 
 

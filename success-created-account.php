@@ -28,7 +28,7 @@ $sHTML="";
 echo '<div id="left-container-login">
  	<div>
 	<p class="header">success!</p>
-	 <p class="success-statements">thank you for creating an account with paperbag boutique.<br/><br/>please view your account details or start selling your second hand <br/><br/>labels by listing an item.</p>
+	 <p class="success-statements">thank you for creating an account with paperbag boutique.<br/>please view your account details or start selling your second hand<br/>labels by listing an item.</p>
 	<a href="edit-my-account.php"><ul id="account-button"><li>view your account</li></ul></a>
 	<a href="sell-an-item.php"><ul id="sell-button"><li>list an item</li></ul></a>
 	</div>

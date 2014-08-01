@@ -35,7 +35,7 @@ class View{
 
 			$oProduct = $aProducts[$i];
 			$sHTML.='<li id="item">';
-			$sHTML.='<a href="#" onclick="showItem('.htmlentities($oProduct->TypeID).')">+ view<img class="image" alt="product-type-image" src="assets/img/'.htmlentities($oProduct->PhotoPath).'"/></a>';
+			$sHTML.='<a href="#" onclick="showItem('.htmlentities($oProduct->ProductID).')">+ view<img class="image" alt="product-type-image" src="assets/img/'.htmlentities($oProduct->PhotoPath).'"/></a>';
 			$sHTML.='<div class="product-name">'.htmlentities($oProduct->ItemName).'</div>';
 			$sHTML.='<div class="producttype-name">'.htmlentities($oProduct->TypeName).'</div>';
 			$sHTML.='<div class="description"><p class="description-text">'.htmlentities($oProduct->Description).'</p></div>';
@@ -44,7 +44,7 @@ class View{
 			$sHTML.='<div class="price">'.htmlentities($oProduct->Price).'</div>';
 			$sHTML.='<div>';
 			if(isset($_SESSION['MemberID']) == true){
-			$sHTML.='<a href="my-paperbag-cart.php?ProductID='.htmlentities($oProduct->ProductID).'" class="submit">add to my paperbag</a>';
+			$sHTML.='<a href="add-to-cart.php?ProductID='.htmlentities($oProduct->ProductID).'" class="submit">add to my paperbag</a>';
 		}else{
 			$sHTML.='<a href="login.php" class="submit">add to my paperbag</a>';
 		}
@@ -69,7 +69,7 @@ static public function renderProductOverlay($oOverlay){
 		$oProductOverlay = $aProducts[$i];
 
 		$sHTML.='<li id="item-enlarge">';
-			$sHTML.='<div class="shop-image-enlarge"><a href="#" onclick="showItem('.htmlentities($oProductOverlay->TypeID).')"><img src="assets/img/'.htmlentities($oProductOverlay->PhotoPath).'"/></a></div>';
+			$sHTML.='<div class="shop-image-enlarge"><a href="#" onclick="showItem('.htmlentities($oProductOverlay->ProductID).')"><img src="assets/img/'.htmlentities($oProductOverlay->PhotoPath).'"/></a></div>';
 		$sHTML.='<div class="product-name-enlarge">'.htmlentities($oProductOverlay->ItemName).'</div>';
 		$sHTML.='<div class="producttype-name-enlarge">'.htmlentities($oProductOverlay->TypeName).'</div>';
 		$sHTML.='<div class="description-enlarge"><p class="description-text-enlarge">'.htmlentities($oProductOverlay->Description).'</p></div>';
@@ -135,7 +135,7 @@ static public function renderProductDetails($oProduct){
 		$sHTML.='<li id="labels-view" ">'.htmlentities($oProduct->Label).'</li>';
 		$sHTML.='<li id="price-view">'.htmlentities($oProduct->Price).'</li>';	
 		$sHTML.='<div id="edit-sell-item"><a href="edit-sell-an-item.php?productID='.htmlentities($oProduct->ProductID).'">edit item</a></div>' ;
-		$sHTML.='<div id="remove-sell-item"><a href="">remove item</a></div> ';
+		$sHTML.='<div id="remove-sell-item"><a href="remove-from-items.php?ProductID">remove item</a></div> ';
 		$sHTML.='<p id="withdraw-disclaimer">you can withdraw your sell item<br/> 
 		by clicking remove item. <br/> 
 		A charge of $50.00 will be issued <br/> 
@@ -152,7 +152,8 @@ static public function renderProductDetails($oProduct){
 static public function renderCart($oCart){
 	$sHTML = '<div id="left-container-cart">
 	<p class="header"><strong>my paperbag</strong></p>
-	<div class="datagrid"><table>
+	<div class="datagrid">
+	<table>
 		<thead>
 			<tr>
 				<th id="item-text">item</th>
@@ -164,13 +165,13 @@ static public function renderCart($oCart){
 			</tr>
 		</thead>';
 	
-		$aContents = $oCart->Contents;
+		$aContents = $oCart->Contents; //array of products created in the getter.
 		foreach($aContents as $keyProductID => $value){
 			$oProduct = new Product();
 			$oProduct->load($keyProductID);
 
 			$sHTML .='<tbody><tr>';
-			$sHTML .='<td id="product-image">'.htmlentities($oProduct->PhotoPath).'</td>';
+			$sHTML .='<td><img id="product-image" alt="item-image" src="assets/img/'.htmlentities($oProduct->PhotoPath).'"/></td>';
 			$sHTML .='<td valign="top">'.htmlentities($oProduct->TypeName).'</td>';
 			$sHTML .='<td valign="top">'.htmlentities($oProduct->Description).'</td>';
 			$sHTML .='<td valign="top">'.htmlentities($oProduct->Size).'</td>';
@@ -181,9 +182,9 @@ static public function renderCart($oCart){
 			$sHTML .='<div id="cart-buttons">';
 			$sHTML .='<tr>';
 
-			$sHTML .='<td id="remove-items" type="submit" value="remove-items"><a href="remove-item.php?productID='.$keyProductID.'"></a></td>';
-			$sHTML .='<td id="add-items" type="submit" value="add-items"</td>';
-			$sHTML .='<td id="checkout" type="submit" value="checkout"</td>';
+			$sHTML .='<td id="remove-items" value="remove-items"><a href="remove-item.php?ProductID='.$keyProductID.'">remove item</a></td>';
+			$sHTML .='<td id="add-items"  value="add-items"><a href="producttype.php">add item</a></td>';
+			$sHTML .='<td id="checkout" value="checkout"><a href="#">checkout</a></td>';
 			$sHTML .='</tr>';
 			$sHTML .='</div>';
 			$sHTML .='</tbody>';
@@ -192,31 +193,31 @@ static public function renderCart($oCart){
 return $sHTML .= '</table>';
 $sHTML ='</div>';
 
-$sHTML ='<a href=""><img alt="next" src="assets/img/previous.png" id="previous"></img></a>';
-$sHTML ='<a href=""><img alt="next" src="assets/img/next.png" id="next"></img></a>';
+// $sHTML ='<a href=""><img alt="next" src="assets/img/previous.png" id="previous"></img></a>';
+// $sHTML ='<a href=""><img alt="next" src="assets/img/next.png" id="next"></img></a>';
 $sHTML ='</div>';
 
 }
 
-	public function renderPaginator($sURL,$iTotalCount,$iItemsPerPage,$iCurrentPage){
+// 	public function renderPaginator($sURL,$iTotalCount,$iItemsPerPage,$iCurrentPage){
 		
-		$iNumberOfPages = ceil($iTotalCount/$iItemsPerPage);
+// 		$iNumberOfPages = ceil($iTotalCount/$iItemsPerPage);
 		
-        $sHTML='<ul id="next-item">';
+//         $sHTML='<ul id="next-item">';
        
-        for($i=1; $i<=$iNumberOfPages; $i++){
-			if($i==$iCurrentPage){
-				$sHTML .='<li><a class="current" href="'.$sURL.'&page='.$i.'">'.$i.'</a></li>';
-			}else{
-				$sHTML .='<li><a href="'.$sURL.'&page='.$i.'">'.$i.'</a></li>';
-			}
+//         for($i=1; $i<=$iNumberOfPages; $i++){
+// 			if($i==$iCurrentPage){
+// 				$sHTML .='<li><a class="current" href="'.$sURL.'&page='.$i.'">'.$i.'</a></li>';
+// 			}else{
+// 				$sHTML .='<li><a href="'.$sURL.'&page='.$i.'">'.$i.'</a></li>';
+// 			}
 	        
-		}
-        $sHTML .='</ul>';
+// 		}
+//         $sHTML .='</ul>';
 
-		return $sHTML;
+// 		return $sHTML;
 
-	}
+// 	}
 
 }
 

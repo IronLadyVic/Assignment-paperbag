@@ -22,6 +22,7 @@ $aAllProductTypes = $oCollection->getAllProductTypes();
 $oProduct = new Product();
 $oProduct->load($_SESSION["MemberID"]);
 
+// $_SESSION['Products'] = $oProduct;
 
 $iTypeID = 1;
 if(isset($_GET["productType"])){
@@ -32,21 +33,24 @@ if(isset($_GET["productType"])){
 require_once("includes/header.php");
 
 //paginator//
-$sURL = 'items-im-selling.php?productID='.$iProductID;
-$iItemsPerPage = 1;
-$iTotalCount = 
+// $sURL = 'items-im-selling.php?productID='.$iProductID;
+// $iItemsPerPage = 1;
+// $iTotalCount = count($oProduct->ProductID);
 
 
 
 
 
 
-echo View::renderPaginator($sURL,$iTotalCount,$iItemsPerPage,$iCurrentPage);
+//Paginator - bottom left of product image// 
+// echo $oView->renderProduct($oProduct,$iCurrentPage,$iItemsPerPage);
+
+// echo $oView->renderPaginator($sURL,$iTotalCount,$iItemsPerPage,$iCurrentPage);
 // <!-- left main container -->
-echo View::renderProductDetails($oProduct);
+ echo View::renderProductDetails($oProduct);
  // <!-- right main container -->
 
-echo View::renderNavigation($aAllProductTypes);
+ echo View::renderNavigation($aAllProductTypes);
 
 require_once("includes/footer-loggedin.php");
 

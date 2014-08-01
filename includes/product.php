@@ -124,6 +124,15 @@ class Product{
 	$oConnection->close_connection();
 
 }
+//remove product item from list of products member is selling
+ public function removeProduct($iProductID){
+	$this->aContents[$iProductID] -= 1;
+		if($this->aContents[$iProductID] == 0){
+			unset($this->aContents[$iProductID]);
+		}
+
+	}
+
 public function __get($var){
 	switch ($var) {
 		case "ProductID":return $this->iProductID;break;

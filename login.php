@@ -8,6 +8,7 @@ require_once("includes/view.php");
 require_once("includes/collection.php");
 require_once("includes/member.php");
 require_once("includes/encoder.php");
+require_once("includes/model-my-paperbag-cart.php");
 
 session_start();
 if(isset($_SESSION['MemberID'])){
@@ -43,6 +44,9 @@ if(isset($_POST["submit"])){
 	}else{
 		$iMemberID = $oMember->MemberID;
 		$_SESSION['MemberID'] = $iMemberID;
+
+		$oCart = new Cart();
+		$_SESSION['Cart'] = $oCart;
 
 		header("Location:success-loggedin.php");
 		exit(); 

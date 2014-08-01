@@ -9,7 +9,7 @@ if(isset($_GET['ProductID'])){
 	$iProductID = $_GET['ProductID'];
 }
 
-$oCart = $_SESSION['Cart'];
+$oCart = $_SESSION['Cart']; //calling cart in the session.
 $oCart->addProduct($iProductID);
 
 header("Location: my-paperbag-cart.php");

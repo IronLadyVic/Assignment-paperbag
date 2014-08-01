@@ -7,7 +7,7 @@ require_once("includes/model-my-paperbag-cart.php");
 
 session_start();
 
-$oCart = $_SESSION[''];
+$oCart = $_SESSION['Cart'];
 
 if(!isset($_SESSION['MemberID'])){
 		header("Location: login.php");
@@ -29,15 +29,15 @@ if(isset($_GET["productType"])){
 require_once("includes/header.php");
 
 // <!-- left main container -->
-
+echo View::renderNavigation($aAllProductTypes);
 echo $oView->renderCart($oCart);
 
 
 // <!-- right main container -->
 
 
-echo View::renderNavigation($aAllProductTypes);
 
-require_once("includes/footer.php");
+
+require_once("includes/footer-loggedin.php");
 
 ?>

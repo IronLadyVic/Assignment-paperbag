@@ -27,7 +27,7 @@ echo '<div id="left-container-login">
 	<div>
 		<p class="header">success!</p>
 		<p class="success-statements">thank you for selling your item on behalf of
-paperbag boutique.<br/><br/>please click below to see your clothing items you have listed.</p>
+paperbag boutique. please click below to see your clothing items you have listed.</p>
 		<a href="items-im-selling.php"><ul id="view-your-items-listed"><li>items im selling</li></ul></a>
 			</div>
 		</div>';
