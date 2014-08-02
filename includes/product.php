@@ -103,7 +103,7 @@ class Product{
 		else{
 		$sSQL = "UPDATE tbproduct 
 		SET SellerID='".$oConnection->escape_value($this->iSellerID)."', 
-			TypeID='".$oConnection->escape_value($this->iTypeID)."', 
+			TypeID='".$oConnection->escape_value($this->iTypeID)."',
 			TypeName='".$oConnection->escape_value($this->sTypeName)."',
 			ItemName='".$oConnection->escape_value($this->sItemName)."', 
 			Description='".$oConnection->escape_value($this->sDescription)."',

@@ -1,12 +1,13 @@
 <!-- footer -->
+
 <div id="search-bar-shop">
 	<form><input type="search" name="search" placeholder="search"></form>
 </div>
 <div id="footer-about">
 <p><strong>about</strong></p>
 	<ul>
-		<li><a href="">about us</a></li>
-		<li><a href="">contact + locate</a></li>
+		<li><a href="about-us.php">about us</a></li>
+		<li><a href="contact-locate.php">contact + locate</a></li>
 		
 	</ul>	
 </div>

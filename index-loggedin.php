@@ -1,11 +1,12 @@
 <?php
+session_start();
 require_once("includes/view-form.php");
 require_once("includes/view.php");
 require_once("includes/collection.php");
 require_once("includes/member.php");
 
 
-session_start();
+
 //redirect to login page if member has not logged in.
 if(!isset($_SESSION['MemberID'])){
   // header("Location:login.php");
@@ -18,45 +19,44 @@ require_once("includes/header.php");
 $sHTML = "";
 
 echo '<div id="left-container">
-	<div class="gallery items-3">
+  <div class="gallery items-3">
   <div id="item-1" class="control-operator"></div>
   <div id="item-2" class="control-operator"></div>
   <div id="item-3" class="control-operator"></div>
   <div class="gallery autoplay items-3">
-	<figure class="item">
+  <figure class="item"><a href="create-an-account.php" class="item-slider-1">
     <h1>create an account</h1>
     <img src="assets/img/slider1.png" alt="slider1" id="clothing-rack1"/>
+  </a>
   </figure>
-  <figure class="item">
-    <h1>sell your clothes online</h1>
-	<ul>
-		<li>1. sell second hand labelled clothing online</li>
-		<li id="index-productname"></li>
-		<li>2. manage the items you list </li>
-		<li id="index-price"></li>
-		<li>3. make money</li>
-		<li id="index-sold"></li>
-		<li>4. buy second hand labelled clothing online</li>
-		<li id="index-addtocart"></li>
-		<img src="assets/img/slider2.png" alt="slider2" id="clothing-rack2"/>
-	</ul>	
+ <figure class="item"><a href="login.php" class="item-slider-2">
+  <h1>sell your clothes online</h1>
+  <ul id="slider-info">
+    <li id="index-text-1">1. sell second hand labelled clothing online</li>
+    <li id="index-productname"></li>
+    <li id="index-text-2">2. manage the items you list </li>
+    <li id="index-price"></li>
+    <li id="index-text-3">3. make money</li>
+    <li id="index-sold"></li>
+    <li id="index-text-4">4. buy second hand labelled clothing online</li>
+    <li id="index-addtocart"></li>
+    <img src="assets/img/slider2.png" alt="slider2" id="clothing-rack2"/>
+  </ul> 
+  </a>
   </figure>
-
-  <figure class="item">
+  <figure class="item"><a href="login.php" class="item-slider-3">
     <h1>shop paperbag</h1>
     <img src="assets/img/slider3.png" alt="slider3" id="clothing-rack3"/>
-
-  
-
+  </a>  
+  </figure>
   <div class="controls">
-    <a href="#item-1" class="control-button">•</a>
-    <a href="#item-2" class="control-button">•</a>
-    <a href="#item-3" class="control-button">•</a>
+    <a href="create-an-account.php" class="control-button">•</a>
+    <a href="login.php" class="control-button">•</a>
+    <a href="shop-online.php" class="control-button">•</a>
    </div> 
   </div>
 </div>
 </div>
-<!-- right main container -->
 <div id="right-container">
 	<ul>
 		

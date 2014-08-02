@@ -1,8 +1,8 @@
 <?php
+session_start();
 
 require_once("includes/my-paperbag-cart.php");
 
-session_start();
 
 $iProductID = 0;
 

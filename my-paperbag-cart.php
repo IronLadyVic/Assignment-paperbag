@@ -1,11 +1,12 @@
 <?php
+session_start();
 require_once("includes/view-form.php");
 require_once("includes/view.php");
 require_once("includes/collection.php");
 require_once("includes/product.php");
 require_once("includes/model-my-paperbag-cart.php");
 
-session_start();
+
 
 $oCart = $_SESSION['Cart'];
 
@@ -13,7 +14,8 @@ if(!isset($_SESSION['MemberID'])){
 		header("Location: login.php");
 	}
 
-
+$oCart = new Cart();
+$_SESSION['Cart'] = $oCart;
 
 
 
@@ -30,7 +32,7 @@ require_once("includes/header.php");
 
 // <!-- left main container -->
 echo View::renderNavigation($aAllProductTypes);
-echo $oView->renderCart($oCart);
+echo View::renderCart($oCart);
 
 
 // <!-- right main container -->

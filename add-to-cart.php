@@ -1,15 +1,17 @@
 <?php
+session_start();
 
 require_once("includes/model-my-paperbag-cart.php");
 
-session_start();
 
 $iProductID = 1;
 if(isset($_GET['ProductID'])){
 	$iProductID = $_GET['ProductID'];
 }
 
-$oCart = $_SESSION['Cart']; //calling cart in the session.
+$oCart = new Cart();
+		$_SESSION['Cart'] = $oCart;
+		
 $oCart->addProduct($iProductID);
 
 header("Location: my-paperbag-cart.php");

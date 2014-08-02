@@ -1,4 +1,5 @@
 <?php
+session_start();
 define("MAX_SIZE","10000000");
 require_once("includes/view-form.php");
 require_once("includes/view.php");
@@ -6,7 +7,7 @@ require_once("includes/collection.php");
 require_once("includes/product.php");
 require_once("includes/member.php");
 
-session_start();
+
 //redirect to login page if member has not logged in.
 if(!isset($_SESSION['MemberID'])){
 	header("Location:login.php");
@@ -20,14 +21,14 @@ $oProduct->load($_GET['productID']); //the Control name is the query string for 
 
 $aExsistingData = array();
 
-$aExsistingData['item-name'] = $oProduct->ItemName;
-$aExsistingData['typeName'] = $oProduct->TypeName;
-$aExsistingData['description'] = $oProduct->Description;
-$aExsistingData['size'] = $oProduct->Size;
-$aExsistingData['labels'] = $oProduct->Label;
-$aExsistingData['upload-photo'] = $oProduct->PhotoPath;
+$aExsistingData['item-name-edit'] = $oProduct->ItemName;
+$aExsistingData['typeName-edit'] = $oProduct->TypeName;
+$aExsistingData['description-edit'] = $oProduct->Description;
+$aExsistingData['size-edit'] = $oProduct->Size;
+$aExsistingData['labels-edit'] = $oProduct->Label;
+$aExsistingData['imageLoader'] = $oProduct->PhotoPath;
 // $aExsistingData['MAX_FILE_SIZE'] = $oProduct->PhotoPath;
-$aExsistingData['price'] = $oProduct->Price;
+$aExsistingData['price-edit'] = $oProduct->Price;
 
 
 
@@ -37,31 +38,31 @@ $oForm->data = $aExsistingData;
 if(isset($_POST['submit'])){
 	$oForm->data = $_POST;
 	$oForm->files = $_FILES;
-	$oForm->checkRequired('item-name');
-	$oForm->checkRequired('typeName');
-	$oForm->checkRequired('description');
-	$oForm->checkRequired('size');
-	$oForm->checkRequired('labels');
+	$oForm->checkRequired('item-name-edit');
+	$oForm->checkRequired('typeName-edit');
+	$oForm->checkRequired('description-edit');
+	$oForm->checkRequired('size-edit');
+	$oForm->checkRequired('labels-edit');
 	// $oForm->checkUpload("upload-photo", "image/png", MAX_SIZE);
-	$oForm->checkRequired('price');
+	$oForm->checkRequired('price-edit');
 
 
 	if($oForm->isValid){
 		
-		$oProduct->ItemName = $_POST['item-name'];
-		$oProduct->TypeName = $_POST['typeName'];
-		$oProduct->Description = $_POST['description'];
-		$oProduct->Size = $_POST['size'];
-		$oProduct->Label = $_POST['labels'];
+		$oProduct->ItemName = $_POST['item-name-edit'];
+		$oProduct->TypeName = $_POST['typeName-edit'];
+		$oProduct->Description = $_POST['description-edit'];
+		$oProduct->Size = $_POST['size-edit'];
+		$oProduct->Label = $_POST['labels-edit'];
 		// print_r($_FILES);
-		if($_FILES["upload-photo"]["error"]==0){
+		if($_FILES["imageLoader"]["error"]==0){
 			$sPhotoName = "product".date("Y-m-d-H-i-s").".png";
 			$oProduct->PhotoPath = $sPhotoName;
 			$oForm->moveFile('upload-photo',$sPhotoName);
 		}
 		
 		
-		$oProduct->Price = $_POST['price'];
+		$oProduct->Price = $_POST['price-edit'];
 		$oProduct->Active = 1;
 
 		$oProduct->save();
@@ -71,15 +72,15 @@ if(isset($_POST['submit'])){
 	}
 }
 
-$oForm->makeTextInput('','item-name');
-$oForm->makeTextInput('','typeName');
-$oForm->makeTextInput('','description');
-$oForm->makeTextInput('','size');
-$oForm->makeTextInput('','labels');
-$oForm->makeUpLoadBox("double click here","upload-photo");
+$oForm->makeTextInput('','item-name-edit');
+$oForm->makeTextInput('','typeName-edit');
+$oForm->makeTextInput('','description-edit');
+$oForm->makeTextInput('','size-edit');
+$oForm->makeTextInput('','labels-edit');
+$oForm->makeUpLoadBox("double click here","imageLoader");
 $oForm->makeHiddenField("MAX_FILE_SIZE", MAX_SIZE);
 // $oForm->makeTextInput("upload","browse-upload");
-$oForm->makeTextInput('','price');
+$oForm->makeTextInput('','price-edit');
 $oForm->makeSubmit('save changes','submit');
 
 
@@ -101,16 +102,16 @@ require_once("includes/header.php");
 
 
 // <!-- left main container -->
-echo '<div id="left-container-sell">
+echo '<div id="left-container-edit">
 <p class="header">edit my item</p>
-<p id="gst">price will automatically<br/>include 15% GST</p>';
+<p id="gst">price will automatically<br/>include 15% GST</p>';?>
 
-echo '<div id="productImage-Upload">
-	<img id="item-image-view" alt="item-image" src="assets/img/'.htmlentities($oProduct->PhotoPath).'"</img>
-	
-</div>';
+<!-- <canvas id="imageCanvas"></canvas>
+		<input type="file" id="imageLoader" name="imageLoader"/> -->
+	<!-- <img src="assets/img/'.htmlentities($oProduct->PhotoPath).'"</img> -->
 
-echo $oForm->html;
+
+<?php echo $oForm->html;
 
 
 echo '<p id="required-edit-sell-an-item">* required input - account members NZ address only</p>

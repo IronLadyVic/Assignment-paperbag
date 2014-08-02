@@ -162,7 +162,7 @@ div #top-right-nav li:nth-child(2){
 
 div #left-container{
 	height: 420px;
-	width: 692px;
+	width: 750px;
 	background-color: #EEEEEE;
 	position: absolute;
 	margin-top: 80px;
@@ -224,6 +224,7 @@ div #left-container-cart{
 	position: absolute;
 	margin-top: 90px;
 }
+
 #left-container-other{
 	height: 400px;
 	width: 750px;
@@ -342,15 +343,23 @@ div #left-container-cart{
    	font-size: 10px;
    	margin-top: 155px;
    	width: 210px;
-   	position: relative;
+   	position: absolute;
    	
 }
 
 #left-container-login #send{
-	margin-left: -290px;
+	margin-left: 0px;
 	margin-top: 203px;
    	width: 280px;
-
+	background-color: #B5E1E1;
+	color: #535353;
+}
+#left-container-account #send{
+	margin-left: 0px;
+	
+   	width: 280px;
+	background-color: #B5E1E1;
+	color: #535353;
 }
 
 div #left-container h1{
@@ -360,47 +369,89 @@ div #left-container h1{
 	font-size: 0px;
 
 }
-div #left-container li{
+/*div #left-container li{
 	width: 350px;
 	font-size: 14px;
-	position: relative;
+	margin-bottom: 20px;
+position: relative;
 	margin-left: -20px;
 	margin-bottom: 8px;
+}*/
+
+
+#index-text-1{
+	position: relative;
+	margin-bottom: 20px;
+}
+#index-text-2{
+	position: relative;
+	margin-bottom: 20px;
+	margin-left: -270px;
+	margin-top: 70px;
+}
+#index-text-3{
+	position: relative;
+	margin-bottom: 20px;
+	margin-left: -270px;
+	margin-top: 140px;
+}
+#index-text-4{
+	position: relative;
+	margin-bottom: 20px;
+	margin-left: -270px;
+	margin-top: 210px;
 }
 #index-productname{
 	background-image: url("img/index-productname.png");
 	background-repeat: no-repeat;
 	height: 40px;
+	width: 360px;
+	position: absolute;
+	margin-left: 0px;
+	margin-top: 20px;
 }
 #index-price{
 	background-image: url("img/index-price.png");
 	background-repeat: no-repeat;
 	height: 40px;
+	width: 360px;
+	position: absolute;
+	margin-left: 0px;
+	margin-top: 162px;
 }
 #index-sold{
 	background-image: url("img/index-sold.png");
 	background-repeat: no-repeat;
 	height: 50px;
+	width: 360px;
+	position: absolute;
+	margin-left: 0px;
+	margin-top: 85px;
 }
 #index-addtocart{
 	background-image: url("img/index-addtocart.png");
 	background-repeat: no-repeat;
 	height: 45px;
+	width: 360px;
+	position: absolute;
+	margin-left: 0px;
+	margin-top: 235px;
 }
 #clothing-rack1{
-	width: 692px;
+	width: 750px;
 	height: 420px;
 	margin-top: -100px;
 
 }
 #clothing-rack2{
-	width: 692px;
+	width: 750px;
 	height: 420px;
-	margin-left: -390px;
+	position: absolute;
+	margin-left: -320px;
 	margin-top: -125px;
 }
 #clothing-rack3{
-	width: 692px;
+	width: 750px;
 	height: 420px;
 	margin-left: 0px;
 	margin-top: -100px;
@@ -593,14 +644,18 @@ form input{
 
 }
 
-#send{
-	width: 276px;
+#left-container-sell #send{
+	
 	background-color: #B5E1E1;
 	color: #535353;
-	margin-top: 215px;
+	margin-top: 390px;
 	margin-left: -190px;
+
 	position: absolute;
 	width: 332px;
+}
+#left-container-sell #search-bar{
+	margin-left: 480px;
 }
 
 /*//end of form*/
@@ -714,7 +769,7 @@ span:after{
     font-size: 10px;
     display: inline-block;
     text-indent: 8px;
-    margin-left: -115px;
+    margin-left: 230px;
     margin-top: 95px;
 }
 
@@ -735,7 +790,7 @@ span:after{
     font-size: 10px;
     display: inline-block;
     text-indent: 8px;
-    margin-left:-110px;
+    margin-left:180px;
     margin-top: 145px;
 }
 #confirmMessage{
@@ -774,7 +829,7 @@ span #password-loginMessage{
     font-size: 10px;
     display: inline-block;
     text-indent: 8px;
-    margin-left: -115px;
+    margin-left: 230px;
     margin-top: 189px;
 }
 
@@ -785,7 +840,7 @@ span #password-loginMessage{
     font-size: 10px;
     display: inline-block;
     text-indent: 8px;
-    margin-left: -115px;
+    margin-left: 230px;
     margin-top: 232px;
 }
 #labelsMessage{
@@ -795,7 +850,7 @@ span #password-loginMessage{
     font-size: 10px;
     display: inline-block;
     text-indent: 8px;
-  	margin-left: -280px;
+  	margin-left: 50px;
     margin-top: 232px;
 }
 #priceMessage{
@@ -806,7 +861,7 @@ span #password-loginMessage{
     display: inline-block;
     text-indent: 8px;
   	margin-left: -110px;
-    margin-top: 160px;
+    margin-top: 330px;
 }
 #typeNameMessage{
 	position: absolute;
@@ -815,8 +870,88 @@ span #password-loginMessage{
     font-size: 10px;
     display: inline-block;
     text-indent: 8px;
-    margin-left: -115px;
+    margin-left: 230px;
     margin-top: 143px;
+}
+#item-name-editMessage{
+	position: absolute;
+ 	color: #FF6666;
+    z-index: 400;
+    font-size: 10px;
+    display: inline-block;
+    text-indent: 8px;
+    margin-left: 230px;
+    margin-top: 105px;
+}
+#typeName-editMessage{
+		position: absolute;
+ 	color: #FF6666;
+    z-index: 400;
+    font-size: 10px;
+    display: inline-block;
+    text-indent: 8px;
+    margin-left: 230px;
+    margin-top: 152px;
+}
+#description-editMessage{
+	position: absolute;
+ 	color: #FF6666;
+    z-index: 400;
+    font-size: 10px;
+    display: inline-block;
+    text-indent: 8px;
+    margin-left: 230px;
+    margin-top: 195px;
+}
+#size-editMessage{
+	position: absolute;
+ 	color: #FF6666;
+    z-index: 400;
+    font-size: 10px;
+    display: inline-block;
+    text-indent: 8px;
+    margin-left: 50px;
+    margin-top: 240px;
+}
+#labels-editMessage{
+	position: absolute;
+ 	color: #FF6666;
+    z-index: 400;
+    font-size: 10px;
+    display: inline-block;
+    text-indent: 8px;
+    margin-left: 230px;
+    margin-top: 240px;
+}
+#price-editMessage{
+		position: absolute;
+ 	color: #FF6666;
+    z-index: 400;
+    font-size: 10px;
+    display: inline-block;
+    text-indent: 8px;
+    margin-left: -110px;
+    margin-top: 330px;
+}
+#firstName-editMessage{
+	position: absolute;
+ 	color: #FF6666;
+    z-index: 400;
+    font-size: 10px;
+    display: inline-block;
+    text-indent: 8px;
+    margin-left: -110px;
+    margin-top: 95px;
+}
+#lastName-editMessage{
+	position: absolute;
+ 	color: #FF6666;
+    z-index: 400;
+    font-size: 10px;
+    display: inline-block;
+    text-indent: 8px;
+    margin-left: -110px;
+    margin-top: 95px;
 }
 /*span #upload-photoMessage{
 	margin-left: 120px;
@@ -832,6 +967,7 @@ span #password-loginMessage{
 	margin-top: 80px;
 
 }
+
 #item{
 	margin-bottom: 20px;
 	margin-left: -40px;
@@ -1121,8 +1257,9 @@ p .description-text{
 	padding-left:80px;
 	width: 252px;
 	margin-bottom: 20px;
-	margin-top:110px;
-	font-size: 12px;
+	margin-top: 110px;
+	position: absolute;
+
 }
 
 #item-name-items{
@@ -1136,6 +1273,17 @@ p .description-text{
 	position: absolute;
 
 }
+#item-name-edit{
+	background-image:url('img/item-name.png');
+	background-repeat:no-repeat;
+	background-position:left center;  
+	padding-left:80px;
+	width: 252px;
+	margin-bottom: 20px;
+	margin-top: 120px;
+	position: absolute;
+
+}
 #typeName{
 	background-image:url('img/product-type.png');
 	background-repeat:no-repeat;
@@ -1145,7 +1293,22 @@ p .description-text{
 	width: 309px;
 	position: absolute;
 	margin-top: 155px;
-	margin-left: -342px;
+	margin-left: 0px;
+	border: none;
+	text-indent: 85px;
+	background-color: white;
+	font-size: 12px;
+}
+#typeName-edit{
+	background-image:url('img/product-type.png');
+	background-repeat:no-repeat;
+	background-position:left center;  
+	padding-left:25px;
+	height: 32px;
+	width: 309px;
+	position: absolute;
+	margin-top: 162px;
+	margin-left: 0px;
 	border: none;
 	text-indent: 85px;
 	background-color: white;
@@ -1159,8 +1322,20 @@ p .description-text{
 	padding-left:80px;
 	width: 252px;
 	border: none;
-	margin-left: -340px;
+	margin-left: 0px;
 	margin-top: 200px;
+	position: absolute;
+	font-size: 12px;
+}
+#description-edit{
+	background-image:url('img/description.png');
+	background-repeat:no-repeat;
+	background-position:left top;  
+	padding-left:80px;
+	width: 252px;
+	border: none;
+	margin-left: 0px;
+	margin-top: 205px;
 	position: absolute;
 	font-size: 12px;
 }
@@ -1170,8 +1345,19 @@ p .description-text{
 	background-position:left center;  
 	padding-left:35px;
 	width: 120px;
-	margin-top:242px;
-	margin-left: -163px;
+	margin-top:245px;
+	margin-left: 177px;
+	position: absolute;
+	font-size: 12px;
+}
+#size-edit{
+	background-image:url('img/size.png');
+	background-repeat:no-repeat;
+	background-position:left center;  
+	padding-left:35px;
+	width: 120px;
+	margin-top:250px;
+	margin-left: 0px;
 	position: absolute;
 	font-size: 12px;
 }
@@ -1181,8 +1367,19 @@ p .description-text{
 	background-position:left center;  
 	padding-left:40px;
 	width: 120px;
-	margin-top:242px;
-	margin-left: -340px;
+	margin-top:245px;
+	margin-left: 0px;
+	position: absolute;
+	font-size: 12px;
+}
+#labels-edit{
+	background-image:url('img/label.png');
+	background-repeat:no-repeat;
+	background-position:left center;  
+	padding-left:40px;
+	width: 120px;
+	margin-top:250px;
+	margin-left: 170px;
 	position: absolute;
 	font-size: 12px;
 }
@@ -1229,17 +1426,17 @@ div #upload-photo{
 
 }
 
-#productImage-Upload img{
-	width: 280px;
-	height: 320px;
+/*#productImage-Upload img{
+	width: 360px;
+	height: 400px;
 	background-color: white;
 	position: absolute;
 /*	outline: red 1px solid;*/
-	margin-left: 370px;
+/*	margin-left: 370px;
 	margin-top: 5px;
 	font-size: 0px;
-	border: none;
-}
+	border: none;*/
+/*}*/
 #upload-photo label{
 	background-color: white;
 	border: none;
@@ -1282,13 +1479,25 @@ label #browse-upload{
 	width: 130px;
 	position: relative;
 	margin-left: 2px;
-	margin-top: 170px;
+	margin-top: 340px;
+	font-size: 12px;
+
+}
+#price-edit{
+	background-image:url('img/price.png');
+	background-repeat:no-repeat;
+	background-position:left center;  
+	padding-left:50px;
+	width: 130px;
+	position: relative;
+	margin-left: 2px;
+	margin-top: 338px;
 	font-size: 12px;
 
 }
 #gst{
 	position: absolute;
-	margin-top: 225px;
+	margin-top: 230px;
 	margin-left: 210px;
 	font-size: 12px;
 	line-height: 150%;
@@ -1386,7 +1595,7 @@ label #browse-upload{
 	height: 212px;
 	position: absolute;
 	margin-left: 360px;
-	margin-top: -270px;
+	margin-top: -280px;
 	line-height: 120%;
 }
 .agreement-box{
@@ -1506,10 +1715,8 @@ border-right: 5px solid white;
 }
 #product-image{
 	width: 300px;
-	height: 350px;
+	height: 400px;
 	
-	background-size: 100%;
-	background-repeat: no-repeat;
 	font-size: 0px;
 }
 #item-text{
@@ -1768,16 +1975,16 @@ border-right: 5px solid white;
 }
 .disclaimer-view{
 
-	margin-left: -520px;
+	margin-left: 20px;
 	font-size: 10px;
-	margin-top:40px;
+	margin-top:350px;
 	position: absolute;
 
 }
 .disclaimer{
 		margin-left: 15px;
 	font-size: 10px;
-	margin-top:100px;
+	margin-top:90px;
 	position: absolute;
 }
 
@@ -1825,20 +2032,105 @@ border-right: 5px solid white;
 	line-height: 200%;
 	
 }
-#item-image-view{
+
+#imageCanvas-items-im-selling{
+ margin-left: 340px;
+ margin-top: -5px;
+ font-size: 0px;
+ 	width: 300px; 
+	height: 360px; 
+	/*background: #cacaca;*/
 	position: absolute;
-	margin-left: 350px;
-	margin-top: 0px;
-		max-width:250px;
-	max-height:auto;
-	
+
+}
+#left-container-sell #imageCanvas{
+ margin-left: 348px;
+ margin-top: 320px;
+ font-size: 0px;
+ 	width: 130px; 
+	height: 160px; 
+	/*background: #cacaca;*/
+	position: absolute;
+
+}
+#imageLoader{
+	background-color: white;
 	border: none;
-	/*outline: white 1px solid;*/
+	position: absolute;
+	margin-top: 290px;
+	margin-left: 0px;
+	width: 330px;
+	height: 32px;
+	font-size: 10px;
+	line-height: 400%;
+	text-indent: 250px;
+	padding-bottom: 5px;
+	background-image: url("img/upload-photo.png");
+	background-repeat: no-repeat;
+	background-position:left center; 
 }
-#item-image-view img{
-	max-width:260px;
-max-height:auto;
+#imageLoader-sell{
+	background-color: white;
+	border: none;
+	position: absolute;
+	margin-top: 290px;
+	margin-left: 0px;
+	width: 330px;
+	height: 32px;
+	font-size: 10px;
+	line-height: 400%;
+	text-indent: 250px;
+	padding-bottom: 5px;
+	background-image: url("img/upload-photo.png");
+	background-repeat: no-repeat;
+	background-position:left center; 
 }
+input[type="file"] {
+align-items: baseline;
+color: inherit;
+text-align: start;
+}
+#left-container-edit{
+	height: 420px;
+	width: 692px;
+	background-color: #EEEEEE;
+	position: absolute;
+	margin-top: 100px;
+}
+#left-container-edit #send{
+	position: absolute;
+	margin-top: 380px;
+	background-color: #B5E1E1;
+	color: #535353;
+	
+	margin-left: -190px;
+
+	position: absolute;
+	width: 332px;
+}
+/*input #imageLoader{
+	width: 240px;
+	height: 38px;
+	background-color: white;
+	border: none;
+	position: relative;
+	margin-left: -100px;
+	margin-top: 123px;
+	padding-left:90px;
+	cursor: pointer;
+	font-size: 10px;
+	border: none;
+	}*/
+
+#imageCanvas {
+	width: 300px; 
+	height: 360px; 
+	background: #cacaca;
+	position: absolute;
+	margin-top: 110px;
+	margin-left: 350px;
+}
+
 #item-image-edit{
 	position: absolute;
 	margin-left: 350px;
@@ -1866,12 +2158,12 @@ div #sell-my-product-Upload{
 
 
 div #next-item{
-	outline: red 1px solid;
+	/*outline: red 1px solid;*/
 	width: 140px;
 	height: 30px;
 	position: absolute;
 	margin-left: 530px;
-	margin-top: 470px;
+	margin-top: 395px;
 	color: black;
 }
 
@@ -1894,7 +2186,7 @@ div #next-item p a{width: 140px;
 	height: 30px;
 	font-size: 0px;
 	position: absolute;
-	margin-left: 400px;
+	margin-left: 440px;
 	margin-top: 390px;
 	border: none;
 	
@@ -1991,7 +2283,7 @@ margin-left: -450px;
 }
 #search-bar-shop input{
 	position: relative;
-	margin-top: 2000px;
+	margin-top: 2500px;
 	margin-left: -400px;
 	height: 32px;
 	width: 231px;

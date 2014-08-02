@@ -1,10 +1,11 @@
 <?php
+session_start();
 require_once("includes/view-form.php");
 require_once("includes/view.php");
 require_once("includes/collection.php");
 require_once("includes/member.php");
 
-session_start();
+
 
 
 

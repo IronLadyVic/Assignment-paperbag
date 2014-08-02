@@ -1,9 +1,10 @@
 <?php
+session_start();
 require_once("includes/view.php");
 require_once("includes/collection.php");
 require_once("includes/product.php");
 require_once("includes/model_producttype.php");
-session_start();
+
 
 $oView = new View();
 $oCollection = new Collection();

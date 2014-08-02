@@ -195,17 +195,17 @@ function hideItem(){
 
 //google map
 
-function initialize() {
-        var map_canvas = document.getElementById('map');
-        var map_options = {
-          center: new google.maps.LatLng(--36.8811909, 174.7941174),
-          zoom: 18,
-          mapTypeId: google.maps.MapTypeId.ROADMAP
-        }
-        var map = new google.maps.Map(map_canvas, map_options)
+// function initialize() {
+//         var map_canvas = document.getElementById('map');
+//         var map_options = {
+//           center: new google.maps.LatLng(--36.8811909, 174.7941174),
+//           zoom: 18,
+//           mapTypeId: google.maps.MapTypeId.ROADMAP
+//         }
+//         var map = new google.maps.Map(map_canvas, map_options)
       
-      google.maps.event.addDomListener(window, 'load', initialize);
-}
+//       google.maps.event.addDomListener(window, 'load', initialize);
+// }
 
 //-----------------------------JS Form Validation to work with PHP-------------------------//
 
@@ -242,49 +242,54 @@ for(var iCount=0; iCount<aEmailElements.length; iCount++){
 	}
 }
 
-//TESTING//
-//onkey event used for Username
-
-// function colorField(sFieldId){
-
-// 	var oField = document.getElementById(sFieldId);
-
-// 	var sDataValue = oField.value;
-
-// 	var oUsername = document.getElementById('username');
-// 	var oFirstName = document.getElementById('firstName');
-// 	var oLastName = document.getElementById('lastName');
-// 	var oMobile = document.getElementById('mobile');
-// 	var oEmail = document.getElementById('email');
-// 	var oAddress = document.getElementById('address');
-// 	var oCity = document.getElementById('city');
-// 	var oPostCode = document.getElementById('postcode');
-
-// 	var oValid = "#B4E0E0";
-// 	var oInvalid = "#FF6666";
-
-// 	var oMessage = document.getElementById('confirmMessage');
-
-// 	var oRegExp = new RegExp("[a-zA-Z]");
-
-// 	if(oRegExp.test(sDataValue) == false){
-// 		//bad
-// 		oUsername.style.backgroundColor = oInvalid;
-// 		oMessage.style.color = oInvalid;
-// 		oMessage.innerHTML = "username must be alphabetic";
-		
-
-// 	}else{
-// 		//good
-// 		oUsername.style.backgroundColor = oValid;
-// 		oMessage.style.color = oValid;
-// 		oMessage.innerHTML = "";
-// 	}
+var aPhotoElements = document.getElementById('required');
+for(var iCount=0; iCount<aPhotoElements.length; iCount++){
+	aPhotoElements[iCount].addEventListener= function(){
+		imageLoader();
+	}
+}
 
 
-// }
 
+var imageLoader = document.getElementById('imageLoader');
+    imageLoader.addEventListener('change', handleImage, false);
+var canvas = document.getElementById('imageCanvas');
+canvas.width = 300;
+canvas.height = 360;
+var ctx = canvas.getContext('2d');
 
+function handleImage(e){
+    var reader = new FileReader();
+    reader.onload = function(event){
+        var img = new Image();
+            img.onload = function(){
+              var w = this.width;
+                  h = this.height,
+                  cw = canvas.width,
+                  ch = canvas.height,
+                  r = h/w;
+                      if(h<w) {
+                         //horizontal
+                             nh = 400,
+                             nw = r*h;
+                             
+                      } else {
+                         //vertical
+                             nw = 300,
+                             nh = r*300; 
+                      }
+                var nx = 0, ny = 0;
+                if(nw>300) {nx = -(nw/2+ch/2)}
+                if(ny>300) {ny = -(nh/2+ch/2)}
+              
+                // console.log('<b>img w:</b>'+w+'</br><b>img h:</b>'+h+'</br><b>ratio:</b>'+r+'</br><b>img nh:</b>'+nh+'</br><b>img nw:</b>'+nw+'</br><b>nx</b>:'+nx+'</br><b>ny:</b>'+ny);
+            ctx.drawImage(img,nx,ny,nw,nh);
+            
+        }
+        img.src = event.target.result;
+    }
+    reader.readAsDataURL(e.target.files[0]);     
+}
 
 
 

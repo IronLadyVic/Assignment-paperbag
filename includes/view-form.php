@@ -108,11 +108,11 @@ class Form{
 	if(isset($this->aErrors[$sControlName])){
 		$sError = $this->aErrors[$sControlName];
 	}
-	$this->sHTML .='<div id="upload-photo">';
-	$this->sHTML.='<label for="'.$sControlName.'">'.$sLabelText.'</label>';
-	$this->sHTML.='<input type="file" name="'.$sControlName.'" placeholder="*" id="'.$sControlName.'" onblur="checkInput(this.id)">';
-	// $this->sHTML .='<span id="'.$sControlName.'Message">'.$sError.'</span>';
-	$this->sHTML .='</div>';
+	$this->sHTML.='<canvas id="imageCanvas"></canvas>';
+	$this->sHTML.='<input type="file" id="'.$sControlName.'" name="'.$sControlName.'"/>';
+	
+	
+	
 }
 
  public function makeHiddenField($sControlName, $sValue){

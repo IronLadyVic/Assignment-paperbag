@@ -123,11 +123,37 @@ static public function renderMemberDetails($oMember){
 
 
 
-static public function renderProductDetails($oProduct){
+static public function renderProductDetails($oProduct, $iCurrentPage, $iItemsPerPage){
+	$aProducts = $oProduct->ProductID;
 	$sHTML='';
 	$sHTML='<div id="left-container-sell">';
 	$sHTML.='<p class="header">items im selling</p>';
-	$sHTML.='<ul>';		
+
+		$iStartIndex = ($iCurrentPage - 1) * $iItemsPerPage;
+
+		$iEndIndex = $iStartIndex + $iItemsPerPage -1;
+		if($iEndIndex > count($aProducts) -1){
+			$iEndIndex = count($aProducts) -1;
+		}
+
+		for($i=$iStartIndex; $i<=$iEndIndex; $i++){
+
+			$oProduct = new Product();
+			$oProduct->load($_SESSION["MemberID"]);
+
+			$aListOfProducts = $oProduct->ProductID;
+
+			$sLastItem = "";
+			
+
+			if(count($aListOfProducts) > 0){
+				$oLastItem = $aListOfProducts[count($aListOfProducts) -1];
+				$oLastItem = new Product();
+				$oLastItem->load($oLastItem->ProductID);
+
+				$sLastItem = $oLastItem->ItemName;
+			}
+		$sHTML.='<ul>';		
 		$sHTML.='<li id="item-name-view">'.htmlentities($oProduct->ItemName).'</li>';
 		$sHTML.='<li id="typeName-view" ">'.htmlentities($oProduct->TypeName).'</li>';		
 		$sHTML.='<li id="description-view" ">'.htmlentities($oProduct->Description).'</li>';			
@@ -135,16 +161,18 @@ static public function renderProductDetails($oProduct){
 		$sHTML.='<li id="labels-view" ">'.htmlentities($oProduct->Label).'</li>';
 		$sHTML.='<li id="price-view">'.htmlentities($oProduct->Price).'</li>';	
 		$sHTML.='<div id="edit-sell-item"><a href="edit-sell-an-item.php?productID='.htmlentities($oProduct->ProductID).'">edit item</a></div>' ;
-		$sHTML.='<div id="remove-sell-item"><a href="remove-from-items.php?ProductID">remove item</a></div> ';
+		$sHTML.='<div id="remove-sell-item"><a href="remove-from-items.php?productID">remove item</a></div> ';
 		$sHTML.='<p id="withdraw-disclaimer">you can withdraw your sell item<br/> 
 		by clicking remove item. <br/> 
 		A charge of $50.00 will be issued <br/> 
 		to your email on removal of item.</p>';
-		$sHTML.='<img id="item-image-view" alt="item-image" src="assets/img/'.htmlentities($oProduct->PhotoPath).'"/>';
-		$sHTML.='<img alt="next" src="assets/img/view-next-item.png" id="next-item-text"></img>';
+		$sHTML.='<img id="imageCanvas-items-im-selling" alt="item-image" src="assets/img/'.htmlentities($oProduct->PhotoPath).'"/>';
 		$sHTML.='</ul>';
-		$sHTML.='</div>';
+		$sHTML.='<a href="#" ><img alt="next" src="assets/img/view-next-item.png" id="next-item-text">'.htmlentities($sLastItem).'</img></a>';
 		$sHTML.='<p class="disclaimer-view">* - account members NZ address only</p>';	
+		}
+		
+		
 			
 	return $sHTML;
 }
@@ -199,25 +227,25 @@ $sHTML ='</div>';
 
 }
 
-// 	public function renderPaginator($sURL,$iTotalCount,$iItemsPerPage,$iCurrentPage){
+	static public function renderPaginator($sURL,$iTotalCount,$iItemsPerPage,$iCurrentPage){
 		
-// 		$iNumberOfPages = ceil($iTotalCount/$iItemsPerPage);
+		$iNumberOfPages = ceil($iTotalCount/$iItemsPerPage);
 		
-//         $sHTML='<ul id="next-item">';
+        $sHTML='<ul id="next-item">';
        
-//         for($i=1; $i<=$iNumberOfPages; $i++){
-// 			if($i==$iCurrentPage){
-// 				$sHTML .='<li><a class="current" href="'.$sURL.'&page='.$i.'">'.$i.'</a></li>';
-// 			}else{
-// 				$sHTML .='<li><a href="'.$sURL.'&page='.$i.'">'.$i.'</a></li>';
-// 			}
+        for($i=1; $i<=$iNumberOfPages; $i++){
+			if($i==$iCurrentPage){
+				$sHTML .='<li><a class="current" href="'.$sURL.'&page='.$i.'">'.$i.'</a></li>';
+			}else{
+				$sHTML .='<li><a href="'.$sURL.'&page='.$i.'">'.$i.'</a></li>';
+			}
 	        
-// 		}
-//         $sHTML .='</ul>';
+		}
+        $sHTML .='</ul>';
 
-// 		return $sHTML;
+		return $sHTML;
 
-// 	}
+	}
 
 }
 

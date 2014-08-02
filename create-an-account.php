@@ -2,14 +2,14 @@
 // error_reporting(E_ALL | E_STRICT);  
 // ini_set('display_startup_errors',1);  
 // ini_set('display_errors',1);
-
+session_start();
 require_once("includes/view-form.php");
 require_once("includes/view.php");
 require_once("includes/collection.php");
 require_once("includes/member.php");
 require_once("includes/encoder.php");
 
-session_start();
+
 $oCollection = new Collection();
 $oForm = new Form();
 
@@ -85,7 +85,7 @@ require_once("includes/header.php");
 ?>
 <!-- left main container -->
 <div id="left-container-account">
-<p class="header">create an account</p>
+<p class="header">create an account - to buy and sell online</p>
 <p class="header-personaldetails">personal details</p>
 <?php echo $oForm->html; ?>
 

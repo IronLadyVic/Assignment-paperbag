@@ -9,29 +9,30 @@ echo '<div id="left-container">
   <div id="item-2" class="control-operator"></div>
   <div id="item-3" class="control-operator"></div>
   <div class="gallery autoplay items-3">
-	<figure class="item">
+	<figure class="item"><a href="create-an-account.php" class="item-slider-1">
     <h1>create an account</h1>
     <img src="assets/img/slider1.png" alt="slider1" id="clothing-rack1"/>
+  </a>
   </figure>
-  
-  <figure class="item"><a href="login.php">
+ <figure class="item"><a href="login.php" class="item-slider-2">
   <h1>sell your clothes online</h1>
-	<ul>
-		<li>1. sell second hand labelled clothing online</li>
+	<ul id="slider-info">
+		<li id="index-text-1">1. sell second hand labelled clothing online</li>
 		<li id="index-productname"></li>
-		<li>2. manage the items you list </li>
+		<li id="index-text-2">2. manage the items you list </li>
 		<li id="index-price"></li>
-		<li>3. make money</li>
+		<li id="index-text-3">3. make money</li>
 		<li id="index-sold"></li>
-		<li>4. buy second hand labelled clothing online</li>
+		<li id="index-text-4">4. buy second hand labelled clothing online</li>
 		<li id="index-addtocart"></li>
 		<img src="assets/img/slider2.png" alt="slider2" id="clothing-rack2"/>
 	</ul>	
   </a>
   </figure>
-  <figure class="item">
+  <figure class="item"><a href="login.php" class="item-slider-3">
     <h1>shop paperbag</h1>
     <img src="assets/img/slider3.png" alt="slider3" id="clothing-rack3"/>
+  </a>  
   </figure>
   <div class="controls">
     <a href="create-an-account.php" class="control-button">•</a>
@@ -41,7 +42,7 @@ echo '<div id="left-container">
   </div>
 </div>
 </div>
-<!-- right main container -->
+
 <div id="right-container">
 	<ul>
 		

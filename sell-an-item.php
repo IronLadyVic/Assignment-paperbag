@@ -1,11 +1,12 @@
 <?php
+session_start();
 define("MAX_SIZE","10000000");
 require_once("includes/view-form.php");
 require_once("includes/view.php");
 require_once("includes/collection.php");
 require_once("includes/product.php");
 require_once("includes/member.php");
-session_start();
+
 
 if(isset($_SESSION['MemberID'])){
 	
@@ -31,16 +32,17 @@ if(isset($_POST['submit'])){
 
 	if($oForm->isValid){
 		$oProduct->SellerID = $_SESSION['MemberID'];
+		$oProduct->TypeID = $_SESSION['TypeName'];
 		$oProduct->ItemName = $_POST['item-name'];
 		$oProduct->TypeName = $_POST['typeName'];
 		$oProduct->Description = $_POST['description'];
 		$oProduct->Size = $_POST['size'];
 		$oProduct->Label = $_POST['labels'];
 		// print_r($_FILES);
-		if($_FILES["upload-photo"]["error"]==0){
+		if($_FILES["imageLoader-sell"]["error"]==0){
 			$sPhotoName = "product".date("Y-m-d-H-i-s").".png";
 			$oProduct->PhotoPath = $sPhotoName;
-			$oForm->moveFile('upload-photo',$sPhotoName);
+			$oForm->moveFile('imageLoader-sell',$sPhotoName);
 		}
 		
 		
@@ -59,7 +61,7 @@ $oForm->makeTextInput('','typeName');
 $oForm->makeTextInput('','description');
 $oForm->makeTextInput('','size');
 $oForm->makeTextInput('','labels');
-$oForm->makeUpLoadBox("double click here","upload-photo");
+$oForm->makeUpLoadBox("double click here","imageLoader-sell");
 $oForm->makeHiddenField("MAX_FILE_SIZE", MAX_SIZE);
 // $oForm->makeTextInput("upload","browse-upload");
 $oForm->makeTextInput('','price');
